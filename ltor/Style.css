@@ -1,0 +1,120 @@
+/* Reset some default styles */
+body, ul, li, a {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    /* overflow: hidden; */
+}
+
+/* Main Navigation Styles */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links a {
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffd700; /* Change to your desired hover color */
+}
+
+/* Submenu Styles */
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.nav-links li:hover .submenu {
+    display: block;
+}
+
+.submenu li {
+    width: 150px;
+    padding: 10px;
+}
+
+.submenu a {
+    color: #fff;
+}
+
+.submenu a:hover {
+    background-color: #555;
+}
+
+/* User Account Styles */
+.user-account a {
+    margin-left: 20px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.user-account a:hover {
+    color: #ffd700; /* Change to your desired hover color */
+}
+
+.slider {
+    width: 100%; /* Make the slider cover the full width */
+    height: 50vh; /* Set the slider height to 30% of the viewport height */
+    overflow: hidden; /* Hide overflow content */
+}
+
+.slider img {
+    width: 100%; /* Make the images within the slider cover the full width */
+    height: 100%; /* Make the images fill the entire height of the slider */
+    object-fit: cover; /* Maintain aspect ratio and cover the entire slide */
+}
+
+.scrolling-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    white-space: nowrap;
+    animation: scrollText 40s linear infinite;
+    word-spacing: 1ch;
+}
+
+@keyframes scrollText {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
