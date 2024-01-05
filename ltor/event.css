@@ -1,0 +1,89 @@
+/* Add this to your existing styles or create a new file named style.css */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: white;
+}
+
+.past-events-heading {
+    text-align: center;
+    font-size: 28px;
+    margin-top: 30px; /* Adjust the margin from the top */
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #4CAF50; /* Change the color as needed */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.container{
+    width: 100%;
+    overflow: hidden;
+   
+}
+
+.wrapper{
+    width: 100%;
+    display: flex;
+    animation: slide 16s infinite;
+}
+@keyframes slide{
+    0%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(0);
+    }
+    30%{
+        transform: translateX(-100%);
+    }
+    50%{
+        transform: translateX(-100%);
+    }
+    55%{
+        transform: translateX(-200%);
+    }
+    75%{
+        transform: translateX(-200%);
+    }
+    80%{
+        transform: translateX(-300%);
+    }
+    100%{
+        transform: translateX(-300%);
+    }
+}
+img{
+    width: 100%;
+    cursor: pointer;
+    border: 2px solid black; /* Change the color as needed */
+    border-radius: 8px;
+}
+
+.slider-text,
+.event-info {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.event-info {
+    color: #555; /* You can customize the color */
+}
+
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .past-events-heading {
+        font-size: 24px;
+        margin-top: 20px;
+    }
+}
