@@ -1,4 +1,34 @@
-/* Reset some default styles */
+.slider {
+    width: 100%;
+    max-width: 100vw;
+    height: 700px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    margin-top: -10px; /* Adjusted to remove space */
+}
+.slider .list{
+    position: absolute;
+    width: max-content;
+    height: 70%;
+    left: 0;
+    top: 0;
+    display: flex;
+    transition: 1s;
+}
+.slider .list img{
+    width: 1300px;
+    max-width: 100vw;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 768px){
+    .slider{
+        height: 400px;
+    }
+}
+
 body, ul, li, a {
     margin: 0;
     padding: 0;
@@ -6,15 +36,31 @@ body, ul, li, a {
     text-decoration: none;
     /* overflow: hidden; */
 }
+.fixed-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
 
+body.fixed-navbar-padding {
+    padding-top: 60px; /* Adjust this value based on your navbar height */
+}
 /* Main Navigation Styles */
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 97%;
     background-color: #333;
     color: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px;
+    padding: 20px;
+    margin-top: -10px;
+    z-index: 1000; /* Set a higher z-index to make sure it appears above other elements */
 }
 
 .logo {
@@ -26,6 +72,7 @@ body, ul, li, a {
     width: 30px;
     height: 30px;
     margin-right: 10px;
+    border-radius: 10px;
 }
 
 .nav-links {
@@ -72,7 +119,6 @@ body, ul, li, a {
 .submenu a:hover {
     background-color: #555;
 }
-
 /* User Account Styles */
 .user-account a {
     margin-left: 20px;
@@ -86,35 +132,195 @@ body, ul, li, a {
     color: #ffd700; /* Change to your desired hover color */
 }
 
-.slider {
-    width: 100%; /* Make the slider cover the full width */
-    height: 50vh; /* Set the slider height to 30% of the viewport height */
-    overflow: hidden; /* Hide overflow content */
-}
-
-.slider img {
-    width: 100%; /* Make the images within the slider cover the full width */
-    height: 100%; /* Make the images fill the entire height of the slider */
-    object-fit: cover; /* Maintain aspect ratio and cover the entire slide */
-}
 
 .scrolling-text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
+    overflow: hidden;
     white-space: nowrap;
-    animation: scrollText 40s linear infinite;
-    word-spacing: 1ch;
+    background-color:black;
+    color: #fff;
+    padding: 7px;
+    margin-bottom: 0; /* Adjusted to remove space */
+    word-spacing: 10px;
 }
 
-@keyframes scrollText {
-    from {
-        transform: translateX(100%);
+.scrolling-text marquee {
+    width: 100%;
+    behavior: scroll;
+    scrollamount: 5; /* Adjust the scrolling speed as needed */
+}
+/* Add styles for the white line */
+
+
+/* About Us*/
+/* Add this to your existing styles or create a new style.css file */
+
+/* About Us Section Styles *//* Add this to your existing styles or create a new style.css file */
+
+/* About Us Section Styles */
+.about-us {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+    margin-top: -220px;
+}
+
+.about-us .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.about-us .text {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.about-us .image {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-us img {
+    width: 100%;
+    height: 400px;
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.about-us img:hover {
+    transform: scale(1.1);
+}
+
+.about-us h2 {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.about-us p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1.1em;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
     }
-    to {
-        transform: translateX(-100%);
+
+    .text,
+    .image {
+        flex: 1;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    img {
+        border-radius: 0; /* Adjust as needed */
+        transform: none;
+    }
+}
+
+/* Course Section Styles */
+.courses {
+    background-color: #fff;
+    padding: 80px 20px;
+}
+
+.courses .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.courses .course-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.courses .course-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.courses .course-img {
+    overflow: hidden;
+    border-radius: 15px 15px 0 0;
+}
+
+.courses .course-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px 15px 0 0;
+}
+
+
+.courses img:hover {
+    transform: scale(1.1);
+}
+
+.courses .course-info {
+    flex: 1;
+    padding: 20px;
+}
+
+.courses h2 {
+    color: #333;
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 40px;
+}
+
+.courses h3 {
+    color: #333;
+    margin-top: -10px; /* Reduced space */
+    text-align: center;
+}
+
+.courses p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.courses .btn-learn-more {
+    display: block;
+    width: 50%;
+    margin: 0 auto; /* Center the button */
+    margin-top: 15px; /* Adjust the top margin */
+    padding: 10px 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.courses .btn-learn-more:hover {
+    background-color: #7245a0;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 1200px) {
+    .course-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .course-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .course-card {
+        margin-bottom: 20px;
     }
 }
