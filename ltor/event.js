@@ -45,3 +45,24 @@ function initializeSlider(slider) {
 
 // Initialize each slider on the page
 document.querySelectorAll('.slider').forEach(initializeSlider);
+
+
+//Counter
+
+function updateCounters() {
+    const counters = document.querySelectorAll('.counter');
+    
+    counters.forEach(counter => {
+        const targetCount = parseInt(counter.getAttribute('data-count'));
+        let currentCount = parseInt(counter.textContent);
+        
+        if (currentCount < targetCount) {
+            currentCount++;
+            counter.textContent = currentCount;
+        }
+    });
+
+    requestAnimationFrame(updateCounters);
+}
+
+updateCounters();
