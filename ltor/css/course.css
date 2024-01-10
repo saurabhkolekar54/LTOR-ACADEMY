@@ -2,106 +2,108 @@
 
 body, ul, li, a {
     margin: 0;
-    padding: 0;
-    list-style: none;
-    text-decoration: none;
-    /* overflow: hidden; */
-}
-.fixed-navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-body.fixed-navbar-padding {
-    padding-top: 60px; /* Adjust this value based on your navbar height */
-}
-/* Main Navigation Styles */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 97%;
-    background-color: #333;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    margin-top: -10px;
-    z-index: 1000; /* Set a higher z-index to make sure it appears above other elements */
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo img {
-    width: 130px;
-    height: 40px;
-    margin-right: 10px;
-}
-
-.nav-links {
-    display: flex;
-}
-
-.nav-links li {
-    margin-right: 20px;
-}
-
-.nav-links a {
-    color: #fff;
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: #ffd700; /* Change to your desired hover color */
-}
-
-/* Submenu Styles */
-.submenu {
-    display: none;
-    position: absolute;
-    background-color: #333;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-.nav-links li:hover .submenu {
-    display: block;
-}
-
-.submenu li {
-    width: 150px;
-    padding: 10px;
-}
-
-.submenu a {
-    color: #fff;
-}
-
-.submenu a:hover {
-    background-color: #555;
-}
-/* User Account Styles */
-.user-account a {
-    margin-left: 20px;
-    color: #fff;
-    font-weight: bold;
-    font-size: 16px;
-    transition: color 0.3s;
-}
-
-.user-account a:hover {
-    color: #ffd700; /* Change to your desired hover color */
-}
-.courses {
+     padding: 0;
+     color: #333;
+     list-style: none;
+     text-decoration: none;
+    
+ }
+ .fixed-navbar {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     z-index: 1000;
+ }
+ 
+ body.fixed-navbar-padding {
+     padding-top: 60px; /* Adjust this value based on your navbar height */
+ }
+ /* Main Navigation Styles */
+ .navbar {
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 97%;
+     background-color: #fff;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 20px;
+     margin-top: -10px;
+     z-index: 1000; /* Set a higher z-index to make sure it appears above other elements */
+ }
+ 
+ .logo {
+     display: flex;
+     align-items: center;
+ }
+ 
+ .logo img {
+     width: 80px;
+     height: 30px;
+     margin-right: 10px;
+ }
+ 
+ .nav-links {
+     display: flex;
+ }
+ 
+ .nav-links li {
+     margin-right: 20px;
+ }
+ 
+ .nav-links a {
+     color: black;
+     font-weight: bold;
+     font-size: 16px;
+     transition: color 0.3s;
+ }
+ 
+ .nav-links a:hover {
+     color: #007BFF; /* Change to your desired hover color */
+ }
+ 
+ /* Submenu Styles */
+ .submenu {
+     display: none;
+     position: absolute;
+     background-color: #fff;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+     z-index: 1;
+ }
+ 
+ .nav-links li:hover .submenu {
+     display: block;
+ }
+ 
+ .submenu li {
+     width: 150px;
+     padding: 10px;
+     font-size: 16px;
+ }
+ 
+ .submenu a {
+     color: black;
+ }
+ 
+ .submenu a:hover {
+     color: #007BFF;
+ }
+ /* User Account Styles */
+ .user-account a {
+     margin-left: 20px;
+     color: black;
+     font-weight: bold;
+     font-size: 16px;
+     transition: color 0.3s;
+ }
+ 
+ .user-account a:hover {
+     color: #007BFF; /* Change to your desired hover color */
+ }
+ 
+ .courses {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -239,17 +241,34 @@ footer {
     margin-top: 11px;
     display: flex;
 }
-
 .social-media-icons a {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
     width: 40px;
     height: 40px;
-    color: red;
     background-color: whitesmoke; /* Circle background color */
     border-radius: 50%;
     margin-left: 10px; /* Add margin to the left of each icon */
     transition: background-color 0.3s ease-in-out;
-
-}
+    
+    }
+    .fa-instagram{
+        color: hotpink;
+    }
+    .fa-pinterest{
+        color: red;
+    }
+    .fa-youtube
+    {
+        color: red;
+    }
+    .fa-facebook-f
+    {
+        color: #1877f2;
+    }
+    .fa-twitter
+    {
+        color: #1da1f2;
+    }

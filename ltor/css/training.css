@@ -1,13 +1,55 @@
-
-body, ul, li, a {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
+*,body {
+    font-family: 'Playfair Display', serif;        margin: 0;
     padding: 0;
-    color: #333;
+    margin: 0;
     list-style: none;
     text-decoration: none;
-   
 }
+
+.training-heading {
+    color: black;
+    text-align: center;
+    padding: 1em;
+    padding-top: 90px;
+}
+
+.training {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.training h2 {
+    color: #007BFF;
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.training p {
+    line-height: 1.6;
+    font-size: 1.1em;
+}
+
+.training ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.training li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.training  ul li:before {
+    content: "✓";
+    margin-right: 10px;
+    color: #28a745;
+}
+
 .fixed-navbar {
     position: fixed;
     top: 0;
@@ -54,14 +96,11 @@ body.fixed-navbar-padding {
 }
 
 .nav-links a {
-    color: black;
+    color: black; 
     font-weight: bold;
     font-size: 16px;
     transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: #007BFF; /* Change to your desired hover color */
+    text-decoration: none;
 }
 
 /* Submenu Styles */
@@ -93,7 +132,7 @@ body.fixed-navbar-padding {
 /* User Account Styles */
 .user-account a {
     margin-left: 20px;
-    color: black;
+    color: black; 
     font-weight: bold;
     font-size: 16px;
     transition: color 0.3s;
@@ -103,75 +142,6 @@ body.fixed-navbar-padding {
     color: #007BFF; /* Change to your desired hover color */
 }
 
-.internship-heading {
-    color: black;
-    padding-top: 90px;
-    padding-bottom: 10px;
-    text-align: center;
-}
-
-.internship-heading h1 {
-    margin: 0;
-    font-size: 2em;
-}
-
-.internship-heading p {
-    font-size: 1.2em;
-    margin-top: 10px;
-}
-
-.info{
-    max-width: 1100px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-.icon
-{
-    color: #007BFF;
-}
-.info h2 {
-    color: #007BFF;
-    border-bottom: 2px solid #007BFF;
-    padding-bottom: 5px;
-    margin-bottom: 20px;
-}
-
-.info p {
-    line-height: 1.6;
-    font-size: 1.1em;
-}
-
-.info ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.info li {
-    margin-bottom: 10px;
-    font-size: 1.1em;
-}
-
-section ul li:before {
-    content: "✓";
-    margin-right: 10px;
-    color: #28a745;
-}
-.info img {
-    width: 60%;
-    height: 70%;
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-top: 20px;
-}
-.info .grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
 
 
 /* Footer Styles */
@@ -189,11 +159,12 @@ footer {
 }
 
 .copyright {
+    margin-top: 14px;
     font-size: 17px;
 }
 
 .social-media-icons {
-    margin-top: 11px;
+    margin-top: 9px;
     display: flex;
 }
 .social-media-icons a {
