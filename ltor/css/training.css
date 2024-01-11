@@ -7,10 +7,10 @@
 }
 
 .training-heading {
-    color: black;
+    color: #007BFF;
     text-align: center;
     padding: 1em;
-    padding-top: 90px;
+    padding-top: 80px;
 }
 
 .training {
@@ -49,6 +49,53 @@
     margin-right: 10px;
     color: #28a745;
 }
+
+.skills{
+    padding-top: 30px;
+    max-width: 1150px;
+    margin: 0px auto;
+}
+.skills h2{
+    margin-left: 10px;
+    color: #007BFF;
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+main {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    line-height: 1.6;
+    margin: 15px;
+    
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    width: calc(33.33% - 20px);
+    box-sizing: border-box;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+ h2, h3 {
+    color: #3498db;
+}
+
+p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
 
 .fixed-navbar {
     position: fixed;
@@ -162,7 +209,9 @@ footer {
     margin-top: 14px;
     font-size: 17px;
 }
-
+.copyright p{
+    color: #fff;
+}
 .social-media-icons {
     margin-top: 9px;
     display: flex;

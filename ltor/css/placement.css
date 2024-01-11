@@ -104,6 +104,48 @@ body.fixed-navbar-padding {
 }
 
 
+.placement-heading
+{
+    text-align: center;
+    color: #007BFF;
+    padding-top: 70px;
+    padding-bottom: 20px;
+}
+main {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    line-height: 1.6;
+    margin: 20px;
+    padding: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 30px;
+    width: calc(33.33% - 20px);
+    box-sizing: border-box;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+h1, h2, h3 {
+    color: #3498db;
+}
+
+p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+
 /* Footer Styles */
 footer {
     background-color: #333;
@@ -122,6 +164,9 @@ footer {
     font-size: 17px;
 }
 
+.copyright p{
+    color: #fff;
+}
 .social-media-icons {
     margin-top: 11px;
     display: flex;

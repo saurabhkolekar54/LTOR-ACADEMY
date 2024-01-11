@@ -163,6 +163,9 @@ footer {
     font-size: 17px;
 }
 
+.copyright p{
+    color: #fff;
+}
 .social-media-icons {
     margin-top: 11px;
     display: flex;
