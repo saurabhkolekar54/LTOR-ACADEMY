@@ -17,52 +17,52 @@
                 <img src="image/icon.jpeg" alt="Education Logo">
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li>
                     <a href="#">Courses</a>
                     <ul class="submenu">
-                        <li><a href="SpokenEnglish.html">Spoken English</a></li>
-                        <li><a href="ConfidenceBuilding.html">Confidence Building</a></li>
-                        <li><a href="PublicSpeaking.html">Public Speaking</a></li>
-                        <li><a href="SuccessKey.html">Success Key</a></li>
-                        <li><a href="LeadershipQuality.html">Leadership Quality</a></li>
-                        <li><a href="LRBrain.html">L & R Brain</a></li>
-                        <li><a href="StudySkills.html">Study Skills</a></li>
-                        <li><a href="Discipline.html">Discipline</a></li>
-                        <li><a href="GoodRelationship.html">Good Relationship</a></li>
-                        <li><a href="PersonalityDevelopment.html">Personality Development</a></li>
-                        <li><a href="TimeManagement.html">Time Management</a></li>
+                        <li><a href="SpokenEnglish.php">Spoken English</a></li>
+                        <li><a href="ConfidenceBuilding.php">Confidence Building</a></li>
+                        <li><a href="PublicSpeaking.php">Public Speaking</a></li>
+                        <li><a href="SuccessKey.php">Success Key</a></li>
+                        <li><a href="LeadershipQuality.php">Leadership Quality</a></li>
+                        <li><a href="LRBrain.php">L & R Brain</a></li>
+                        <li><a href="StudySkills.php">Study Skills</a></li>
+                        <li><a href="Discipline.php">Discipline</a></li>
+                        <li><a href="GoodRelationship.php">Good Relationship</a></li>
+                        <li><a href="PersonalityDevelopment.php">Personality Development</a></li>
+                        <li><a href="TimeManagement.php">Time Management</a></li>
                     </ul>
                 </li>
-                <li><a href="gallery.html">Gallery</a>
+                <li><a href="gallery.php">Gallery</a>
                     <!-- <ul class="submenu">
-                        <li><a href="gallery.html">Photos</a></li>
+                        <li><a href="gallery.php">Photos</a></li>
                         <li><a href="#">Events Photo</a></li>
                     </ul> -->
                 </li>
                 <li><a href="#">Business Activities</a>
                     <ul class="submenu">
-                        <li><a href="Training.html">Training</a></li>
-                        <li><a href="Placement.html">Placement</a></li>
-                        <li><a href="Marketing.html">Marketing</a></li>
-                        <li><a href="BusinessMeetUp.html">Business Meet-up</a></li>
-                        <li><a href="Exhibition.html">Exhibition</a></li>
-                        <li><a href="Seminars.html">Seminars</a></li>
+                        <li><a href="Training.php">Training</a></li>
+                        <li><a href="Placement.php">Placement</a></li>
+                        <li><a href="Marketing.php">Marketing</a></li>
+                        <li><a href="BusinessMeetUp.php">Business Meet-up</a></li>
+                        <li><a href="Exhibition.php">Exhibition</a></li>
+                        <li><a href="Seminars.php">Seminars</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Franchise</a>
                     <ul class="submenu">
-                        <li><a href="Inquiry.html">Inquiry</a></li>
-                        <li><a href="OurFranchise.html">Our Franchise</a></li>
-                        <li><a href="CriteriaFranchise.html">Criteria for Franchise</a></li>
+                        <li><a href="Inquiry.php">Inquiry</a></li>
+                        <li><a href="OurFranchise.php">Our Franchise</a></li>
+                        <li><a href="CriteriaFranchise.php">Criteria for Franchise</a></li>
                     </ul>
                 </li>
-                <li><a href="Events.html">Events</a>
+                <li><a href="Events.php">Events</a>
                 </li>
-                <li><a href="index.html#about-us">About Us</a></li>
-                <li><a href="Career.html">Career</a>
+                <li><a href="index.php#about-us">About Us</a></li>
+                <li><a href="Career.php">Career</a>
                 </li>
-                <li><a href="Internship.html">Internship</a>
+                <li><a href="Internship.php">Internship</a>
                     <!-- <ul class="submenu">
                         <li><a href="#">What is Internship</a></li>
                         <li><a href="#">Criteria</a></li>
@@ -84,7 +84,7 @@
             <div class="course-card">
               <img class="course-img" src="image/1.jpg" alt="Course Image 1">
               <div class="course-info">
-                <div class="course-title">Confidence Building</div>
+                <div class="course-title">Leadership Quality</div>
                 <div class="location">
                   <span class="location-icon">📍</span> Location: City 1, Country 1
                 </div>
@@ -97,7 +97,7 @@
             <div class="course-card">
               <img class="course-img" src="2.jpg" alt="Course Image 2">
               <div class="course-info">
-                <div class="course-title">Confidence Building</div>
+                <div class="course-title">Leadership Quality</div>
                 <div class="location">
                   <span class="location-icon">📍</span> Location: City 2, Country 2
                 </div>
@@ -112,7 +112,7 @@
             <div class="course-card">
               <img class="course-img" src="1.jpg" alt="Course Image 1">
               <div class="course-info">
-                <div class="course-title">Confidence Building</div>
+                <div class="course-title">Leadership Quality</div>
                 <div class="location">
                   <span class="location-icon">📍</span> Location: City 1, Country 1
                 </div>
@@ -125,7 +125,7 @@
             <div class="course-card">
               <img class="course-img" src="2.jpg" alt="Course Image 2">
               <div class="course-info">
-                <div class="course-title">Confidence Building</div>
+                <div class="course-title">Leadership Quality</div>
                 <div class="location">
                   <span class="location-icon">📍</span> Location: City 2, Country 2
                 </div>
@@ -153,4 +153,4 @@
         </div>
     </footer>
 </body>
-</html>
+</html>Leadership Quality

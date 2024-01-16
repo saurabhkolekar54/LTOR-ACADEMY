@@ -25,52 +25,52 @@
                 <img src="image/icon.jpeg" alt="Education Logo">
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li>
                     <a href="#">Courses</a>
                     <ul class="submenu">
-                        <li><a href="SpokenEnglish.html">Spoken English</a></li>
-                        <li><a href="ConfidenceBuilding.html">Confidence Building</a></li>
-                        <li><a href="PublicSpeaking.html">Public Speaking</a></li>
-                        <li><a href="SuccessKey.html">Success Key</a></li>
-                        <li><a href="LeadershipQuality.html">Leadership Quality</a></li>
-                        <li><a href="LRBrain.html">L & R Brain</a></li>
-                        <li><a href="StudySkills.html">Study Skills</a></li>
-                        <li><a href="Discipline.html">Discipline</a></li>
-                        <li><a href="GoodRelationship.html">Good Relationship</a></li>
-                        <li><a href="PersonalityDevelopment.html">Personality Development</a></li>
-                        <li><a href="TimeManagement.html">Time Management</a></li>
+                        <li><a href="SpokenEnglish.php">Spoken English</a></li>
+                        <li><a href="ConfidenceBuilding">Confidence Building</a></li>
+                        <li><a href="PublicSpeaking.php">Public Speaking</a></li>
+                        <li><a href="SuccessKey.php">Success Key</a></li>
+                        <li><a href="LeadershipQuality.php">Leadership Quality</a></li>
+                        <li><a href="LRBrain.php">L & R Brain</a></li>
+                        <li><a href="StudySkills.php">Study Skills</a></li>
+                        <li><a href="Discipline.php">Discipline</a></li>
+                        <li><a href="GoodRelationship.php">Good Relationship</a></li>
+                        <li><a href="PersonalityDevelopment.php">Personality Development</a></li>
+                        <li><a href="TimeManagement.php">Time Management</a></li>
                     </ul>
                 </li>
-                <li><a href="gallery.html">Gallery</a>
+                <li><a href="gallery.php">Gallery</a>
                     <!-- <ul class="submenu">
-                        <li><a href="gallery.html">Photos</a></li>
+                        <li><a href="gallery.php">Photos</a></li>
                         <li><a href="#">Events Photo</a></li>
                     </ul> -->
                 </li>
                 <li><a href="#">Business Activities</a>
                     <ul class="submenu">
-                        <li><a href="Training.html">Training</a></li>
-                        <li><a href="Placement.html">Placement</a></li>
-                        <li><a href="Marketing.html">Marketing</a></li>
-                        <li><a href="BusinessMeetUp.html">Business Meet-up</a></li>
-                        <li><a href="Exhibition.html">Exhibition</a></li>
-                        <li><a href="Seminars.html">Seminars</a></li>
+                        <li><a href="Training.php">Training</a></li>
+                        <li><a href="Placement.php">Placement</a></li>
+                        <li><a href="Marketing.php">Marketing</a></li>
+                        <li><a href="BusinessMeetUp.php">Business Meet-up</a></li>
+                        <li><a href="Exhibition.php">Exhibition</a></li>
+                        <li><a href="Seminars.php">Seminars</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Franchise</a>
                     <ul class="submenu">
-                        <li><a href="Inquiry.html">Inquiry</a></li>
-                        <li><a href="OurFranchise.html">Our Franchise</a></li>
-                        <li><a href="CriteriaFranchise.html">Criteria for Franchise</a></li>
+                        <li><a href="Inquiry.php">Inquiry</a></li>
+                        <li><a href="OurFranchise.php">Our Franchise</a></li>
+                        <li><a href="CriteriaFranchise.php">Criteria for Franchise</a></li>
                     </ul>
                 </li>
-                <li><a href="Events.html">Events</a>
+                <li><a href="Events.php">Events</a>
                 </li>
                 <li><a href="#about-us">About Us</a></li>
-                <li><a href="Career.html">Career</a>
+                <li><a href="Career.php">Career</a>
                 </li>
-                <li><a href="Internship.html">Internship</a>
+                <li><a href="Internship.php">Internship</a>
                     <!-- <ul class="submenu">
                         <li><a href="#">What is Internship</a></li>
                         <li><a href="#">Criteria</a></li>
@@ -89,19 +89,19 @@
     <div class="slider">
         <div class="list">
             <div class="item">
-                <img src="./image/WhatsApp Image 2024-01-12 at 12.08.03 PM (1).jpeg" alt="">
+                <img src="./image/index1.jpeg" alt="">
             </div>
             <div class="item">
-                <img src="./image/WhatsApp Image 2024-01-12 at 12.08.03 PM.jpeg" alt="">
+                <img src="./image/index2.jpeg" alt="">
             </div>
             <div class="item">
-                <img src="./image/WhatsApp Image 2024-01-12 at 12.08.21 PM.jpeg" alt="">
+                <img src="./image/index4.jpeg" alt="">
             </div>
             <div class="item">
-                <img src="./image/2.jpeg" alt="">
+                <img src="./image/index3.jpeg" alt="">
             </div>
             <div class="item">
-                <img src="./image/WhatsApp Image 2024-01-12 at 12.08.03 PM.jpeg" alt="">
+                <img src="./image/index5.jpeg" alt="">
             </div>
         </div>
         <div class="buttons">
@@ -155,7 +155,7 @@
                 <p>Explore our website to learn more about our courses, events, volunteer opportunities, and how LTOR can contribute to your personal and professional growth.</p>
             </div>
             <div class="image">
-                <img src="image/1.jpg" alt="About Us Image">
+                <img src="image/aboutus.jpg" alt="About Us Image">
             </div>
         </div>
     </section>
@@ -207,31 +207,11 @@
             <div class="course-grid">
                 <div class="course-card">
                     <div class="course-img">
-                        <img src="image/1.jpeg" alt="Course 1 Image">
+                        <img src="image/Spoken_English.jpg" alt="Course 1 Image">
                     </div>
                     <div class="course-info">
                         <h3>Public Speaking</h3>
-                        <a href="PublicSpeaking.html" class="btn-learn-more">Learn More</a>
-                    </div>
-                </div>
-
-                <div class="course-card">
-                    <div class="course-img">
-                        <img src="image/1.jpeg" alt="Course 1 Image">
-                    </div>
-                    <div class="course-info">
-                        <h3>Confidence Building</h3>
-                        <a href="ConfidenceBuilding.html" class="btn-learn-more">Learn More</a>
-                    </div>
-                </div>
-
-                <div class="course-card">
-                    <div class="course-img">
-                        <img src="image/1.jpeg" alt="Course 1 Image">
-                    </div>
-                    <div class="course-info">
-                        <h3>Success Key</h3>
-                       <a href="SuccessKey.html" class="btn-learn-more">Learn More</a>
+                        <a href="PublicSpeaking.php" class="btn-learn-more">Learn More</a>
                     </div>
                 </div>
 
@@ -240,8 +220,28 @@
                         <img src="image/1.jpg" alt="Course 1 Image">
                     </div>
                     <div class="course-info">
+                        <h3>Confidence Building</h3>
+                        <a href="ConfidenceBuilding.php" class="btn-learn-more">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-img">
+                        <img src="image/1.jpg" alt="Course 1 Image">
+                    </div>
+                    <div class="course-info">
+                        <h3>Success Key</h3>
+                       <a href="SuccessKey.php" class="btn-learn-more">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-img">
+                        <img src="image/LeadershipQuality.jpg" alt="Course 1 Image">
+                    </div>
+                    <div class="course-info">
                         <h3>Leadership Quality</h3>
-                        <a href="LeadershipQuality.html" class="btn-learn-more">Learn More</a>
+                        <a href="LeadershipQuality.php" class="btn-learn-more">Learn More</a>
                     </div>
                 </div>
 
@@ -251,26 +251,26 @@
                     </div>
                     <div class="course-info">
                         <h3>Spoken English</h3>
-                        <a href="SpokenEnglish.html" class="btn-learn-more">Learn More</a>
+                        <a href="SpokenEnglish.php" class="btn-learn-more">Learn More</a>
                     </div>
                 </div>
                 <div class="course-card">
                     <div class="course-img">
-                        <img src="image/1.jpg" alt="Course 1 Image">
+                        <img src="image/LRBrain.jpg" alt="Course 1 Image">
                     </div>
                     <div class="course-info">
                         <h3>L & R Brain</h3>
-                        <a href="LRBrain.html" class="btn-learn-more">Learn More</a>
+                        <a href="LRBrain.php" class="btn-learn-more">Learn More</a>
                     </div>
                 </div>
 
                 <div class="course-card">
                     <div class="course-img">
-                        <img src="image/1.jpg" alt="Course 1 Image">
+                        <img src="image/StudySkils.jpg" alt="Course 1 Image">
                     </div>
                     <div class="course-info">
                         <h3>Study Skill</h3>
-                        <a href="StudySkills.html" class="btn-learn-more">Learn More</a>
+                        <a href="StudySkills.php" class="btn-learn-more">Learn More</a>
                     </div>
                 </div>
 
@@ -280,7 +280,7 @@
                     </div>
                     <div class="course-info">
                         <h3>Discipline</h3>
-                       <a href="Discipline.html" class="btn-learn-more">Learn More</a>
+                       <a href="Discipline.php" class="btn-learn-more">Learn More</a>
                     </div>
                 </div>
 
@@ -290,7 +290,7 @@
                     </div>
                     <div class="course-info">
                         <h3>Good Relationship</h3>
-                        <a href="GoodRelationship.html" class="btn-learn-more">Learn More</a>
+                        <a href="GoodRelationship.php" class="btn-learn-more">Learn More</a>
                     </div>
                 </div>
 
@@ -300,16 +300,16 @@
                     </div>
                     <div class="course-info">
                         <h3>Personality Development</h3>
-                        <a href="PersonalityDevelopment.html" class="btn-learn-more">Learn More</a>
+                        <a href="PersonalityDevelopment.php" class="btn-learn-more">Learn More</a>
                     </div>
                 </div>
                 <div class="course-card">
                     <div class="course-img">
-                        <img src="image/1.jpg" alt="Course 1 Image">
+                        <img src="image/Time_Management.jpg" alt="Course 1 Image">
                     </div>
                     <div class="course-info">
                         <h3>Time Management</h3>
-                        <a href="TimeManagement.html" class="btn-learn-more">Learn More</a>
+                        <a href="TimeManagement.php" class="btn-learn-more">Learn More</a>
                     </div>
                 </div>
                 <!-- Add more course cards as needed -->
@@ -407,8 +407,8 @@
                 </div>
             </div>
             <div class="buttons">
-                <button id="prev"><</button>
-                <button id="next">></button>
+                <button id="prev"></button>
+                <button id="next"></button>
             </div>
             <ul class="dots">
                 <li class="active"></li>
