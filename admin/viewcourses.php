@@ -11,15 +11,18 @@
 	    <!----css3---->
         <link rel="stylesheet" href="css/custom.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons"rel="stylesheet">
-
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+   
   </head>
   <body>
  <div class="wrapper">
     <?php include('dashboard.php');?>
 	 
     <div id="content">
-    <div class="container">
-    <table class="table table-striped table-bordered mt-5" >
+    <div class="container mt-5">
+    <table class="table table-striped table-bordered mt-10" id="myTable">
   <thead>
     <tr>
       <th scope="col">Course Id</th>
@@ -56,10 +59,6 @@
     //    }
         
     // }
-    
-    
-    
-    
     ?>
 </tbody>
 </table>
@@ -86,7 +85,14 @@
 		  });
 		  
 	   });
+
+     $(document).ready(function() {
+        $("#myTable").dataTable();
+    });
   </script>
+  <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js">
+    let table = new DataTable('#myTable');
+    </script>
   </body>
   
   </html>

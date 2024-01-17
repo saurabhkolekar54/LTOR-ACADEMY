@@ -24,16 +24,13 @@
     <div class="container mt-5">
     <table class="table table-striped table-bordered mt-10" id="myTable">
   <thead>
-  <tr>
-      <th scope="col">Student Id</th>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Contact</th>
-      <th scope="col">Gender</th>
-      <th scope="col">Course Id</th>
-      <th scope="col">Batch Id</th>
+    <tr>
       <th scope="col">Franchise Id</th>
-      <th scope="col">Operations</th>
+      <th scope="col">Franchise Owner Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Location</th>
+      <th scope="col">Firm Name</th>
     </tr>
   </thead>
   <tbody>

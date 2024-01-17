@@ -11,50 +11,65 @@
 	    <!----css3---->
         <link rel="stylesheet" href="css/custom.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons"rel="stylesheet">
-<style>
-
-.sticky-thead {
-            position: sticky;
-            top: 0;
-            background-color: #fff; /* Set the background color as needed */
-            z-index: 1000;
-        }
-
-        .scrollable-tbody {
-            max-height: 500px; /* Set the max height as needed */
-            overflow-y: auto;
-        }
-</style>
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+   
   </head>
   <body>
-  <div class="wrapper">
+ <div class="wrapper">
     <?php include('dashboard.php');?>
 	 
     <div id="content">
-  <div class="container-fluid mt-5">
-                <table class="table table-striped table-bordered">
-                    <thead class="sticky-thead">
-                        <tr>
-                            <th scope="col">Faculty Id</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Gender</th>
-                            <th scope="col">Contact</th>
-                            <th scope="col">DateofBirth</th>
-                            <th scope="col">Experience</th>
-                            <th scope="col">Skill1</th>
-                            <th scope="col">Skill2</th>
-                            <th scope="col">Skill3</th>
-                            <th scope="col">Achievement1</th>
-                            <th scope="col">Achievement2</th>
-                            <th scope="col">Achievement3</th>
-                            <th scope="col">Maximum Students</th>
-                            <th scope="col">Education</th>
-                            <th scope="col">Qualification</th>
-                        </tr>
-                    </thead>
-                    <tbody class="scrollable-tbody">
-                        <!-- Add your table data here -->
-                    </tbody>
+    <div class="container mt-5">
+    <table class="table table-striped table-bordered mt-10" id="myTable">
+  <thead>
+  <tr>
+    <th scope="col">Faculty Id</th>
+    <th scope="col">Name</th>
+    <th scope="col">Gender</th>
+    <th scope="col">Contact</th>
+    <th scope="col">DateofBirth</th>
+    <th scope="col">Experience</th>
+     <th scope="col">Skill1</th>
+     <th scope="col">Skill2</th>
+     <th scope="col">Skill3</th>
+    <th scope="col">Achievement1</th>
+    <th scope="col">Achievement2</th>
+    <th scope="col">Achievement3</th>
+    <th scope="col">Maximum Students</th>
+    <th scope="col">Education</th>
+    <th scope="col">Qualification</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+    
+    // $sql="select * from crud";
+    // $result=mysqli_query($con,$sql);
+    // if($result)
+    // {
+    //    while( $row=mysqli_fetch_assoc($result))
+    //    {
+    //     $srno=$row['srno'];
+    //     $name=$row['name'];
+    //     $class=$row['class'];
+    //     $phone=$row['phone'];     
+    //     echo '<tr>
+    //     <th scope="row">'.$srno.'</th>
+    //     <td>'.$name.'</td>
+    //     <td>'.$class.'</td>
+    //     <td>'.$phone.'</td>
+    //     <td>
+    //     <button class="btn btn-primary"><a href="update.php?updateid='.$srno.'" class="text-light">Update</a></button>
+    //     <button class="btn btn-danger"><a href="delete.php?deleteid='.$srno.'" class="text-light">Delete</a></button>
+    //     </td>
+    //     </tr>'; 
+    //    }
+        
+    // }
+    ?>
+</tbody>
 </table>
     </div>
     
@@ -79,9 +94,17 @@
 		  });
 		  
 	   });
+
+     $(document).ready(function() {
+        $("#myTable").dataTable();
+    });
   </script>
+  <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js">
+    let table = new DataTable('#myTable');
+    </script>
   </body>
   
   </html>
+
 
 
