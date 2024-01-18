@@ -1,5 +1,13 @@
 <div class="wrapper">
-     
+     <style>
+      .top-navbar {
+         position: fixed;
+         top: 0;
+         width: 100%;
+         z-index: 1000; 
+         margin-left: 260px;
+      }
+     </style>
 	  <div class="body-overlay"></div>
 	 
 	 <!-------sidebar--design------------>
@@ -56,7 +64,7 @@
               <li><a href="addfranchise.php">Add Franchise</a></li>
               <li><a href="viewfranchise.php">View Franchise</a></li>
               <li><a href="addagreement.php">Add Franchise Agreement</a></li>
-              <li><a href="#">View Franchise Agreement</a></li>
+              <li><a href="viewagreement.php">View Franchise Agreement</a></li>
            </ul>
            </li>
            
@@ -70,10 +78,19 @@
               <li><a href="viewbatch.php">View Batches</a></li>
            </ul>
            </li>
+
+           <li class="dropdown">
+           <a href="#homeSubmenu6" data-toggle="collapse" aria-expanded="false" 
+           class="dropdown-toggle">
+           <i class="material-icons">assignment</i>Leads
+           </a>
+           <ul class="collapse list-unstyled menu" id="homeSubmenu6">
+               <li><a href="viewbatch.php">View Leads</a></li>
+           </ul>
+           </li>
 	 </div>
 
-    <div id="content">
-      <div class="top-navbar fixed-top"> <!-- Apply fixed-top class directly to top-navbar -->
+      <div class="top-navbar"> <!-- Apply fixed-top class directly to top-navbar -->
         <div class="xd-topbar">
           <div class="row">
             <div class="col-2 col-md-1 col-lg-1 order-2 order-md-1 align-self-center p-4">
@@ -82,6 +99,4 @@
 				 </div>			 
 			 </div>
 		  </div>
-      </div>
- </div>
-		    
+</div>		    

@@ -124,7 +124,7 @@ overflow:auto;
   }
   
   
-  @media only screen and (min-width:992px){
+  /* @media only screen and (min-width:992px){
 	  #sidebar.active{
 		  left:-260px;
 		  height:100%!important;
@@ -171,7 +171,7 @@ overflow:auto;
    #sidebar:hover::-webkit-scrollbar{
 	  display:block;
   }
-  
+   */
   #sidebar .sidebar-header{
 	  padding:20px;
 	  background-color:#fff;
@@ -259,18 +259,18 @@ overflow:auto;
 		  background-attachment:#f9fafc;
 	  }
 	
+	  .top-navbar {
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 1000; /* Adjust the z-index value as needed */
+		padding:15px 30px;
+		background-color:#353b48;
+   
+	}
 	
-	 .top-navbar{
-		  width:100%;
-		  z-index:9;
-		  position:relative;
-		  padding:15px 30px;
-		  background-color:#353b48;
-	 }
-	 
 	 .xd-topbar{
 		 width:100%;
-		 position:relative;
 	 }
 	 
 	 input[type="search"]{
@@ -348,14 +348,14 @@ overflow:auto;
 		.xp-menubar{
          border-radius:50%;
        width:45px;
-height:45px;
-line-height:45px;
-text-align:center;
-margin-right:20px;
-border:none;
-color:#fff;
-cursor:pointer;
-background-color:rgba(0,0,0,0.09);	   
+			height:45px;
+			line-height:45px;
+			text-align:center;
+			margin-right:20px;
+			border:none;
+			color:#fff;
+			cursor:pointer;
+			background-color:rgba(0,0,0,0.09);	   
 		}
 		
 		
@@ -374,28 +374,7 @@ background-color:rgba(0,0,0,0.09);
 		  color:#fff;
 	  }
 	  
-	  .navbar .notification{
-		  position:absolute;
-		  top:2px;
-		  right:3px;
-		  display:block;
-		  font-size:9px;
-		  border:0;
-		  background-color:#2bcd72;
-		  min-width:15px;
-		  text-align:center;
-		  padding:1px 5px;
-		  height:15px;
-		  border-radius:2px;
-		  line-height:14px;
-	  }
-	  
-	  @media (max-width:768px){
-		  .xp-searchbar{
-			  margin-top:20px;
-		  }
-	  }
-	  
+	   
 	  .navbar-nav > li.show .dropdown-menu{
 		  transform:translate3d(0,0,0);
 		  opacity:1;
@@ -510,52 +489,4 @@ background-color:rgba(0,0,0,0.09);
 		}
 	}
 	
-	
-	/* Custom styles for dashboard cards */
-    .dashboard-cards {
-        margin-top: 20px;
-    }
-
-	.dashboard-card {
-		border-radius: 10px;
-		border: 2px solid black;
-		overflow: hidden;
-		text-align: center;
-		transition: transform 0.3s;
-		box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.1); /* Add a box shadow */
-	}
-	
-	.dashboard-card:hover {
-		transform: scale(1.05);
-	}
-    .card-header {
-        padding: 0;
-    }
-
-    .card-body h5 {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-        color: #02236d;
-    }
-
-    .card-body p {
-        font-size: 1.2rem;
-        color: #02236d;
-		
-    }
-	
-	.custom-container {
-		max-width: 1200px;
-		overflow-x: auto;
-	  }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-  
+	.text-center
