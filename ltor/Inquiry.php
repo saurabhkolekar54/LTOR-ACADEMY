@@ -4,89 +4,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inquiry</title>
-    <link rel="stylesheet" href="css/exhibition.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">     
+    <link rel="stylesheet" href="css/inquiry.css">
+
+     <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">    
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <img src="image/icon.jpeg" alt="Education Logo">
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.php">Home</a></li>
-                <li>
-                    <a href="#">Courses</a>
-                    <ul class="submenu">
-                        <li><a href="SpokenEnglish.php">Spoken English</a></li>
-                        <li><a href="ConfidenceBuilding.php">Confidence Building</a></li>
-                        <li><a href="PublicSpeaking.php">Public Speaking</a></li>
-                        <li><a href="SuccessKey.php">Success Key</a></li>
-                        <li><a href="LeadershipQuality.php">Leadership Quality</a></li>
-                        <li><a href="LRBrain.php">L & R Brain</a></li>
-                        <li><a href="StudySkills.php">Study Skills</a></li>
-                        <li><a href="Discipline.php">Discipline</a></li>
-                        <li><a href="GoodRelationship.php">Good Relationship</a></li>
-                        <li><a href="PersonalityDevelopment.php">Personality Development</a></li>
-                        <li><a href="TimeManagement.php">Time Management</a></li>
-                    </ul>
-                </li>
-                <li><a href="gallery.php">Gallery</a>
-                    <!-- <ul class="submenu">
-                        <li><a href="gallery.php">Photos</a></li>
-                        <li><a href="#">Events Photo</a></li>
-                    </ul> -->
-                </li>
-                <li><a href="#">Business Activities</a>
-                    <ul class="submenu">
-                        <li><a href="Training.php">Training</a></li>
-                        <li><a href="Placement.php">Placement</a></li>
-                        <li><a href="Marketing.php">Marketing</a></li>
-                        <li><a href="BusinessMeetUp.php">Business Meet-up</a></li>
-                        <li><a href="Exhibition.php">Exhibition</a></li>
-                        <li><a href="Seminars.php">Seminars</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Franchise</a>
-                    <ul class="submenu">
-                        <li><a href="Inquiry.php">Inquiry</a></li>
-                        <li><a href="OurFranchise.php">Our Franchise</a></li>
-                        <li><a href="CriteriaFranchise.php">Criteria for Franchise</a></li>
-                    </ul>
-                </li>
-                <li><a href="Events.php">Events</a>
-                   
-                </li>
-                <li><a href="index.php#about-us">About Us</a></li>
-                <li><a href="Career.php">Career</a>
-                </li>
-                <li><a href="Internship.php">Internship</a>
-                </li>
-            </ul>
-            <div class="user-account">
-                <!-- You can include login/signup buttons or user account information here -->
-                <a href="#">Login</a>
-                <a href="#">Sign Up</a>
-            </div>
-        </nav>
-    </header>  
- 
+<?php include('navbar.php');?>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="copyright">
-                    <p>&copy; 2024 Your Website. All rights reserved.</p>
+<div class="container mt-5">
+        <h1 class="text-center">Inquiry Form</h1>
+
+        <form id="inquiryForm" method="post" class="mt-5">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
                 </div>
-                <div class="social-media-icons">
-                    <a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" target="_blank" title="Pinterest"><i class="fab fa-pinterest"></i></a>                    
-                    <a href="#" target="_blank" title="Youtube"><i class="fab fa-youtube"></i></a>                    
+                <div class="col-md-6">
+                    <label for="contact" class="form-label">Contact:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">+</span>
+                        </div>
+                        <input type="number" class="form-control" id="countryCode" name="countryCode" value="91"
+                            placeholder="Country Code" required>
+                        <input type="tel" class="form-control" id="contact" name="contact" placeholder="Phone Number"
+                            required>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="country" class="form-label">Country:</label>
+                    <select class="form-select" id="country" name="country" required>
+                        <option value="">Select Country</option>
+                        <option value="India">India</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="state" class="form-label">State:</label>
+                    <select class="form-select" id="state" name="state" onchange="loadDistricts()" required>
+                        <option value="">Select State</option>
+                        <option value="AndraPradesh">Andhra Pradesh</option>
+                        <option value="ArunachalPradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Chhattisgarh">Chhattisgarh</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Haryana">Haryana</option>
+                        <option value="HimachalPradesh">HimachalPradesh</option>
+                        <option value="JammuKashmir">JammuKashmir</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="MadhyaPradesh">MadhyaPradesh</option>
+                        <option value="Sehore">Sehore</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Manipur">Manipur</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Mizoram">Mizoram</option>
+                        <option value="Nagaland">Nagaland</option>
+                        <option value="Odisha">Odisha</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Sikkim">Sikkim</option>
+                        <option value="TamilNadu">TamilNadu</option>
+                        <option value="Tripura">Tripura</option>
+                        <option value="UttarPradesh">UttarPradesh</option>
+                        <option value="Uttarakhand">Uttarakhand</option>
+                        <option value="WestBengal">WestBengal</option>
+                        <option value="AndamanNicobar">AndamanNicobar</option>
+                        <option value="DamanDiu">DamanDiu</option>
+                        <option value="Lakshadweep">Lakshadweep</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Lakshadweep">Lakshadweep</option>
+                        <option value="Puducherry">Puducherry</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="district">District:</label>
+                        <select id="district" name="district" class="form-control" onchange="loadSubDistricts()"></select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="subdistrict">Sub-District:</label>
+                        <select id="subdistrict" name="subdistrict" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="Village" class="form-label">Village:</label>
+                        <input type="text" class="form-control" id="Village" name="Village" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="zip" class="form-label">Zip Code:</label>
+                        <input type="text" class="form-control" id="zip" name="zip" required>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;" name="sub">Submit</button>
+        </form>
+    </div>
+
+    <?php include('footer.php');?>
+   
+   <!-- Bootstrap JS (Place this before the closing </body> tag) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
