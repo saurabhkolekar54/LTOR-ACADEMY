@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <title>crud dashboard</title>
-	    <!-- Bootstrap CSS -->
+      <title>Admin Panel</title>
+	
+		    <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
 	    <!----css3---->
         <link rel="stylesheet" href="css/custom.css">
@@ -18,9 +19,9 @@
     <?php include('dashboard.php');?>
 	 
   <div id="content">
-  <div class="container mt-4" style="width: 900px;">
-    <h2 class="mb-4">Add Student</h2>
-    <form id="addStudentForm" onsubmit="validateForm(event)">
+  <div class="container" style="width: 1200px; margin-top:100px">
+  <h2 class="text-center" style="margin-left:260px">Add Student</h2>
+  <form id="addStudentForm" onsubmit="validateForm(event)" style="margin-left:260px">
     <div class="form-row">
             <!-- Student ID -->
             <div class="form-group col-md-6">

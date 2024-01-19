@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>Admin Panel</title>
+    <title>Faculty Panel</title>
 	
 	    <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -25,13 +25,22 @@
     <div class="container mt-5">
     <table class="table table-striped table-bordered mt-10" id="myTable">
   <thead>
-    <tr>
-      <th scope="col">Course Id</th>
-      <th scope="col">Course Name</th>
-      <th scope="col">Course Members</th>
-      <th scope="col">Course Duration</th>
-      <th scope="col">Course Syllabus</th>
-      <th scope="col">Course Mode</th>
+  <tr>
+    <th scope="col">Faculty Id</th>
+    <th scope="col">Name</th>
+    <th scope="col">Gender</th>
+    <th scope="col">Contact</th>
+    <th scope="col">DateofBirth</th>
+    <th scope="col">Experience</th>
+     <th scope="col">Skill1</th>
+     <th scope="col">Skill2</th>
+     <th scope="col">Skill3</th>
+    <th scope="col">Achievement1</th>
+    <th scope="col">Achievement2</th>
+    <th scope="col">Achievement3</th>
+    <th scope="col">Maximum Students</th>
+    <th scope="col">Education</th>
+    <th scope="col">Qualification</th>
     </tr>
   </thead>
   <tbody>
@@ -97,5 +106,6 @@
   </body>
   
   </html>
+
 
 

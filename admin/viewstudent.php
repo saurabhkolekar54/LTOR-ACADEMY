@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <title>crud dashboard</title>
-	    <!-- Bootstrap CSS -->
+    <title>Admin Panel</title>
+		    <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
 	    <!----css3---->
         <link rel="stylesheet" href="css/custom.css">
@@ -20,8 +20,8 @@
  <div class="wrapper">
     <?php include('dashboard.php');?>
 	 
-    <div id="content">
-    <div class="container mt-5">
+    <div id="content" style="margin-top:100px">
+    <div class="container mt-5" style="margin-left:260px;">
     <table class="table table-striped table-bordered mt-10" id="myTable">
   <thead>
   <tr>

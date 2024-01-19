@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <title>crud dashboard</title>
+    <title>Admin Panel</title>
 	    <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
 	    <!----css3---->
@@ -19,9 +19,9 @@
 	 
   <div id="content">
  
-<div class="container" style="width: 900px; margin-top:100px">
-  <h2 class="text-center">Add Batch</h2>
-  <form class="mt-4">
+<div class="container" style="width: 1200px; margin-top:100px">
+  <h2 class="text-center" style="margin-left:260px">Add Batch</h2>
+  <form class="mt-4" style="margin-left:260px">
   <div class="row">
             <div class="col-md-6">
                 <!-- First Line -->

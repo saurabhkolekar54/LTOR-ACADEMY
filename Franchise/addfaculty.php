@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <title>crud dashboard</title>
+    <title>Franchise Panel</title>
+	
 	    <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
 	    <!----css3---->
@@ -18,58 +19,67 @@
     <?php include('dashboard.php');?>
 	 
   <div id="content">
-  <div class="container mt-4" style="width: 900px;">
-  <h2> Add Faculty</h2>
-  <form action="#" method="post">
-
-    <div class="mb-3">
-      <label for="facultyId">Faculty ID:</label>
-      <input type="text" class="form-control" id="facultyId" name="facultyId" required>
-    </div>
-
-    <div class="mb-3">
-      <label for="facultyName">Name:</label>
-      <input type="text" class="form-control" id="facultyName" name="facultyName" required>
-    </div>
-    
-    <div class="mb-3">
-            <label class="form-label d-block">Gender</label>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked required>
-                <label class="form-check-label" for="male">Male</label>
+  <div class="container"style="width: 900px; margin-top:100px">
+  <h2 class="text-center">Add Faculty</h2>
+  <form class="mt-4">
+  <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="facultyId">Faculty ID:</label>
+                <input type="text" class="form-control" id="facultyId" name="facultyId" required>
             </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
-                <label class="form-check-label" for="female">Female</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="gender" id="other" value="other" required>
-                <label class="form-check-label" for="other">Other</label>
+
+            <div class="form-group col-md-6">
+                <label for="facultyName">Name:</label>
+                <input type="text" class="form-control" id="facultyName" name="facultyName" required>
             </div>
         </div>
-        <div class="form-row">
-      <div class="form-group col-md-6 mb-3">
-        <label for="contactNumber">Contact Number:</label>
-        <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
-      </div>
+    
+        <div class="form-row align-items-center">
+            <!-- Gender -->
+            <div class="form-group col-md-6 mb-3">
+                <label class="form-label d-block">Gender</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked required>
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="other" value="other" required>
+                    <label class="form-check-label" for="other">Other</label>
+                </div>
+            </div>
 
-      <div class="form-group col-md-6 mb-3">
-        <label for="dob">Date of Birth:</label>
-        <input type="date" class="form-control" id="dob" name="dob" required>
-      </div>
-    </div>
+            <!-- Contact Number -->
+            <div class="form-group col-md-6 mb-3">
+                <label for="contactNumber">Contact Number:</label>
+                <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
+            </div>
+        </div>
 
-    <div class="mb-3">
-      <label for="Experience">Experience:</label>
-      <select class="form-control" id="Experience" name="Experience" required>
-        <option value="fresher">Fresher</option>
-        <option value="6 Month">6 Month</option>
-        <option value="1 Year">1 Year</option>
-        <option value="3 Year">3 Year</option>
-        <option value="8 Year">8 Year</option>
-        <option value="6 Year">6 Year</option>
-      </select>
-    </div>
+      <div class="form-row">
+            <!-- Date of Birth -->
+            <div class="form-group col-md-6 mb-3">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" class="form-control" id="dob" name="dob" required>
+            </div>
+
+            <!-- Experience -->
+            <div class="form-group col-md-6 mb-3">
+                <label for="Experience">Experience:</label>
+                <select class="form-control" id="Experience" name="Experience" required>
+                    <option value="fresher">Fresher</option>
+                    <option value="6 Month">6 Month</option>
+                    <option value="1 Year">1 Year</option>
+                    <option value="3 Year">3 Year</option>
+                    <option value="8 Year">8 Year</option>
+                    <option value="6 Year">6 Year</option>
+                </select>
+            </div>
+        </div>
+
 
     <div class="form-row">
       <div class="form-group col-md-4">

@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>Admin Panel</title>
-	
+    <title>Student Panel</title>
 	    <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
 	    <!----css3---->
@@ -21,17 +20,18 @@
  <div class="wrapper">
     <?php include('dashboard.php');?>
 	 
-    <div id="content" style="margin-top:100px">
+    <div id="content" style="margin-top:70px">
     <div class="container mt-5">
     <table class="table table-striped table-bordered mt-10" id="myTable">
   <thead>
-    <tr>
-      <th scope="col">Course Id</th>
-      <th scope="col">Course Name</th>
-      <th scope="col">Course Members</th>
-      <th scope="col">Course Duration</th>
-      <th scope="col">Course Syllabus</th>
-      <th scope="col">Course Mode</th>
+  <tr>
+      <th scope="col">Batch Id</th>
+      <th scope="col">Batch Name</th>
+      <th scope="col">Starting Date</th>
+      <th scope="col">Ending Date</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Mode</th>
+      <th scope="col">Faculty Name</th>
     </tr>
   </thead>
   <tbody>

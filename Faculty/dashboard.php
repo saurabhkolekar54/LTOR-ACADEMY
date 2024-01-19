@@ -26,7 +26,6 @@
            class="dropdown-toggle">
            <i class="material-icons">person</i>Students</a>
            <ul class="collapse list-unstyled menu" id="homeSubmenu1">
-              <li><a href="addstudent.php">Add Students</a></li>
               <li><a href="viewstudent.php">View Students</a></li>
            </ul>
            </li>
@@ -38,20 +37,17 @@
            <i class="material-icons">book</i>Courses
            </a>
            <ul class="collapse list-unstyled menu" id="homeSubmenu2">
-              <li><a href="addcourses.php">Add Courses</a></li>
-              <li><a href="viewcourses.php">View Courses</a></li>
+               <li><a href="viewcourses.php">View Courses</a></li>
            </ul>
            </li>
            
             <li class="dropdown">
-           <a href="#homeSubmenu3" data-toggle="collapse" aria-expanded="false" 
-           class="dropdown-toggle">
+           <a href="#homeSubmenu3" data-toggle="collapse" aria-expanded="false" >
            <i class="material-icons">person</i>Faculty
            </a>
-           <ul class="collapse list-unstyled menu" id="homeSubmenu3">
-              <li><a href="addfaculty.php">Add Faculty</a></li>
+           <!-- <ul class="collapse list-unstyled menu" id="homeSubmenu3">
               <li><a href="viewfaculty.php">View Faculty</a></li>
-           </ul>
+           </ul> -->
            </li>
            
            
@@ -61,10 +57,7 @@
            <i class="material-icons">business</i>Franchise
            </a>
            <ul class="collapse list-unstyled menu" id="homeSubmenu4">
-              <li><a href="addfranchise.php">Add Franchise</a></li>
               <li><a href="viewfranchise.php">View Franchise</a></li>
-              <li><a href="addagreement.php">Add Franchise Agreement</a></li>
-              <li><a href="viewagreement.php">View Franchise Agreement</a></li>
            </ul>
            </li>
            
@@ -74,21 +67,11 @@
            <i class="material-icons">date_range</i>Batch
            </a>
            <ul class="collapse list-unstyled menu" id="homeSubmenu5">
-              <li><a href="addbatch.php">Add Batch</a></li>
               <li><a href="viewbatch.php">View Batches</a></li>
            </ul>
            </li>
 
-           <li class="dropdown">
-           <a href="#homeSubmenu6" data-toggle="collapse" aria-expanded="false" 
-           class="dropdown-toggle">
-           <i class="material-icons">assignment</i>Leads
-           </a>
-           <ul class="collapse list-unstyled menu" id="homeSubmenu6">
-               <li><a href="viewbatch.php">View Leads</a></li>
-           </ul>
-           </li>
-	 </div>
+   	 </div>
 
       <div class="top-navbar"> <!-- Apply fixed-top class directly to top-navbar -->
         <div class="xd-topbar">

@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <title>crud dashboard</title>
+      <title>Admin Panel</title>
+	
 	    <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
 	    <!----css3---->
@@ -18,10 +19,9 @@
     <?php include('dashboard.php');?>
 	 
   <div id="content">
-  <div class="container mt-4" style="width: 900px;">
-    <h1 class="text-center">Add Franchise</h1>
-
-    <form id="inquiryForm" method="post" action="inquiry.php">
+  <div class="container" style="width: 1200px; margin-top:100px">
+  <h2 class="text-center" style="margin-left:260px">Add Franchise</h2>
+    <form id="inquiryForm" method="post" action="inquiry.php" style="margin-left:260px">
         <div class="form-row">
         <div class="form-group col-md-6">
             <label for="id">Franchise Id:</label>

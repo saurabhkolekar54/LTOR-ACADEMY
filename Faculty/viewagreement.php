@@ -5,9 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>Admin Panel</title>
-	
-	    <!-- Bootstrap CSS -->
+    <title>Faculty Panel</title>
+		    <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
 	    <!----css3---->
         <link rel="stylesheet" href="css/custom.css">
@@ -25,13 +24,21 @@
     <div class="container mt-5">
     <table class="table table-striped table-bordered mt-10" id="myTable">
   <thead>
-    <tr>
-      <th scope="col">Course Id</th>
-      <th scope="col">Course Name</th>
-      <th scope="col">Course Members</th>
-      <th scope="col">Course Duration</th>
-      <th scope="col">Course Syllabus</th>
-      <th scope="col">Course Mode</th>
+  <tr>
+      <th scope="col">Agreement Id</th>
+      <th scope="col">Party A Name</th>
+      <th scope="col">Party B Name</th>
+      <th scope="col">Agreement Copy</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">End Date</th>
+      <th scope="col">Fee Of Joining</th>
+      <th scope="col">Revenue A Percentage</th>
+      <th scope="col">Revenue B Percentage</th>
+      <th scope="col">Revenue Date</th>
+      <th scope="col">Party B Name</th>
+      <th scope="col">Party B Contact</th>
+      <th scope="col">Party B Email</th>
+      
     </tr>
   </thead>
   <tbody>
