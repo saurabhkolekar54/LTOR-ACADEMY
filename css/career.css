@@ -1,0 +1,26 @@
+h2 {
+    color: #00b9fe;
+    border-bottom: 2px solid #00b9fe;
+   
+}
+.job-card {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.apply-button {
+    display: inline-block;
+    background-color: #02236d;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 20%;
+}
+.apply-button:hover{
+    background-color: #00b9fe;
+    border: #00b9fe;
+}
