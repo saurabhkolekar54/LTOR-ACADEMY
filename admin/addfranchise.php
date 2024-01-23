@@ -19,9 +19,9 @@
     <?php include('dashboard.php');?>
 	 
   <div id="content">
-  <div class="container" style="width: 1200px; margin-top:100px">
-  <h2 class="text-center" style="margin-left:260px">Add Franchise</h2>
-    <form id="inquiryForm" method="post" action="inquiry.php" style="margin-left:260px">
+  <div class="container" style="width: 900px; margin-top:100px">
+  <h2 class="text-center">Add Franchise</h2>
+    <form id="inquiryForm" method="post" action="inquiry.php">
         <div class="form-row">
         <div class="form-group col-md-6">
             <label for="id">Franchise Id:</label>
@@ -57,10 +57,42 @@
         <div class="form-group col-md-4">
             <label for="state">State:</label>
             <select class="form-control" id="state" name="state" required>
-                <option value="">Select State</option>
-                <option value="state1">State 1</option>
-                <option value="state2">State 2</option>
-                <!-- Add more options as needed -->
+            <option value="">Select State</option>
+                        <option value="AndraPradesh">Andhra Pradesh</option>
+                        <option value="ArunachalPradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Chhattisgarh">Chhattisgarh</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Haryana">Haryana</option>
+                        <option value="HimachalPradesh">HimachalPradesh</option>
+                        <option value="JammuKashmir">JammuKashmir</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="MadhyaPradesh">MadhyaPradesh</option>
+                        <option value="Sehore">Sehore</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Manipur">Manipur</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Mizoram">Mizoram</option>
+                        <option value="Nagaland">Nagaland</option>
+                        <option value="Odisha">Odisha</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Sikkim">Sikkim</option>
+                        <option value="TamilNadu">TamilNadu</option>
+                        <option value="Tripura">Tripura</option>
+                        <option value="UttarPradesh">UttarPradesh</option>
+                        <option value="Uttarakhand">Uttarakhand</option>
+                        <option value="WestBengal">WestBengal</option>
+                        <option value="AndamanNicobar">AndamanNicobar</option>
+                        <option value="DamanDiu">DamanDiu</option>
+                        <option value="Lakshadweep">Lakshadweep</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Lakshadweep">Lakshadweep</option>
+                        <option value="Puducherry">Puducherry</option>
+                    </select>
             </select>
         </div>
 

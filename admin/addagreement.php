@@ -18,9 +18,9 @@
     <?php include('dashboard.php');?>
 	 
     <div id="content">
-    <div class="container" style="width: 1200px; margin-top:100px">
-  <h2 class="text-center" style="margin-left:260px">Add Agreement</h2>
-    <form action="#" method="post" enctype="multipart/form-data" style="margin-left:260px">
+    <div class="container" style="width: 900px; margin-top:100px">
+  <h2 class="text-center">Add Agreement</h2>
+    <form action="#" method="post" enctype="multipart/form-data">
         <!-- Agreement ID -->
         <div class="form-group">
             <label for="agreementId">Agreement ID:</label>

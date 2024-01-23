@@ -19,9 +19,9 @@
     <?php include('dashboard.php');?>
 	 
   <div id="content">
-  <div class="container" style="width: 1200px; margin-top:100px">
-  <h2 class="text-center" style="margin-left:260px">Add Student</h2>
-  <form id="addStudentForm" onsubmit="validateForm(event)" style="margin-left:260px">
+  <div class="container" style="width: 900px; margin-top:100px">
+  <h2 class="text-center" >Add Student</h2>
+  <form id="addStudentForm" onsubmit="validateForm(event)">
     <div class="form-row">
             <!-- Student ID -->
             <div class="form-group col-md-6">

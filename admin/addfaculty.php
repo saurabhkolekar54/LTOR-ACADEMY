@@ -19,11 +19,9 @@
     <?php include('dashboard.php');?>
 	 
   <div id="content">
-  <div class="container" style="width: 1200px; margin-top:100px">
-  <h2 class="text-center" style="margin-left:260px">Add Faculty</h2>
-  <form class="mt-4" style="margin-left:260px">
-
-
+  <div class="container" style="width: 900px; margin-top:100px">
+  <h2 class="text-center" >Add Faculty</h2>
+  <form class="mt-4" >
   <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="facultyId">Faculty ID:</label>

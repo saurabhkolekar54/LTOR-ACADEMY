@@ -1,3 +1,49 @@
+<?php
+// Database connection details
+$servername = "localhost:3308";
+$username = "root";
+$password = "";
+$dbname = "student_inquiry_db"; // Updated database name
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Check if form is submitted
+if(isset($_POST['sub'])) {
+    // Get form data
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $countryCode = $_POST['countryCode'];
+    $contact = $_POST['contact'];
+    $country = $_POST['country'];
+    $state = $_POST['state'];
+    $district = $_POST['district'];
+    $subdistrict = $_POST['subdistrict'];
+    $village = $_POST['Village'];
+    $zip = $_POST['zip'];
+    $subject=$_POST['subject'];
+
+    // SQL query to insert data into the database
+    $sql = "INSERT INTO inquiry_records (name, email, country_code, contact, country, state, district, subdistrict, village, zip, subject)
+            VALUES ('$name', '$email', '$countryCode', '$contact', '$country', '$state', '$district', '$subdistrict', '$village', '$zip','$subject')";
+
+    // Execute query
+    if ($conn->query($sql) === TRUE) {
+        echo "Data inserted successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+// Close the database connection
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,6 +164,12 @@
                         <input type="text" class="form-control" id="zip" name="zip" required>
                     </div>
                 </div>
+                <div class="row mb-3">
+                <div class="col-md-12">
+                    <label for="subject" class="form-label">Subject:</label>
+                    <textarea class="form-control" id="subject" name="subject" rows="3" required></textarea>
+                </div>
+                </div>
             </div>
             <button type="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;" name="sub">Submit</button>
         </form>
@@ -126,7 +178,8 @@
     <?php include('footer.php');?>
    
    <!-- Bootstrap JS (Place this before the closing </body> tag) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="js/dist.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

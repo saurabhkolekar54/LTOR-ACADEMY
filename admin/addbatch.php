@@ -19,9 +19,9 @@
 	 
   <div id="content">
  
-<div class="container" style="width: 1200px; margin-top:100px">
-  <h2 class="text-center" style="margin-left:260px">Add Batch</h2>
-  <form class="mt-4" style="margin-left:260px">
+<div class="container" style="width: 900px; margin-top:100px">
+  <h2 class="text-center" >Add Batch</h2>
+  <form class="mt-4">
   <div class="row">
             <div class="col-md-6">
                 <!-- First Line -->
