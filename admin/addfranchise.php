@@ -1,3 +1,53 @@
+<?php
+include 'connection.php';
+
+if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+if (isset($_POST['submit'])) {
+    $id = $_POST['id'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $franchiseName = $_POST['franchiseName'];  
+    $state = $_POST['state'];  
+    $district = $_POST['district'];
+    $subdistrict = $_POST['subdistrict'];
+    $village = $_POST['village'];
+    $pincode = $_POST['pincode'];
+
+
+    // Remove the extra comma after 'password'
+    $sql = "INSERT INTO `franchise` (`id`, `name`, `email`, `contact`, `franchiseName`, `state`, `district`, `subdistrict`, `village`, `pincode`) 
+    VALUES ('$id', '$name', '$email', '$contact', '$franchiseName', '$state', '$district', '$subdistrict', '$village', '$pincode');";
+
+    $result = mysqli_query($con, $sql);
+
+    if ($result) {
+        echo '<div class="alert alert-success" role="alert">
+         <b>Your Record Submitted Successfully!</b>
+        </div>';
+        echo '<script>
+        setTimeout(function() {
+            var alertDiv = document.querySelector(".alert");
+            if (alertDiv) {
+                alertDiv.style.display = "none";
+            }
+        }, 3000); // 5000 milliseconds = 5 seconds
+    </script>';
+
+        header('location:addfranchise.php');
+    } else {
+        echo '<div class="alert alert-danger" role="alert">
+         <b>Error: ' . mysqli_error($con) . '</b>
+        </div>';
+    }
+}
+
+// Close the database connection
+mysqli_close($con);
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,7 +71,7 @@
   <div id="content">
   <div class="container" style="width: 900px; margin-top:100px">
   <h2 class="text-center">Add Franchise</h2>
-    <form id="inquiryForm" method="post" action="inquiry.php">
+    <form id="inquiryForm" method="post" action="">
         <div class="form-row">
         <div class="form-group col-md-6">
             <label for="id">Franchise Id:</label>
@@ -134,7 +184,7 @@
         </div>
     </div>
 
-        <button type="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;">Add Franchise</button>
+        <button type="submit" name="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;">Add Franchise</button>
     </form>
 </div>
 

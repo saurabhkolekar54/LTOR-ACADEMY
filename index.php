@@ -142,6 +142,17 @@
 				<h3>Steph Jobs</h3>
 				<h5>Artist</h5>
 			</div>
+            <!-- <div class="box">
+				<img src="image/03.png">
+				<h3>Steph Jobs</h3>
+				<h5>Artist</h5>
+			</div>
+
+			<div class="box">
+				<img src="image/04.png">
+				<h3>Steph Jobs</h3>
+				<h5>Artist</h5>
+			</div> -->
 
 		</div>
 	</section>

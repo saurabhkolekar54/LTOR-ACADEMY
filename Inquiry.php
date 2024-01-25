@@ -1,9 +1,9 @@
 <?php
 // Database connection details
-$servername = "localhost:3308";
+$servername = "localhost:3307";
 $username = "root";
 $password = "";
-$dbname = "student_inquiry_db"; // Updated database name
+$dbname = "studentdb"; // Updated database name
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -34,7 +34,9 @@ if(isset($_POST['sub'])) {
 
     // Execute query
     if ($conn->query($sql) === TRUE) {
-        echo "Data inserted successfully";
+        header("Location: inquiry.php");
+        exit();
+
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

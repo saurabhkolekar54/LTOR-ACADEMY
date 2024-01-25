@@ -7,6 +7,37 @@
          z-index: 1000; 
          margin-left: 260px;
       }
+      #sidebar{
+	  position:fixed;
+	  height:100%!important;
+	  top:0;
+	  left:0;
+	  bottom:0;
+	  z-index:11;
+	  width:260px;
+	  overflow:auto;
+	  transition:all 0.3s;
+	  background-color:#fff;
+	  box-shadow:0 0 30px 0 rgba(200 200 200 / 20%);
+  }
+  .sidebar-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width:260px;
+        background-color: #fff; /* Adjust the background color as needed */
+        padding: 10px;
+        z-index: 1000; /* Adjust the z-index as needed to ensure it's above other elements */
+    }
+
+    .sidebar-header h3 {
+        display: flex;
+        align-items: center;
+    }
+
+    .sidebar-header img {
+        margin-right: 10px;
+    }
      </style>
 	  <div class="body-overlay"></div>
 	 
@@ -16,7 +47,7 @@
         <div class="sidebar-header">
             <h3><img src="image/icon.jpeg" class="img-fluid" style="width: 40px;"/><span>Ltor Academy</span></h3>
          </div>
-         <ul class="list-unstyled component m-0">
+         <ul class="list-unstyled component" style="margin-top:60px;">
            <li class="active">
            <a href="index.php" class="dashboard"><i class="material-icons">dashboard</i>Dashboard </a>
            </li>

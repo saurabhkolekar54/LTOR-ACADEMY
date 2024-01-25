@@ -1,3 +1,59 @@
+<?php
+include 'connection.php';
+
+if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+if (isset($_POST['submit'])) {
+    $facultyId = $_POST['facultyId'];
+    $facultyName = $_POST['facultyName'];
+    $gender = $_POST['gender'];
+    $contactNumber = $_POST['contactNumber'];
+    $dob = $_POST['dob'];  
+    $Experience = $_POST['Experience'];  
+    $Skill1 = $_POST['Skill1'];
+    $Skill2 = $_POST['Skill2'];
+    $Skill3 = $_POST['Skill3'];
+    $Achievement1 = $_POST['Achievement1'];
+    $Achievement2 = $_POST['Achievement2'];
+    $Achievement3 = $_POST['Achievement3'];
+    $maxStudentsHandled = $_POST['maxStudentsHandled'];
+    $Education = $_POST['Education'];
+    $qualification = $_POST['qualification'];
+
+
+    // Remove the extra comma after 'password'
+    $sql = "INSERT INTO `faculty` (`facultyId`, `facultyName`, `gender`, `contactNumber`, `dob`, `Experience`, `Skill1`, `Skill2`, `Skill3`, `Achievement1`, `Achievement2`, `Achievement3`, `maxStudentsHandled`, `Education`, `qualification`) 
+    VALUES ('$facultyId', '$facultyName', '$gender', '$contactNumber', '$dob', '$Experience', '$Skill1', '$Skill2', '$Skill3', '$Achievement1', '$Achievement2', '$Achievement3', '$maxStudentsHandled', '$Education', '$qualification');";
+
+    $result = mysqli_query($con, $sql);
+
+    if ($result) {
+        echo '<div class="alert alert-success" role="alert">
+         <b>Your Record Submitted Successfully!</b>
+        </div>';
+        echo '<script>
+        setTimeout(function() {
+            var alertDiv = document.querySelector(".alert");
+            if (alertDiv) {
+                alertDiv.style.display = "none";
+            }
+        }, 3000); // 5000 milliseconds = 5 seconds
+    </script>';
+
+        header('location:addfaculty.php');
+    } else {
+        echo '<div class="alert alert-danger" role="alert">
+         <b>Error: ' . mysqli_error($con) . '</b>
+        </div>';
+    }
+}
+
+// Close the database connection
+mysqli_close($con);
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -145,7 +201,7 @@
         </select>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;">Add Faculty</button>
+    <button type="submit" name="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;">Add Faculty</button>
   </form>
 </div>
 

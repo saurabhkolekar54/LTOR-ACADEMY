@@ -21,8 +21,9 @@
     <?php include('dashboard.php');?>
 	 
     <div id="content" style="margin-top:100px">
+    <button class="btn btn-primary ml-4">Add</button>
     <div class="container mt-5">
-    <table class="table table-striped table-bordered mt-10" id="myTable">
+      <table class="table table-striped table-bordered mt-10" id="myTable">
   <thead>
   <tr>
       <th scope="col">Student Id</th>
@@ -77,18 +78,6 @@
   
   
   <script type="text/javascript">
-       $(document).ready(function(){
-	      $(".xp-menubar").on('click',function(){
-		    $("#sidebar").toggleClass('active');
-			$("#content").toggleClass('active');
-		  });
-		  
-		  $('.xp-menubar,.body-overlay').on('click',function(){
-		     $("#sidebar,.body-overlay").toggleClass('show-nav');
-		  });
-		  
-	   });
-
      $(document).ready(function() {
         $("#myTable").dataTable();
     });

@@ -1,3 +1,57 @@
+<?php
+include 'connection.php';
+
+if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+if (isset($_POST['submit'])) {
+    $agreementId = $_POST['agreementId'];
+    $partyA = $_POST['partyA'];
+    $partyB = $_POST['partyB'];
+    $agreementPdf = $_POST['agreementPdf'];
+    $startDate = $_POST['startDate'];  
+    $endDate = $_POST['endDate'];  
+    $joiningFee = $_POST['joiningFee'];
+    $revenueAPercentage = $_POST['revenueAPercentage'];
+    $revenueBPercentage = $_POST['revenueBPercentage'];
+    $revenueDate = $_POST['revenueDate'];
+    $partyBName = $_POST['partyBName'];
+    $partyBContact = $_POST['partyBContact'];
+    $partyBEmail = $_POST['partyBEmail'];
+
+
+    // Remove the extra comma after 'password'
+    $sql = "INSERT INTO `franchiseAgreement` (`agreementId`, `partyA`, `partyB`, `agreementPdf`, `startDate`, `endDate`, `joiningFee`, `revenueAPercentage`, `revenueBPercentage`, `revenueDate`, `partyBName`, `partyBContact`, `partyBEmail`) 
+    VALUES ('$agreementId', '$partyA', '$partyB', '$agreementPdf', '$startDate', '$endDate', '$joiningFee', '$revenueAPercentage', '$revenueBPercentage', '$revenueDate', '$partyBName', '$partyBContact', '$partyBEmail');";
+
+    $result = mysqli_query($con, $sql);
+
+    if ($result) {
+        echo '<div class="alert alert-success" role="alert">
+         <b>Your Record Submitted Successfully!</b>
+        </div>';
+        echo '<script>
+        setTimeout(function() {
+            var alertDiv = document.querySelector(".alert");
+            if (alertDiv) {
+                alertDiv.style.display = "none";
+            }
+        }, 3000); // 5000 milliseconds = 5 seconds
+    </script>';
+
+        header('location:addagreement.php');
+    } else {
+        echo '<div class="alert alert-danger" role="alert">
+         <b>Error: ' . mysqli_error($con) . '</b>
+        </div>';
+    }
+}
+
+// Close the database connection
+mysqli_close($con);
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -106,7 +160,7 @@
         </div>
 
         <!-- Submit Button -->
-        <button type="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;">Add Agreement</button>
+        <button type="submit" name="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;">Add Agreement</button>
     </form>
 </div>
 

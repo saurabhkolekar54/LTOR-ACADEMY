@@ -19,7 +19,6 @@
   <body>
  <div class="wrapper">
     <?php include('dashboard.php');?>
-	 
     <div id="content" style="margin-top:100px">
     <div class="container mt-5">
     <table class="table table-striped table-bordered mt-10" id="myTable">

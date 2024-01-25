@@ -1,3 +1,52 @@
+<?php
+include 'connection.php';
+
+if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+if (isset($_POST['submit'])) {
+    $studentId = $_POST['studentId'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $gender = $_POST['gender'];
+    $courseId = $_POST['courseId'];
+    $batchNo = $_POST['batchNo'];
+    $franchiseId = $_POST['franchiseId'];
+
+
+    // Remove the extra comma after 'password'
+    $sql = "INSERT INTO `Student` (`studentId`, `name`, `email`, `contact`, `gender`, `courseId`, `batchNo`, `franchiseId`) 
+    VALUES ('$studentId', '$name', '$email', '$contact', '$gender', '$courseId', '$batchNo', '$franchiseId');";
+
+    $result = mysqli_query($con, $sql);
+
+    if ($result) {
+        echo '<div class="alert alert-success" role="alert">
+         <b>Your Record Submitted Successfully!</b>
+        </div>';
+        echo '<script>
+        setTimeout(function() {
+            var alertDiv = document.querySelector(".alert");
+            if (alertDiv) {
+                alertDiv.style.display = "none";
+            }
+        }, 3000); // 5000 milliseconds = 5 seconds
+    </script>';
+
+        header('location:addstudent.php');
+    } else {
+        echo '<div class="alert alert-danger" role="alert">
+         <b>Error: ' . mysqli_error($con) . '</b>
+        </div>';
+    }
+}
+
+// Close the database connection
+mysqli_close($con);
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -87,7 +136,8 @@
                 <label for="franchiseId" class="form-label">Franchise ID</label>
                 <input type="text" class="form-control" id="franchiseId" placeholder="Enter Franchise ID" required>
             </div>
-        </div>      <button type="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;">Add Student</button>
+        </div>     
+         <button type="submit" name="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;">Add Student</button>
 
     </form>
 </div>

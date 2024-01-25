@@ -1,3 +1,49 @@
+<?php
+include 'connection.php';
+
+if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+if (isset($_POST['submit'])) {
+    $batchId = $_POST['batchId'];
+    $startDate = $_POST['startDate'];
+    $duration = $_POST['duration'];
+    $batchName = $_POST['batchName'];
+    $endDate = $_POST['endDate'];  
+    $mode = $_POST['mode'];  
+    $facultyName = $_POST['facultyName'];
+
+    // Remove the extra comma after 'password'
+    $sql = "INSERT INTO `batch` (`batchId`, `startDate`, `duration`, `batchName`, `endDate`, `mode`, `facultyName`) 
+    VALUES ('$batchId', '$startDate', '$duration', '$batchName', '$endDate', '$mode', '$facultyName');";
+
+    $result = mysqli_query($con, $sql);
+
+    if ($result) {
+        echo '<div class="alert alert-success" role="alert">
+         <b>Your Record Submitted Successfully!</b>
+        </div>';
+        echo '<script>
+        setTimeout(function() {
+            var alertDiv = document.querySelector(".alert");
+            if (alertDiv) {
+                alertDiv.style.display = "none";
+            }
+        }, 3000); // 5000 milliseconds = 5 seconds
+    </script>';
+
+        header('location:addbatch.php');
+    } else {
+        echo '<div class="alert alert-danger" role="alert">
+         <b>Error: ' . mysqli_error($con) . '</b>
+        </div>';
+    }
+}
+
+// Close the database connection
+mysqli_close($con);
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -74,7 +120,7 @@
       <label for="facultyName">Faculty Name:</label>
       <input type="text" class="form-control" id="facultyName" name="facultyName" required>
     </div>
-    <button type="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;">Add Batch</button>
+    <button type="submit" name="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;">Add Batch</button>
   </form>
 </div>
 	</div>

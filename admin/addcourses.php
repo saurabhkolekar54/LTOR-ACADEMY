@@ -1,3 +1,50 @@
+<?php
+include 'connection.php';
+
+if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+if (isset($_POST['submit'])) {
+    $courseId = $_POST['courseId'];
+    $courseName = $_POST['courseName'];
+    $courseMembers = $_POST['courseMembers'];
+    $courseDuration = $_POST['courseDuration'];
+    $courseSyllabus = $_POST['courseSyllabus'];  
+    $courseMode = $_POST['courseMode'];  
+
+    // Remove the extra comma after 'password'
+    $sql = "INSERT INTO `course` (`courseId`, `courseName`, `courseMembers`, `courseDuration`, `courseSyllabus`, `courseMode`) 
+    VALUES ('$courseId', '$courseName', '$courseMembers', '$courseDuration', '$courseSyllabus', '$courseMode');";
+
+    $result = mysqli_query($con, $sql);
+
+    if ($result) {
+        echo '<div class="alert alert-success" role="alert">
+         <b>Your Record Submitted Successfully!</b>
+        </div>';
+        echo '<script>
+        setTimeout(function() {
+            var alertDiv = document.querySelector(".alert");
+            if (alertDiv) {
+                alertDiv.style.display = "none";
+            }
+        }, 3000); // 5000 milliseconds = 5 seconds
+    </script>';
+
+        header('location:addcourses.php');
+    } else {
+        echo '<div class="alert alert-danger" role="alert">
+         <b>Error: ' . mysqli_error($con) . '</b>
+        </div>';
+    }
+}
+
+// Close the database connection
+mysqli_close($con);
+?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -69,7 +116,7 @@
             </select>
         </div>
 
-    <button type="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;">Add Course</button>
+    <button type="submit" name="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;">Add Course</button>
   </form>
 </div>
 
