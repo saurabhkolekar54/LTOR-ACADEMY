@@ -67,8 +67,8 @@ mysqli_close($con);
  
 <div class="container" style="width: 900px; margin-top:100px">
   <h2 class="text-center" >Add Batch</h2>
-  <form class="mt-4">
-  <div class="row">
+  <form class="mt-4" method="POST" enctype="multipart/form-data">
+      <div class="row">
             <div class="col-md-6">
                 <!-- First Line -->
                 <div class="form-group">

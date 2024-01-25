@@ -10,34 +10,72 @@ if (isset($_POST['submit'])) {
     $courseName = $_POST['courseName'];
     $courseMembers = $_POST['courseMembers'];
     $courseDuration = $_POST['courseDuration'];
-    $courseSyllabus = $_POST['courseSyllabus'];  
+    $courseImage = $_FILES["courseImage"]['name'];
+    $courseSyllabus = $_FILES['courseSyllabus']['name'];  
     $courseMode = $_POST['courseMode'];  
 
-    // Remove the extra comma after 'password'
-    $sql = "INSERT INTO `course` (`courseId`, `courseName`, `courseMembers`, `courseDuration`, `courseSyllabus`, `courseMode`) 
-    VALUES ('$courseId', '$courseName', '$courseMembers', '$courseDuration', '$courseSyllabus', '$courseMode');";
+    $validate_img_extension=$_FILES["courseImage"]["type"]=="image/jpg" ||
+    $_FILES["courseImage"]["type"]=="image/jpeg" ||
+    $_FILES["courseImage"]["type"]=="image/png";
 
-    $result = mysqli_query($con, $sql);
+    if($validate_img_extension)
+    {
+        if (file_exists("image/" . $_FILES["courseImage"]["name"])) 
+        {
+            $store = $_FILES["courseImage"]["name"];
+            $_SESSION['status'] = "Image already exists. '.$store.'";
+            header('Location: viewfranchise.php');
+        }
+         else 
+         {
+            $query = "INSERT INTO `course` (`courseId`, `courseName`, `courseMembers`, `courseDuration`, `courseImage`,`syllabusFileName`, `courseMode`) 
+            VALUES ('$courseId', '$courseName', '$courseMembers', '$courseDuration', '$courseImage','$courseSyllabus', '$courseMode');";
+        
+    
+            $query_run = mysqli_query($con, $query);
+    
+            if ($query_run) {
+                move_uploaded_file($_FILES["courseImage"]["tmp_name"], "image/". $_FILES["courseImage"]["name"]);
+                move_uploaded_file($_FILES["courseSyllabus"]["tmp_name"], "syllabus/" . $_FILES["courseSyllabus"]["name"]);
 
-    if ($result) {
-        echo '<div class="alert alert-success" role="alert">
-         <b>Your Record Submitted Successfully!</b>
-        </div>';
-        echo '<script>
-        setTimeout(function() {
-            var alertDiv = document.querySelector(".alert");
-            if (alertDiv) {
-                alertDiv.style.display = "none";
+                $_SESSION['success'] = "Course Added";
+                header('Location: addcourses.php');
+            } else {
+                $_SESSION['success'] = "Course Not Added";
+                header('Location: addcourses.php');
             }
-        }, 3000); // 5000 milliseconds = 5 seconds
-    </script>';
-
-        header('location:addcourses.php');
-    } else {
-        echo '<div class="alert alert-danger" role="alert">
-         <b>Error: ' . mysqli_error($con) . '</b>
-        </div>';
+        }
     }
+    else
+    {
+         $_SESSION['status'] = "Only PNG,JPG,JPEG Images are allowed";
+        header('Location: viewfranchise.php');
+    }
+
+
+    // // Remove the extra comma after 'password'
+    // $sql = 
+    // $result = mysqli_query($con, $sql);
+
+    // if ($result) {
+    //     echo '<div class="alert alert-success" role="alert">
+    //      <b>Your Record Submitted Successfully!</b>
+    //     </div>';
+    //     echo '<script>
+    //     setTimeout(function() {
+    //         var alertDiv = document.querySelector(".alert");
+    //         if (alertDiv) {
+    //             alertDiv.style.display = "none";
+    //         }
+    //     }, 3000); // 5000 milliseconds = 5 seconds
+    // </script>';
+
+    //     header('location:addcourses.php');
+    // } else {
+    //     echo '<div class="alert alert-danger" role="alert">
+    //      <b>Error: ' . mysqli_error($con) . '</b>
+    //     </div>';
+    // }
 }
 
 // Close the database connection
@@ -68,8 +106,8 @@ mysqli_close($con);
     <div id="content">
     <div class="container" style="width: 900px; margin-top:100px">
   <h2 class="text-center" >Add Course</h2>
-  <form class="mt-4" >
- <div class="form-row">
+  <form class="mt-4" method="POST" enctype="multipart/form-data">
+     <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="courseId">Course ID:</label>
                 <input type="text" class="form-control" id="courseId" name="courseId" required>
@@ -101,12 +139,23 @@ mysqli_close($con);
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="courseSyllabus">Course Syllabus:</label>
-            <div class="border p-1"> <!-- Add a border class and padding -->
-                <input type="file" class="form-control-file" id="courseSyllabus" name="courseSyllabus">
+        <div class="form-row">
+                <!-- Course Syllabus -->
+                <div class="form-group col-md-6">
+                    <label for="courseSyllabus">Course Syllabus:</label>
+                    <div class="border p-1">
+                        <input type="file" class="form-control-file" id="courseSyllabus" name="courseSyllabus">
+                    </div>
+                </div>
+
+                <!-- Course Image -->
+                <div class="form-group col-md-6">
+                    <label for="courseImage">Course Image:</label>
+                    <div class="border p-1">
+                        <input type="file" class="form-control-file" id="courseImage" name="courseImage" accept="image/*" required>
+                    </div>
+                </div>
             </div>
-        </div>
 
         <div class="form-group">
             <label for="courseMode">Course Mode:</label>

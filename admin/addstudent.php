@@ -70,25 +70,25 @@ mysqli_close($con);
   <div id="content">
   <div class="container" style="width: 900px; margin-top:100px">
   <h2 class="text-center" >Add Student</h2>
-  <form id="addStudentForm" onsubmit="validateForm(event)">
-    <div class="form-row">
+  <form class="mt-4" method="POST" enctype="multipart/form-data">
+        <div class="form-row">
             <!-- Student ID -->
             <div class="form-group col-md-6">
                 <label for="studentId" class="form-label">Student ID</label>
-                <input type="text" class="form-control" id="studentId" placeholder="Enter Student ID" required>
+                <input type="text" class="form-control" name="studentId" id="studentId" placeholder="Enter Student ID" required>
             </div>
 
             <!-- Name -->
             <div class="form-group col-md-6">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter Name" required>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" required>
             </div>
         </div>
         <div class="form-row">
             <!-- Email -->
             <div class="form-group col-md-6">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter Email" required>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email" required>
                 <div class="invalid-feedback" id="emailFeedback">
                     Please enter a valid email address in the format test@gmail.com.
                 </div>
@@ -97,7 +97,7 @@ mysqli_close($con);
             <!-- Contact -->
             <div class="form-group col-md-6">
                 <label for="contact" class="form-label">Contact</label>
-                <input type="tel" class="form-control" id="contact" placeholder="Enter Contact" pattern="[0-9]{10}" required>
+                <input type="tel" class="form-control" name="contact" id="contact" placeholder="Enter Contact" pattern="[0-9]{10}" required>
                 <div class="invalid-feedback" id="contactFeedback">
                     Please enter a valid 10-digit contact number.
                 </div>
@@ -122,19 +122,19 @@ mysqli_close($con);
             <!-- Course ID -->
             <div class="form-group col-md-4">
                 <label for="courseId" class="form-label">Course ID</label>
-                <input type="text" class="form-control" id="courseId" placeholder="Enter Course ID" required>
+                <input type="text" class="form-control" name="courseId" id="courseId" placeholder="Enter Course ID" required>
             </div>
 
             <!-- Batch No -->
             <div class="form-group col-md-4">
                 <label for="batchNo" class="form-label">Batch No</label>
-                <input type="text" class="form-control" id="batchNo" placeholder="Enter Batch No" required>
+                <input type="text" class="form-control" name="batchNo" id="batchNo" placeholder="Enter Batch No" required>
             </div>
 
             <!-- Franchise ID -->
             <div class="form-group col-md-4">
                 <label for="franchiseId" class="form-label">Franchise ID</label>
-                <input type="text" class="form-control" id="franchiseId" placeholder="Enter Franchise ID" required>
+                <input type="text" class="form-control" name="franchiseId" id="franchiseId" placeholder="Enter Franchise ID" required>
             </div>
         </div>     
          <button type="submit" name="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;">Add Student</button>

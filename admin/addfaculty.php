@@ -77,8 +77,8 @@ mysqli_close($con);
   <div id="content">
   <div class="container" style="width: 900px; margin-top:100px">
   <h2 class="text-center" >Add Faculty</h2>
-  <form class="mt-4" >
-  <div class="form-row">
+  <form class="mt-4" method="POST" enctype="multipart/form-data">
+      <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="facultyId">Faculty ID:</label>
                 <input type="text" class="form-control" id="facultyId" name="facultyId" required>

@@ -118,20 +118,31 @@
 			<h1 class="text-center"><span class="letter">O</span>ur <span class="letter">T</span>eam</h1>
 		</div>
 
-		<div class="team-content">
-			<div class="box">
+		<div class="row team-content">
+			<div class="col box">
 				<img src="image/01.png">
 				<h3>Steph Jobs</h3>
 				<h5>Artist</h5>
 			</div>
 
-			<div class="box">
+			<div class=" col box">
 				<img src="image/02.png">
 				<h3>Steph Jobs</h3>
 				<h5>Artist</h5>
 			</div>
 
-			<div class="box">
+			<div class="col box">
+				<img src="image/03.png">
+				<h3>Steph Jobs</h3>
+				<h5>Artist</h5>
+			</div>
+
+			<div class="col box">
+				<img src="image/04.png">
+				<h3>Steph Jobs</h3>
+				<h5>Artist</h5>
+			</div>
+            <div class="box">
 				<img src="image/03.png">
 				<h3>Steph Jobs</h3>
 				<h5>Artist</h5>
@@ -142,17 +153,6 @@
 				<h3>Steph Jobs</h3>
 				<h5>Artist</h5>
 			</div>
-            <!-- <div class="box">
-				<img src="image/03.png">
-				<h3>Steph Jobs</h3>
-				<h5>Artist</h5>
-			</div>
-
-			<div class="box">
-				<img src="image/04.png">
-				<h3>Steph Jobs</h3>
-				<h5>Artist</h5>
-			</div> -->
 
 		</div>
 	</section>
