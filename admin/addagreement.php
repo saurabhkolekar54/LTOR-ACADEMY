@@ -1,5 +1,6 @@
 <?php
 include 'connection.php';
+session_start();
 
 if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
@@ -9,48 +10,50 @@ if (isset($_POST['submit'])) {
     $agreementId = $_POST['agreementId'];
     $partyA = $_POST['partyA'];
     $partyB = $_POST['partyB'];
-    $agreementPdf = $_POST['agreementPdf'];
-    $startDate = $_POST['startDate'];  
-    $endDate = $_POST['endDate'];  
+    $agreementPdf = $_FILES["agreementPdf"]['name'];
+    $startDate = $_POST['startDate'];
+    $endDate = $_POST['endDate'];
     $joiningFee = $_POST['joiningFee'];
     $revenueAPercentage = $_POST['revenueAPercentage'];
     $revenueBPercentage = $_POST['revenueBPercentage'];
     $revenueDate = $_POST['revenueDate'];
-    $partyBName = $_POST['partyBName'];
+    $partyBImage = $_FILES["partybimage"]['name']; // Corrected the file input name
     $partyBContact = $_POST['partyBContact'];
     $partyBEmail = $_POST['partyBEmail'];
+    $Franchiseid = $_POST['Franchiseid'];
 
+    $validate_img_extension = in_array($_FILES["partybimage"]["type"], ["image/jpg", "image/jpeg", "image/png"]);
+    
+    if ($validate_img_extension) {
+        $sql = "INSERT INTO `agreementdetails` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        
+        $stmt = mysqli_prepare($con, $sql);
+        mysqli_stmt_bind_param($stmt, "ssssssssssssss", $agreementId, $partyA, $partyB, $agreementPdf, $startDate, $endDate, $joiningFee, $revenueAPercentage, $revenueBPercentage, $revenueDate, $partyBContact, $partyBEmail, $partyBImage, $Franchiseid);
 
-    // Remove the extra comma after 'password'
-    $sql = "INSERT INTO `franchiseAgreement` (`agreementId`, `partyA`, `partyB`, `agreementPdf`, `startDate`, `endDate`, `joiningFee`, `revenueAPercentage`, `revenueBPercentage`, `revenueDate`, `partyBName`, `partyBContact`, `partyBEmail`) 
-    VALUES ('$agreementId', '$partyA', '$partyB', '$agreementPdf', '$startDate', '$endDate', '$joiningFee', '$revenueAPercentage', '$revenueBPercentage', '$revenueDate', '$partyBName', '$partyBContact', '$partyBEmail');";
+        $result = mysqli_stmt_execute($stmt);
 
-    $result = mysqli_query($con, $sql);
+        if ($result) {
+            move_uploaded_file($_FILES["partybimage"]["tmp_name"], "image/" . $_FILES["partybimage"]["name"]);
+            move_uploaded_file($_FILES["agreementPdf"]["tmp_name"], "syllabus/" . $_FILES["agreementPdf"]["name"]);
 
-    if ($result) {
-        echo '<div class="alert alert-success" role="alert">
-         <b>Your Record Submitted Successfully!</b>
-        </div>';
-        echo '<script>
-        setTimeout(function() {
-            var alertDiv = document.querySelector(".alert");
-            if (alertDiv) {
-                alertDiv.style.display = "none";
-            }
-        }, 3000); // 5000 milliseconds = 5 seconds
-    </script>';
+            $_SESSION['success'] = "Agreement Added";
+            header('Location: addagreement.php');
+        } else {
+            $_SESSION['success'] = "Agreement Not Added";
+            header('Location: addagreement.php');
+        }
 
-        header('location:addagreement.php');
+        mysqli_stmt_close($stmt);
     } else {
-        echo '<div class="alert alert-danger" role="alert">
-         <b>Error: ' . mysqli_error($con) . '</b>
-        </div>';
+        $_SESSION['status'] = "Only PNG, JPG, JPEG Images are allowed";
+        header('Location: addagreement.php');
     }
 }
 
-// Close the database connection
 mysqli_close($con);
 ?>
+
+
 
 <!doctype html>
 <html lang="en">
@@ -98,7 +101,7 @@ mysqli_close($con);
         <!-- Agreement Copy PDF -->
         <div class="form-group">
             <label for="agreementPdf">Agreement Copy PDF:</label>
-            <div class="border p-1">
+            <div class="border p-1" style="border-radius:5px;">
                 <input type="file" class="form-control-file" id="agreementPdf" name="agreementPdf" accept=".pdf" required>
             </div>
         </div>
@@ -144,8 +147,10 @@ mysqli_close($con);
         <div class="form-row">
             <!-- Party B Name -->
             <div class="form-group col-md-6">
-                <label for="partyBName">Party B Name:</label>
-                <input type="text" class="form-control" id="partyBName" name="partyBName" required>
+            <label for="partybimage">Party B Image:</label>
+            <div class="border p-1">
+                <input type="file" class="form-control-file" id="partybimage" name="partybimage" accept=".jpg,.jpeg,.png" required>
+            </div>
             </div>
 
             <!-- Party B Contact -->
@@ -154,9 +159,18 @@ mysqli_close($con);
                 <input type="text" class="form-control" id="partyBContact" name="partyBContact" placeholder="Enter a 10 digit number" required>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-row">
+            <!-- Party B Name -->
+            <div class="form-group col-md-6">
             <label for="partyBEmail">Party B Email:</label>
             <input type="email" class="form-control" id="partyBEmail" name="partyBEmail" placeholder="Enter an E-mail">
+        </div>
+
+            <!-- Party B Contact -->
+            <div class="form-group col-md-6">
+            <label for="Franchiseid">Franchise Id:</label>
+            <input type="text" class="form-control" id="Franchiseid" name="Franchiseid" placeholder="Enter an Franchise Id">
+        </div>
         </div>
 
         <!-- Submit Button -->

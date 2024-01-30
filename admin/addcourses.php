@@ -5,77 +5,59 @@ if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+session_start(); // Ensure session_start is called for using $_SESSION
+
 if (isset($_POST['submit'])) {
     $courseId = $_POST['courseId'];
     $courseName = $_POST['courseName'];
     $courseMembers = $_POST['courseMembers'];
     $courseDuration = $_POST['courseDuration'];
     $courseImage = $_FILES["courseImage"]['name'];
-    $courseSyllabus = $_FILES['courseSyllabus']['name'];  
+    $courseSyllabus = $_FILES["courseSyllabus"]['name'];  
     $courseMode = $_POST['courseMode'];  
 
-    $validate_img_extension=$_FILES["courseImage"]["type"]=="image/jpg" ||
-    $_FILES["courseImage"]["type"]=="image/jpeg" ||
-    $_FILES["courseImage"]["type"]=="image/png";
+    // Validate image extension
+    $validate_img_extension = in_array($_FILES["courseImage"]["type"], ["image/jpg", "image/jpeg", "image/png"]);
 
-    if($validate_img_extension)
-    {
-        if (file_exists("image/" . $_FILES["courseImage"]["name"])) 
-        {
-            $store = $_FILES["courseImage"]["name"];
-            $_SESSION['status'] = "Image already exists. '.$store.'";
+    if ($validate_img_extension) {
+        // Check if image already exists
+        if (file_exists("image/" . $_FILES["courseImage"]["name"])) {
+            $_SESSION['status'] = "Image already exists: " . $_FILES["courseImage"]["name"];
             header('Location: viewfranchise.php');
-        }
-         else 
-         {
-            $query = "INSERT INTO `course` (`courseId`, `courseName`, `courseMembers`, `courseDuration`, `courseImage`,`syllabusFileName`, `courseMode`) 
-            VALUES ('$courseId', '$courseName', '$courseMembers', '$courseDuration', '$courseImage','$courseSyllabus', '$courseMode');";
-        
-    
-            $query_run = mysqli_query($con, $query);
-    
-            if ($query_run) {
-                move_uploaded_file($_FILES["courseImage"]["tmp_name"], "image/". $_FILES["courseImage"]["name"]);
-                move_uploaded_file($_FILES["courseSyllabus"]["tmp_name"], "syllabus/" . $_FILES["courseSyllabus"]["name"]);
+        } else {
+            // Use prepared statement to avoid SQL injection
+            $query = "INSERT INTO course VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-                $_SESSION['success'] = "Course Added";
-                header('Location: addcourses.php');
+            $stmt = mysqli_prepare($con, $query);
+
+            if ($stmt) {
+                // Bind parameters
+                mysqli_stmt_bind_param($stmt, "sssssss", $courseId, $courseName, $courseMembers, $courseDuration, $courseImage, $courseSyllabus, $courseMode);
+
+                // Execute the statement
+                $result = mysqli_stmt_execute($stmt);
+
+                if ($result) {
+                    move_uploaded_file($_FILES["courseImage"]["tmp_name"], "image/" . $_FILES["courseImage"]["name"]);
+                    move_uploaded_file($_FILES["courseSyllabus"]["tmp_name"], "syllabus/" . $_FILES["courseSyllabus"]["name"]);
+
+                    $_SESSION['success'] = "Course Added";
+                    header('Location: addcourses.php');
+                } else {
+                    $_SESSION['success'] = "Course Not Added";
+                    header('Location: addcourses.php');
+                }
+
+                mysqli_stmt_close($stmt);
             } else {
-                $_SESSION['success'] = "Course Not Added";
-                header('Location: addcourses.php');
+                $_SESSION['status'] = "Error in prepared statement: " . mysqli_error($con);
+                header('Location: viewfranchise.php');
             }
         }
-    }
-    else
-    {
-         $_SESSION['status'] = "Only PNG,JPG,JPEG Images are allowed";
+    } else {
+        $_SESSION['status'] = "Only PNG, JPG, JPEG Images are allowed";
         header('Location: viewfranchise.php');
     }
-
-
-    // // Remove the extra comma after 'password'
-    // $sql = 
-    // $result = mysqli_query($con, $sql);
-
-    // if ($result) {
-    //     echo '<div class="alert alert-success" role="alert">
-    //      <b>Your Record Submitted Successfully!</b>
-    //     </div>';
-    //     echo '<script>
-    //     setTimeout(function() {
-    //         var alertDiv = document.querySelector(".alert");
-    //         if (alertDiv) {
-    //             alertDiv.style.display = "none";
-    //         }
-    //     }, 3000); // 5000 milliseconds = 5 seconds
-    // </script>';
-
-    //     header('location:addcourses.php');
-    // } else {
-    //     echo '<div class="alert alert-danger" role="alert">
-    //      <b>Error: ' . mysqli_error($con) . '</b>
-    //     </div>';
-    // }
 }
 
 // Close the database connection
@@ -142,7 +124,7 @@ mysqli_close($con);
         <div class="form-row">
                 <!-- Course Syllabus -->
                 <div class="form-group col-md-6">
-                    <label for="courseSyllabus">Course Syllabus:</label>
+                    <label for="courseSyllabus" style="border-radius:5px;">Course Syllabus:</label>
                     <div class="border p-1">
                         <input type="file" class="form-control-file" id="courseSyllabus" name="courseSyllabus">
                     </div>
@@ -151,7 +133,7 @@ mysqli_close($con);
                 <!-- Course Image -->
                 <div class="form-group col-md-6">
                     <label for="courseImage">Course Image:</label>
-                    <div class="border p-1">
+                    <div class="border p-1" style="border-radius:5px;">
                         <input type="file" class="form-control-file" id="courseImage" name="courseImage" accept="image/*" required>
                     </div>
                 </div>

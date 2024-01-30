@@ -15,37 +15,47 @@ if (isset($_POST['submit'])) {
     $batchNo = $_POST['batchNo'];
     $franchiseId = $_POST['franchiseId'];
 
+    // Use prepared statement to avoid SQL injection
+    $sql = "INSERT INTO `StudentInfo` VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-    // Remove the extra comma after 'password'
-    $sql = "INSERT INTO `Student` (`studentId`, `name`, `email`, `contact`, `gender`, `courseId`, `batchNo`, `franchiseId`) 
-    VALUES ('$studentId', '$name', '$email', '$contact', '$gender', '$courseId', '$batchNo', '$franchiseId');";
+    $stmt = mysqli_prepare($con, $sql);
 
-    $result = mysqli_query($con, $sql);
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "sssssssi", $studentId, $name, $email, $contact, $gender, $courseId, $batchNo, $franchiseId);
 
-    if ($result) {
-        echo '<div class="alert alert-success" role="alert">
-         <b>Your Record Submitted Successfully!</b>
-        </div>';
-        echo '<script>
-        setTimeout(function() {
-            var alertDiv = document.querySelector(".alert");
-            if (alertDiv) {
-                alertDiv.style.display = "none";
-            }
-        }, 3000); // 5000 milliseconds = 5 seconds
-    </script>';
+        $result = mysqli_stmt_execute($stmt);
 
-        header('location:addstudent.php');
+        if ($result) {
+            echo '<div class="alert alert-success" role="alert">
+                    <b>Your Record Submitted Successfully!</b>
+                  </div>';
+            echo '<script>
+                    setTimeout(function() {
+                        var alertDiv = document.querySelector(".alert");
+                        if (alertDiv) {
+                            alertDiv.style.display = "none";
+                        }
+                    }, 3000); // 5000 milliseconds = 5 seconds
+                  </script>';
+            header('location:addstudent.php');
+        } else {
+            echo '<div class="alert alert-danger" role="alert">
+                    <b>Error: ' . mysqli_error($con) . '</b>
+                  </div>';
+        }
+
+        mysqli_stmt_close($stmt);
     } else {
         echo '<div class="alert alert-danger" role="alert">
-         <b>Error: ' . mysqli_error($con) . '</b>
-        </div>';
+                <b>Error in prepared statement: ' . mysqli_error($con) . '</b>
+              </div>';
     }
 }
 
 // Close the database connection
 mysqli_close($con);
 ?>
+
 
 <!doctype html>
 <html lang="en">

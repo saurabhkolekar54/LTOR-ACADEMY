@@ -19,40 +19,51 @@ if (isset($_POST['submit'])) {
     $Achievement2 = $_POST['Achievement2'];
     $Achievement3 = $_POST['Achievement3'];
     $maxStudentsHandled = $_POST['maxStudentsHandled'];
+    $Franchiseid = $_POST['Franchiseid'];
     $Education = $_POST['Education'];
     $qualification = $_POST['qualification'];
 
+    // Use prepared statement to avoid SQL injection
+    $sql = "INSERT INTO `facultyinfo` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+    $stmt = mysqli_prepare($con, $sql);
 
-    // Remove the extra comma after 'password'
-    $sql = "INSERT INTO `faculty` (`facultyId`, `facultyName`, `gender`, `contactNumber`, `dob`, `Experience`, `Skill1`, `Skill2`, `Skill3`, `Achievement1`, `Achievement2`, `Achievement3`, `maxStudentsHandled`, `Education`, `qualification`) 
-    VALUES ('$facultyId', '$facultyName', '$gender', '$contactNumber', '$dob', '$Experience', '$Skill1', '$Skill2', '$Skill3', '$Achievement1', '$Achievement2', '$Achievement3', '$maxStudentsHandled', '$Education', '$qualification');";
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "ssssssssssssssss", $facultyId, $facultyName, $gender, $contactNumber, $dob, $Experience, $Skill1, $Skill2, $Skill3, $Achievement1, $Achievement2, $Achievement3, $maxStudentsHandled, $Education, $qualification, $Franchiseid);
 
-    $result = mysqli_query($con, $sql);
+        $result = mysqli_stmt_execute($stmt);
 
-    if ($result) {
-        echo '<div class="alert alert-success" role="alert">
-         <b>Your Record Submitted Successfully!</b>
-        </div>';
-        echo '<script>
-        setTimeout(function() {
-            var alertDiv = document.querySelector(".alert");
-            if (alertDiv) {
-                alertDiv.style.display = "none";
-            }
-        }, 3000); // 5000 milliseconds = 5 seconds
-    </script>';
+        if ($result) {
+            echo '<div class="alert alert-success" role="alert">
+                    <b>Your Record Submitted Successfully!</b>
+                  </div>';
+            echo '<script>
+                    setTimeout(function() {
+                        var alertDiv = document.querySelector(".alert");
+                        if (alertDiv) {
+                            alertDiv.style.display = "none";
+                        }
+                    }, 3000); // 5000 milliseconds = 5 seconds
+                  </script>';
+            header('location:addfaculty.php');
+        } else {
+            echo '<div class="alert alert-danger" role="alert">
+                    <b>Error: ' . mysqli_stmt_error($stmt) . '</b>
+                  </div>';
+        }
 
-        header('location:addfaculty.php');
+        mysqli_stmt_close($stmt);
     } else {
         echo '<div class="alert alert-danger" role="alert">
-         <b>Error: ' . mysqli_error($con) . '</b>
-        </div>';
+                <b>Error in prepared statement: ' . mysqli_error($con) . '</b>
+              </div>';
     }
 }
 
 // Close the database connection
 mysqli_close($con);
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -171,11 +182,6 @@ mysqli_close($con);
       </div>
     </div>
 
-
-    <div class="form-group">
-      <label for="maxStudentsHandled">Maximum Students Handled:</label>
-      <input type="number" class="form-control" id="maxStudentsHandled" name="maxStudentsHandled" required>
-    </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="Education">Education:</label>
@@ -200,6 +206,16 @@ mysqli_close($con);
           <option value="M.A. in English*">M.A. in English*</option>
         </select>
       </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+      <label for="maxStudentsHandled">Maximum Students Handled:</label>
+      <input type="number" class="form-control" id="maxStudentsHandled" name="maxStudentsHandled" required>
+      </div>
+    <div class="form-group col-md-6">
+      <label for="Franchiseid">Franchise Id</label>
+      <input type="number" class="form-control" id="Franchiseid" name="Franchiseid" required>
+    </div>
     </div>
     <button type="submit" name="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;">Add Faculty</button>
   </form>

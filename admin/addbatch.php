@@ -12,38 +12,51 @@ if (isset($_POST['submit'])) {
     $batchName = $_POST['batchName'];
     $endDate = $_POST['endDate'];  
     $mode = $_POST['mode'];  
+    $batchcapacity = $_POST['batchcapacity'];
     $facultyName = $_POST['facultyName'];
+    $Franchiseid = $_POST['Franchiseid'];
 
-    // Remove the extra comma after 'password'
-    $sql = "INSERT INTO `batch` (`batchId`, `startDate`, `duration`, `batchName`, `endDate`, `mode`, `facultyName`) 
-    VALUES ('$batchId', '$startDate', '$duration', '$batchName', '$endDate', '$mode', '$facultyName');";
+    // Use prepared statement to avoid SQL injection
+    $sql = "INSERT INTO `batch` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    $result = mysqli_query($con, $sql);
+    $stmt = mysqli_prepare($con, $sql);
 
-    if ($result) {
-        echo '<div class="alert alert-success" role="alert">
-         <b>Your Record Submitted Successfully!</b>
-        </div>';
-        echo '<script>
-        setTimeout(function() {
-            var alertDiv = document.querySelector(".alert");
-            if (alertDiv) {
-                alertDiv.style.display = "none";
-            }
-        }, 3000); // 5000 milliseconds = 5 seconds
-    </script>';
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "ssssssssi", $batchId, $batchName, $startDate, $endDate, $facultyName, $duration, $mode, $batchcapacity, $Franchiseid);
 
-        header('location:addbatch.php');
+        $result = mysqli_stmt_execute($stmt);
+
+        if ($result) {
+            echo '<div class="alert alert-success" role="alert">
+                    <b>Your Record Submitted Successfully!</b>
+                  </div>';
+            echo '<script>
+                    setTimeout(function() {
+                        var alertDiv = document.querySelector(".alert");
+                        if (alertDiv) {
+                            alertDiv.style.display = "none";
+                        }
+                    }, 3000); // 5000 milliseconds = 5 seconds
+                  </script>';
+            header('location:addbatch.php');
+        } else {
+            echo '<div class="alert alert-danger" role="alert">
+                    <b>Error: ' . mysqli_error($con) . '</b>
+                  </div>';
+        }
+
+        mysqli_stmt_close($stmt);
     } else {
         echo '<div class="alert alert-danger" role="alert">
-         <b>Error: ' . mysqli_error($con) . '</b>
-        </div>';
+                <b>Error in prepared statement: ' . mysqli_error($con) . '</b>
+              </div>';
     }
 }
 
 // Close the database connection
 mysqli_close($con);
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -92,7 +105,14 @@ mysqli_close($con);
                         <option value="other">Other</option>
                     </select>
                 </div>            
-              
+                <div class="form-group">
+                <label for="facultyName">Faculty Name:</label>
+                <input type="text" class="form-control" id="facultyName" name="facultyName" required>
+                </div>
+                <div class="form-group">
+                <label for="courseMembers">Batch Capacity:</label>
+                <input type="number" class="form-control" id="courseMembers" name="batchcapacity" required>
+            </div>
             </div>
 
             <div class="col-md-6">
@@ -114,12 +134,12 @@ mysqli_close($con);
                         <option value="Offline">Offline</option>
                     </select>
                 </div>
+                <div class="form-group">
+                <label for="Franchiseid">Franchise Id:</label>
+                <input type="text" class="form-control" id="Franchiseid" name="Franchiseid" required>
+                </div>
             </div>
    </div>
-   <div class="form-group">
-      <label for="facultyName">Faculty Name:</label>
-      <input type="text" class="form-control" id="facultyName" name="facultyName" required>
-    </div>
     <button type="submit" name="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;">Add Batch</button>
   </form>
 </div>

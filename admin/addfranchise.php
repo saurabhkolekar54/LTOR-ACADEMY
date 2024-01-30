@@ -1,5 +1,6 @@
 <?php
 include 'connection.php';
+session_start(); // Start the session
 
 if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
@@ -10,6 +11,7 @@ if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $contact = $_POST['contact'];
+    $franchiseImage = $_FILES["franchiseImage"]['name'];
     $franchiseName = $_POST['franchiseName'];  
     $state = $_POST['state'];  
     $district = $_POST['district'];
@@ -17,37 +19,53 @@ if (isset($_POST['submit'])) {
     $village = $_POST['village'];
     $pincode = $_POST['pincode'];
 
+    // Validate image extension
+    $validate_img_extension = in_array($_FILES["franchiseImage"]["type"], ["image/jpg", "image/jpeg", "image/png"]);
 
-    // Remove the extra comma after 'password'
-    $sql = "INSERT INTO `franchise` (`id`, `name`, `email`, `contact`, `franchiseName`, `state`, `district`, `subdistrict`, `village`, `pincode`) 
-    VALUES ('$id', '$name', '$email', '$contact', '$franchiseName', '$state', '$district', '$subdistrict', '$village', '$pincode');";
+    if ($validate_img_extension) {
+        // Check if image already exists
+        if (file_exists("image/" . $_FILES["franchiseImage"]["name"])) {
+            $store = $_FILES["franchiseImage"]["name"];
+            $_SESSION['status'] = "Image already exists: $store";
+            header('Location: viewfranchise.php');
+        } else {
+            // Use prepared statement to avoid SQL injection
+            $sql = "INSERT INTO `franchise` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    $result = mysqli_query($con, $sql);
+            $stmt = mysqli_prepare($con, $sql);
 
-    if ($result) {
-        echo '<div class="alert alert-success" role="alert">
-         <b>Your Record Submitted Successfully!</b>
-        </div>';
-        echo '<script>
-        setTimeout(function() {
-            var alertDiv = document.querySelector(".alert");
-            if (alertDiv) {
-                alertDiv.style.display = "none";
+            if ($stmt) {
+                // Bind parameters
+                mysqli_stmt_bind_param($stmt, "sssssssssss", $id, $name, $email, $contact, $franchiseImage, $franchiseName, $state, $district, $subdistrict, $village, $pincode);
+
+                // Execute the statement
+                $result = mysqli_stmt_execute($stmt);
+
+                if ($result) {
+                    move_uploaded_file($_FILES["franchiseImage"]["tmp_name"], "image/" . $_FILES["franchiseImage"]["name"]);
+                    $_SESSION['success'] = "Franchise Added";
+                    header('Location: addfranchise.php');
+                } else {
+                    $_SESSION['success'] = "Franchise Not Added";
+                    header('Location: addfranchise.php');
+                }
+
+                mysqli_stmt_close($stmt);
+            } else {
+                $_SESSION['status'] = "Error in prepared statement: " . mysqli_error($con);
+                header('Location: viewfranchise.php');
             }
-        }, 3000); // 5000 milliseconds = 5 seconds
-    </script>';
-
-        header('location:addfranchise.php');
+        }
     } else {
-        echo '<div class="alert alert-danger" role="alert">
-         <b>Error: ' . mysqli_error($con) . '</b>
-        </div>';
+        $_SESSION['status'] = "Only PNG, JPG, JPEG Images are allowed";
+        header('Location: viewfranchise.php');
     }
 }
 
 // Close the database connection
 mysqli_close($con);
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -98,15 +116,24 @@ mysqli_close($con);
         </div>
     </div>
 
-        <div class="form-group">
+    <div class="form-row">
+    <div class="form-group col-md-6">
+                <label for="franchiseImage">Franchise Image:</label>
+                <div class="border p-1" style="border-radius:5px;">
+                        <input type="file" class="form-control-file" id="franchiseImage" name="franchiseImage" accept="image/*" required>
+                </div>
+            </div>
+
+        <div class="form-group col-md-6">
             <label for="franchiseName">Frim Name:</label>
             <input type="text" class="form-control" id="franchiseName" name="franchiseName" required>
         </div>
+    </div>
        
         <div class="form-row">
         <div class="form-group col-md-4">
             <label for="state">State:</label>
-            <select class="form-control" id="state" name="state" required>
+            <select class="form-control" id="state" name="state" onchange="loadDistricts()" required>
             <option value="">Select State</option>
                         <option value="AndraPradesh">Andhra Pradesh</option>
                         <option value="ArunachalPradesh">Arunachal Pradesh</option>
@@ -148,22 +175,12 @@ mysqli_close($con);
 
         <div class="form-group col-md-4">
             <label for="district">District:</label>
-            <select class="form-control" id="district" name="district" required>
-                <option value="">Select District</option>
-                <option value="district1">District 1</option>
-                <option value="district2">District 2</option>
-                <!-- Add more options as needed -->
-            </select>
+            <select class="form-control" id="district" name="district" onchange="loadSubDistricts()" required></select>
         </div>
 
         <div class="form-group col-md-4">
             <label for="subdistrict">Subdistrict:</label>
-            <select class="form-control" id="subdistrict" name="subdistrict" required>
-                <option value="">Select Subdistrict</option>
-                <option value="subdistrict1">Subdistrict 1</option>
-                <option value="subdistrict2">Subdistrict 2</option>
-                <!-- Add more options as needed -->
-            </select>
+            <select id="subdistrict" name="subdistrict" class="form-control"></select>
         </div>
     </div>
 
@@ -175,12 +192,7 @@ mysqli_close($con);
 
         <div class="form-group col-md-6">
             <label for="pincode">Pincode:</label>
-            <select class="form-control" id="pincode" name="pincode" required>
-                <option value="">Select Pincode</option>
-                <option value="pincode1">Pincode 1</option>
-                <option value="pincode2">Pincode 2</option>
-                <!-- Add more options as needed -->
-            </select>
+            <input type="text" class="form-control" id="zip" name="zip" required>
         </div>
     </div>
 
@@ -196,7 +208,7 @@ mysqli_close($con);
    <script src="js/popper.min.js"></script>
    <script src="js/bootstrap.min.js"></script>
    <script src="js/jquery-3.3.1.min.js"></script>
-  
+   <script src="js/dist.js"></script>
   
   <script type="text/javascript">
        $(document).ready(function(){

@@ -111,16 +111,21 @@
            </li>
 
            <li class="dropdown">
-           <a href="#homeSubmenu6" data-toggle="collapse" aria-expanded="false" 
-           class="dropdown-toggle">
+           <a href="viewleads.php" aria-expanded="false">
            <i class="material-icons">assignment</i>Leads
            </a>
-           <ul class="collapse list-unstyled menu" id="homeSubmenu6">
-               <li><a href="viewbatch.php">View Leads</a></li>
-           </ul>
            </li>
+           <li class="dropdown">
+            <a href="aboutus.php" aria-expanded="false">
+               <i class="material-icons">info</i>About Us
+            </a>
+         </li>
+         <li class="dropdown">
+            <a href="teammember.php" aria-expanded="false">
+               <i class="material-icons">group</i>Team Members
+            </a>
+         </li>
 	 </div>
-
       <div class="top-navbar"> <!-- Apply fixed-top class directly to top-navbar -->
         <div class="xd-topbar">
           <div class="row">

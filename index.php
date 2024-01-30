@@ -11,7 +11,8 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css"/>
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
    <link rel="stylesheet" href="css/style.css">    
-   <link rel="stylesheet" href="css/review.css">    
+   <link rel="stylesheet" href="css/review.css"> 
+   <link rel="stylesheet" href="css/team.css">    
 
    
 </head>
@@ -111,51 +112,79 @@
 </section>
 
 
-    <!-- team section -->
+    <!-- My Team Section -->
+    <section class="my-team">
+        <div class="container">
+        <div class="text-center">
+            <h1 class="m-5"><span class="letter">O</span>ur <span class="letter">T</span>eam</h1>
+        </div>
+            <div class="row team-container">
+                <!-- Team Member 1 -->
+                <div class="col-lg-3">
+                    <div class="team-member">
+                        <img src="image/team1.jpeg" alt="Team Member 1" class="img-fluid">
+                        <div class="member-info">
+                            <h3>John Doe</h3>
+                            <p>Founder & CEO</p>
+                        </div>
+                    </div>
+                </div>
 
-    <section class="team container d-flex align-items-center justify-content-center">
-		<div class="center">
-			<h1 class="text-center"><span class="letter">O</span>ur <span class="letter">T</span>eam</h1>
-		</div>
+                <!-- Team Member 2 -->
+                <div class="col-lg-3">
+                    <div class="team-member">
+                        <img src="image/team2.jpeg" alt="Team Member 2" class="img-fluid">
+                        <div class="member-info">
+                            <h3>Jane Smith</h3>
+                            <p>Marketing Manager</p>
+                        </div>
+                    </div>
+                </div>
 
-		<div class="row team-content">
-			<div class="col box">
-				<img src="image/01.png">
-				<h3>Steph Jobs</h3>
-				<h5>Artist</h5>
-			</div>
+                <!-- Team Member 3 -->
+                <div class="col-lg-3">
+                    <div class="team-member">
+                        <img src="image/03.png" alt="Team Member 3" class="img-fluid">
+                        <div class="member-info">
+                            <h3>Bob Johnson</h3>
+                            <p>Lead Developer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="col-lg-3">
+                    <div class="team-member">
+                        <img src="image/04.png" alt="Team Member 4" class="img-fluid">
+                        <div class="member-info">
+                            <h3>Alice Johnson</h3>
+                            <p>Product Manager</p>
+                        </div>
+                    </div>
+                </div>
 
-			<div class=" col box">
-				<img src="image/02.png">
-				<h3>Steph Jobs</h3>
-				<h5>Artist</h5>
-			</div>
+                <div class="col-lg-3">
+                    <div class="team-member">
+                        <img src="image/04.png" alt="Team Member 4" class="img-fluid">
+                        <div class="member-info">
+                            <h3>Alice Johnson</h3>
+                            <p>Product Manager</p>
+                        </div>
+                    </div>
+                </div>
 
-			<div class="col box">
-				<img src="image/03.png">
-				<h3>Steph Jobs</h3>
-				<h5>Artist</h5>
-			</div>
-
-			<div class="col box">
-				<img src="image/04.png">
-				<h3>Steph Jobs</h3>
-				<h5>Artist</h5>
-			</div>
-            <div class="box">
-				<img src="image/03.png">
-				<h3>Steph Jobs</h3>
-				<h5>Artist</h5>
-			</div>
-
-			<div class="box">
-				<img src="image/04.png">
-				<h3>Steph Jobs</h3>
-				<h5>Artist</h5>
-			</div>
-
-		</div>
-	</section>
+                <div class="col-lg-3">
+                    <div class="team-member">
+                        <img src="image/04.png" alt="Team Member 4" class="img-fluid">
+                        <div class="member-info">
+                            <h3>Alice Johnson</h3>
+                            <p>Product Manager</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Course Section -->
 
@@ -166,129 +195,126 @@
         <div class="row">
 
             <!-- Course Card 1 -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img src="image/Spoken_English.jpg" class="card-img-top" alt="Course Image">
+                    <img src="image/Spoken_English.jpg" class="card-img-top" alt="Course Image" style="height: 180px;">
                     <div class="card-body text-center">
-                        <h3 class="card-title">Public Speaking</h3>
-                        <a href="PublicSpeaking.php" class="btn btn-primary btn-learn-more" style="width: 40%;">Learn More</a>
+                        <h5 class="card-title">Public Speaking</h5>
+                        <a href="PublicSpeaking.php" class="btn btn-primary btn-learn-more">Learn More</a>
                     </div>
                 </div>
             </div>
 
             <!-- Course Card 2 -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img src="image/1.jpg" class="card-img-top" alt="Course Image">
+                    <img src="image/1.jpg" class="card-img-top" alt="Course Image" style="height: 180px;">
                     <div class="card-body text-center">
-                        <h3 class="card-title">Confidence Building</h3>
+                        <h5 class="card-title">Confidence Building</h5>
                         <a href="ConfidenceBuilding.php" class="btn btn-primary btn-learn-more">Learn More</a>
                     </div>
                 </div>
             </div>
 
             <!-- Course Card 3 -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img src="image/1.jpg" class="card-img-top" alt="Course Image">
+                    <img src="image/1.jpg" class="card-img-top" alt="Course Image" style="height: 180px;">
                     <div class="card-body text-center">
-                        <h3 class="card-title">Success Key</h3>
+                        <h5 class="card-title">Success Key</h5>
                         <a href="SuccessKey.php" class="btn btn-primary btn-learn-more">Learn More</a>
                     </div>
                 </div>
             </div>
 
             <!-- Course Card 4 -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img src="image/LeadershipQuality.jpg" class="card-img-top" alt="Course Image">
+                    <img src="image/LeadershipQuality.jpg" class="card-img-top" alt="Course Image" style="height: 180px;">
                     <div class="card-body text-center">
-                        <h3 class="card-title">Leadership Quality</h3>
+                        <h5 class="card-title">Leadership Quality</h5>
                         <a href="LeadershipQuality.php" class="btn btn-primary btn-learn-more">Learn More</a>
                     </div>
                 </div>
             </div>
 
             <!-- Course Card 5 -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img src="image/1.jpg" class="card-img-top" alt="Course Image">
+                    <img src="image/1.jpg" class="card-img-top" alt="Course Image" style="height: 180px;">
                     <div class="card-body text-center">
-                        <h3 class="card-title">Spoken English</h3>
+                        <h5 class="card-title">Spoken English</h5>
                         <a href="SpokenEnglish.php" class="btn btn-primary btn-learn-more">Learn More</a>
                     </div>
                 </div>
             </div>
 
             <!-- Course Card 6 -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img src="image/LRBrain.jpg" class="card-img-top" alt="Course Image">
+                    <img src="image/LRBrain.jpg" class="card-img-top" alt="Course Image" style="height: 180px;">
                     <div class="card-body text-center">
-                        <h3 class="card-title">L & R Brain</h3>
+                        <h5 class="card-title">L & R Brain</h5>
                         <a href="LRBrain.php" class="btn btn-primary btn-learn-more">Learn More</a>
                     </div>
                 </div>
             </div>
 
             <!-- Course Card 7 -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img src="image/StudySkils.jpg" class="card-img-top" alt="Course Image">
+                    <img src="image/StudySkils.jpg" class="card-img-top" alt="Course Image" style="height: 180px;">
                     <div class="card-body text-center">
-                        <h3 class="card-title">Study Skill</h3>
+                        <h5 class="card-title">Study Skill</h5>
                         <a href="StudySkills.php" class="btn btn-primary btn-learn-more">Learn More</a>
                     </div>
                 </div>
             </div>
 
             <!-- Course Card 8 -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img src="image/1.jpg" class="card-img-top" alt="Course Image">
+                    <img src="image/1.jpg" class="card-img-top" alt="Course Image" style="height: 180px;">
                     <div class="card-body text-center">
-                        <h3 class="card-title">Discipline</h3>
+                        <h5 class="card-title">Discipline</h5>
                         <a href="Discipline.php" class="btn btn-primary btn-learn-more">Learn More</a>
                     </div>
                 </div>
             </div>
 
             <!-- Course Card 9 -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img src="image/1.jpg" class="card-img-top" alt="Course Image">
+                    <img src="image/1.jpg" class="card-img-top" alt="Course Image" style="height: 180px;">
                     <div class="card-body text-center">
-                        <h3 class="card-title">Good Relationship</h3>
+                        <h5 class="card-title">Good Relationship</h5>
                         <a href="GoodRelationship.php" class="btn btn-primary btn-learn-more">Learn More</a>
                     </div>
                 </div>
             </div>
 
             <!-- Course Card 10 -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img src="image/1.jpg" class="card-img-top" alt="Course Image">
+                    <img src="image/1.jpg" class="card-img-top" alt="Course Image" style="height: 180px;">
                     <div class="card-body text-center">
-                        <h3 class="card-title">Personality Development</h3>
+                        <h5 class="card-title">Personality Development</h5>
                         <a href="PersonalityDevelopment.php" class="btn btn-primary btn-learn-more">Learn More</a>
                     </div>
                 </div>
             </div>
 
             <!-- Course Card 11 -->
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="card">
-                    <img src="image/Time_Management.jpg" class="card-img-top" alt="Course Image">
+                    <img src="image/Time_Management.jpg" class="card-img-top" alt="Course Image" style="height: 180px;">
                     <div class="card-body text-center">
-                        <h3 class="card-title">Time Management</h3>
+                        <h5 class="card-title">Time Management</h5>
                         <a href="TimeManagement.php" class="btn btn-primary btn-learn-more">Learn More</a>
                     </div>
                 </div>
             </div>
-
-            <!-- Add more course cards as needed -->
-
-        </div>
+       </div>
     </div>
     </section>
 

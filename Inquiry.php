@@ -3,7 +3,7 @@
 $servername = "localhost:3307";
 $username = "root";
 $password = "";
-$dbname = "studentdb"; // Updated database name
+$dbname = "ltor_academy"; // Updated database name
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -29,8 +29,7 @@ if(isset($_POST['sub'])) {
     $subject=$_POST['subject'];
 
     // SQL query to insert data into the database
-    $sql = "INSERT INTO inquiry_records (name, email, country_code, contact, country, state, district, subdistrict, village, zip, subject)
-            VALUES ('$name', '$email', '$countryCode', '$contact', '$country', '$state', '$district', '$subdistrict', '$village', '$zip','$subject')";
+    $sql = "INSERT INTO inquiry VALUES ('','$name','$countryCode', '$contact','$email', '$country', '$state', '$district', '$subdistrict', '$village', '$zip','$subject')";
 
     // Execute query
     if ($conn->query($sql) === TRUE) {
