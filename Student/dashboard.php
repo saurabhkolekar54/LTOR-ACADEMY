@@ -37,12 +37,12 @@
            </li>
            
             <li class="dropdown">
-           <a href="#homeSubmenu3" data-toggle="collapse" aria-expanded="false" >
+           <a href="#homeSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
            <i class="material-icons">person</i>Faculty
            </a>
-           <!-- <ul class="collapse list-unstyled menu" id="homeSubmenu3">
+           <ul class="collapse list-unstyled menu" id="homeSubmenu3">
               <li><a href="viewfaculty.php">View Faculty</a></li>
-           </ul> -->
+           </ul>
            </li>
            
            

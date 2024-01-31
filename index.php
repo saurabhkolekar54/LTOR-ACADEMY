@@ -104,7 +104,7 @@
             </div>
             <div class="col-md-5">
                 <div class="image">
-                    <img src="image/index1.jpeg" alt="About Us Image" class="img-fluid">
+                    <img src="image/aboutus.jpeg" alt="About Us Image" class="img-fluid">
                 </div>
             </div>
         </div>
