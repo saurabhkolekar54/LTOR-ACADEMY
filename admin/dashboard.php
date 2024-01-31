@@ -125,6 +125,16 @@
                <i class="material-icons">group</i>Team Members
             </a>
          </li>
+         <li class="dropdown">
+                <a href="gallery.php" aria-expanded="false">
+                    <i class="material-icons">photo</i> Gallery
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="reviews.php" aria-expanded="false">
+                    <i class="material-icons">star</i> Reviews
+                </a>
+            </li>
 	 </div>
       <div class="top-navbar"> <!-- Apply fixed-top class directly to top-navbar -->
         <div class="xd-topbar">

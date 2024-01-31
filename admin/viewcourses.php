@@ -57,7 +57,7 @@
                 <td>' . $name . '</td>
                 <td>' . $class . '</td>
                 <td>' . $members . '</td>
-                <td>' . $image . '</td>
+                <td><img src="image/' . $image . '" width="100" height="100"></td>
                 <td>' . $syllabus . '</td>
                 <td>' . $mode . '</td>
                 <td>
