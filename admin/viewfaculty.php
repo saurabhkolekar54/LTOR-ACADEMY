@@ -2,29 +2,75 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-  <title>Admin Panel</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>cms dashboard
+    </title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!----css3---->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <!----css3---->
-  <link rel="stylesheet" href="css/custom.css">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-  <script src="https://code.jquery.com/jquery-3.5.1.js" type="text/javascript"></script>
-  <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
+
+
+
+    <!--google material icon-->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
-  <div class="wrapper">
-    <?php include('dashboard.php'); ?>
 
-    <div id="content" style="margin-top:100px">
-      <div class="container mt-5">
+
+
+
+    <div class="wrapper">
+
+
+        <div class="body-overlay"></div>
+        <?php require 'sidebar.php'?>
+        <!-- Page Content  -->
+        <div id="content" style="background-color:white;">
+
+            <div class="top-navbar">
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container-fluid">
+
+                        <button type="button" id="sidebarCollapse" class="d-xl-block d-lg-block d-md-mone d-none">
+                            <span class="material-icons">arrow_back_ios</span>
+                        </button>
+
+                        <a class="navbar-brand" href="#"> Dashboard </a>
+
+                        <button class="d-inline-block d-lg-none ml-auto more-button" type="button"
+                            data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="material-icons">more_vert</span>
+                        </button>
+
+                        <div class="collapse navbar-collapse d-lg-block d-xl-block d-sm-none d-md-none d-none"
+                            id="navbarSupportedContent">
+                            <ul class="nav navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <span class="material-icons">person</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+
+            <div class="main-content">
+            <div class="container mt-5">
         <table class="table table-striped table-bordered mt-10" id="myTable">
           <thead>
             <tr>
@@ -104,184 +150,32 @@
 
     </div>
 
-    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Update Faculty</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form class="mt-4" method="POST" enctype="multipart/form-data">
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="facultyId">Faculty ID:</label>
-                  <input type="text" class="form-control" id="facultyId" name="facultyId" required>
-                </div>
-
-                <div class="form-group col-md-6">
-                  <label for="facultyName">Name:</label>
-                  <input type="text" class="form-control" id="facultyName" name="facultyName" required>
-                </div>
-              </div>
-
-              <div class="form-row align-items-center">
-                <!-- Gender -->
-                <div class="form-group col-md-6 mb-3">
-                  <label class="form-label d-block">Gender</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked required>
-                    <label class="form-check-label" for="male">Male</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="female" value="female" required>
-                    <label class="form-check-label" for="female">Female</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="other" value="other" required>
-                    <label class="form-check-label" for="other">Other</label>
-                  </div>
-                </div>
-
-                <!-- Contact Number -->
-                <div class="form-group col-md-6 mb-3">
-                  <label for="contactNumber">Contact Number:</label>
-                  <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <!-- Date of Birth -->
-                <div class="form-group col-md-6 mb-3">
-                  <label for="dob">Date of Birth:</label>
-                  <input type="date" class="form-control" id="dob" name="dob" required>
-                </div>
-
-                <!-- Experience -->
-                <div class="form-group col-md-6 mb-3">
-                  <label for="Experience">Experience:</label>
-                  <select class="form-control" id="Experience" name="Experience" required>
-                    <option value="fresher">Fresher</option>
-                    <option value="6 Month">6 Month</option>
-                    <option value="1 Year">1 Year</option>
-                    <option value="3 Year">3 Year</option>
-                    <option value="8 Year">8 Year</option>
-                    <option value="6 Year">6 Year</option>
-                  </select>
-                </div>
-              </div>
-
-
-              <div class="form-row">
-                <div class="form-group col-md-4">
-                  <label for="Skill1">Skill1:</label>
-                  <input type="text" class="form-control" id="Skill1" name="Skill1" required>
-                </div>
-
-                <div class="form-group col-md-4">
-                  <label for="Skill2">Skill2:</label>
-                  <input type="text" class="form-control" id="Skill2" name="Skill2" required>
-                </div>
-
-                <div class="form-group col-md-4">
-                  <label for="Skill3">Skill3:</label>
-                  <input type="text" class="form-control" id="Skill3" name="Skill3" required>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group col-md-4">
-                  <label for="Achievement1">Achievement1:</label>
-                  <input type="text" class="form-control" id="Achievement1" name="Achievement1" required>
-                </div>
-
-                <div class="form-group col-md-4">
-                  <label for="Achievement2">Achievement2:</label>
-                  <input type="text" class="form-control" id="Achievement2" name="Achievement2" required>
-                </div>
-
-                <div class="form-group col-md-4">
-                  <label for="Achievement3">Achievement3:</label>
-                  <input type="text" class="form-control" id="Achievement3" name="Achievement3" required>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="Education">Education:</label>
-                  <select class="form-control" id="Education" name="Education" required>
-                    <option value="B.E">B.E</option>
-                    <option value="B.A.">B.A.</option>
-                    <option value="B.Sc.">B.Sc.</option>
-                    <option value="B.Ed.">B.Ed.</option>
-                    <option value="B.Sc.-B.Ed.">B.Sc.-B.Ed.</option>
-                    <option value="M.A.">M.A.</option>
-                  </select>
-                </div>
-
-                <div class="form-group col-md-6">
-                  <label for="qualification">Qualification:</label>
-                  <select class="form-control" id="qualification" name="qualification" required>
-                    <option value="B.E (Computer Engg)">B.E (Computer Engg)</option>
-                    <option value="B.A. (Bachelor of Arts)">B.A. (Bachelor of Arts)</option>
-                    <option value="B.Sc. (Bachelor of Science)">B.Sc. (Bachelor of Science)</option>
-                    <option value="B.Ed. (Bachelor of Education)">B.Ed. (Bachelor of Education)</option>
-                    <option value="B.Sc.-B.Ed. Integrated Course">B.Sc.-B.Ed. Integrated Course</option>
-                    <option value="M.A. in English*">M.A. in English*</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="maxStudentsHandled">Maximum Students Handled:</label>
-                  <input type="number" class="form-control" id="maxStudentsHandled" name="maxStudentsHandled" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="Franchiseid">Franchise Id</label>
-                  <input type="number" class="form-control" id="Franchiseid" name="Franchiseid" required>
-                </div>
-              </div>
-              <!-- <button type="submit" name="submit" class="btn btn-primary d-block mx-auto mb-3  mt-4" style="width: 200px;">Update Faculty</button> -->
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" name="submit" class="btn btn-primary">Update</button>
-          </div>
+            </div>
+            <!--main closing-->
         </div>
-      </div>
     </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
 
 
-  </div>
-  <script src="js/jquery-3.3.1.slim.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery-3.3.1.min.js"></script>
-
-
-  <script type="text/javascript">
+    <script type="text/javascript">
     $(document).ready(function() {
-      $(".xp-menubar").on('click', function() {
-        $("#sidebar").toggleClass('active');
-        $("#content").toggleClass('active');
-      });
+        $('#sidebarCollapse').on('click', function() {
+            $('#sidebar').toggleClass('active');
+            $('#content').toggleClass('active');
+        });
 
-      $('.xp-menubar,.body-overlay').on('click', function() {
-        $("#sidebar,.body-overlay").toggleClass('show-nav');
-      });
+        $('.more-button,.body-overlay').on('click', function() {
+            $('#sidebar,.body-overlay').toggleClass('show-nav');
+        });
 
     });
+    </script>
 
-    $(document).ready(function() {
-      $("#myTable").dataTable();
-    });
-  </script>
-  <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js">
-    let table = new DataTable('#myTable');
-  </script>
 </body>
 
 </html>

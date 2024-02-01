@@ -1,34 +1,25 @@
-
 <?php
 require 'connection.php';
-// Check connection
-if ($con->connect_error) {
-    die("Connection failed: " . $con->connect_error);
-}
 
-// Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve data from the form
-    $aboutUsText = $_POST['aboutustext']; // Assuming the textarea has name="aboutustext"
-    $aboutUsImage = $_FILES['aboutusimage']['name']; // Assuming the file input has name="aboutusimage"
+    $memberName = $_POST['memberName'];
+    $memberRole = $_POST['memberRole'];
 
-    // Move uploaded file to a specific directory (you may want to adjust the path)
-    $uploadDirectory = "image/";
-    $uploadedFilePath = $uploadDirectory . basename($aboutUsImage);
-
-    move_uploaded_file($_FILES['aboutusimage']['tmp_name'], $uploadedFilePath);
+    // File upload handling
+    $targetDirectory = "image/";
+    $memberImage = $targetDirectory . basename($_FILES['memberImage']['name']);
+    move_uploaded_file($_FILES['memberImage']['tmp_name'], $memberImage);
 
     // Perform SQL query to insert data into the database
-    $sql = "INSERT INTO about_us (about_us_text, about_us_image) VALUES ('$aboutUsText', '$uploadedFilePath')";
+    $sql = "INSERT INTO team_members (name, role, image) VALUES ('$memberName', '$memberRole', '$memberImage')";
 
     if ($con->query($sql) === TRUE) {
-        echo "Data inserted successfully";
-        header('Location: aboutus.php');
+        header('Location: teammembers.php');
+
 
     } else {
         echo "Error: " . $sql . "<br>" . $con->error;
-        header('Location: aboutus.php');
-
     }
 }
 ?>
@@ -102,63 +93,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			
 			
 			<div class="main-content">
-            <div class="container mt-5">
-                <!-- About Us Section -->
-                <div class="about-us-section">
-                    <form id="updateAboutUsForm" action="" method="post"
-                        enctype="multipart/form-data" class="form-horizontal">
+            <section class="add-team-member">
+                <div class="container">
+                    <h2 class="text-center mt-3">Add Team Member</h2>
+                    <form id="addTeamMemberForm" action="teammembers.php" method="post" enctype="multipart/form-data">
                         <div class="form-row align-items-center">
-                            <div class="form-group col-md-5">
-                                <label for="aboutustext">About Us Text:</label>
-                                <textarea class="form-control" id="aboutustext" name="aboutustext" rows="2"
-                                    required></textarea>
+                            <div class="form-group col-md-4">
+                                <label for="memberName">Name:</label>
+                                <input type="text" class="form-control" id="memberName" name="memberName" required>
                             </div>
-                            <div class="form-group col-md-5" style="margin-top:-20px;">
-                                <label for="aboutusimage">About Image:</label>
-                                <div class="border p-1" style="border-radius: 5px;">
-                                    <input type="file" class="form-control-file" id="aboutusimage" name="aboutusimage"
+                            <div class="form-group col-md-3">
+                                <label for="memberRole">Role:</label>
+                                <input type="text" class="form-control" id="memberRole" name="memberRole" required>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="memberImage">Upload Image:</label>
+                                <div class="border p-1" style="border-radius:5px;">
+                                    <input type="file" class="form-control-file" id="memberImage" name="memberImage"
                                         accept="image/*" required>
                                 </div>
                             </div>
                             <div class="form-group col-md-2">
-                                <input type="submit" class="btn btn-primary mt-3" value="Update">
+                                <input type="submit" name="submit" class="btn btn-primary mt-4" value="Update">
                             </div>
                         </div>
                     </form>
-                    <table id="dataTable" class="table mt-4">
+
+                    <table id="teamMembersTable" class="table mt-4">
                         <thead>
                             <tr>
-                                <th>About Us Text</th>
-                                <th>About Image</th>
-                                <th>Operation</th>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Image</th>
+                                <th>Operations</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php
+                            $sql = "SELECT * FROM team_members";
+                            $result = $con->query($sql);
                             
-                        <?php
-                            // Perform SQL query to fetch data from the database
-                                $sql = "SELECT about_us_text, about_us_image FROM about_us";
-                                $result = $con->query($sql);
-
-                                // Check if the query was successful
-                                if ($result) {
-                                    // Fetch data and display it in the table
-                                    while ($row = $result->fetch_assoc()) {
-                                        echo "<tr>";
-                                        echo "<td width='700'>" . $row['about_us_text'] . "</td>";
-                                        echo "<td><img src='" . $row['about_us_image'] . "' width='100' height='100'></td>"; // Assuming image path is stored in the database
-                                        echo "<td><button class='btn btn-primary'>Edit</button></td>";
-                                        echo "</tr>";
-                                    }
-                                } else {
-                                    echo "Error: " . $sql . "<br>" . $con->error;
+                            // Check if the query was successful
+                            if ($result) {
+                                // Fetch data and display it in the table
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<tr>";
+                                    echo "<td>" . $row['name'] . "</td>";
+                                    echo "<td>" . $row['role'] . "</td>";
+                                    echo "<td><img src='" . $row['image'] . "' width='100' height='100'></td>"; // Assuming image path is stored in the database
+                                    echo "<td><button class='btn btn-primary' onclick='editMember(" . $row['id'] . ")'>Edit</button></td>";
+                                    echo "</tr>";
                                 }
-
-                        
-                        ?><!-- Data will be dynamically inserted here -->
+                            } else {
+                                echo "Error: " . $sql . "<br>" . $con->error;
+                            }
+                            
+                            ?><!-- Data will be dynamically inserted here -->
                         </tbody>
                     </table>
                 </div>
+            </section>
 			
 			</div>
         </div>
