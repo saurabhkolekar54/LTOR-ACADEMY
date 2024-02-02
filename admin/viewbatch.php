@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <title>cms dashboard
+        <title>View Batch
 		</title>
 	    <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -69,16 +69,18 @@
 			
 			
 			<div class="main-content">
-            <div class="container mt-5">
+        
+        <div class="container">
+              <h2 class="text-center" >View Batch</h2>
         <table class="table table-striped table-bordered mt-10" id="myTable">
           <thead>
             <tr>
               <th scope="col">Batch Id</th>
-              <th scope="col">Starting Date</th>
-              <th scope="col">Duration</th>
               <th scope="col">Batch Name</th>
+              <th scope="col">Starting Date</th>
               <th scope="col">Ending Date</th>
               <th scope="col">Mode</th>
+              <th scope="col">Duration</th>
               <th scope="col">Batch Capacity</th>
               <th scope="col">Faculty Name</th>
               <th scope="col">Franchiseid</th>

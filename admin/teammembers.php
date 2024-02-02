@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <title>cms dashboard
+        <title>Team Members
 		</title>
 	    <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			<div class="main-content">
             <section class="add-team-member">
                 <div class="container">
-                    <h2 class="text-center mt-3">Add Team Member</h2>
+                    <h2 class="text-center">Add Team Member</h2>
                     <form id="addTeamMemberForm" action="teammembers.php" method="post" enctype="multipart/form-data">
                         <div class="form-row align-items-center">
                             <div class="form-group col-md-4">

@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <title>cms dashboard
+        <title>About Us
 		</title>
 	    <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -102,8 +102,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			
 			
 			<div class="main-content">
-            <div class="container mt-5">
+            <div class="container">
                 <!-- About Us Section -->
+                <h2 class="text-center" >About Us</h2>
                 <div class="about-us-section">
                     <form id="updateAboutUsForm" action="" method="post"
                         enctype="multipart/form-data" class="form-horizontal">

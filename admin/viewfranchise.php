@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <title>cms dashboard
+        <title>View Franchise
 		</title>
 	    <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -69,7 +69,8 @@
 			
 			
 			<div class="main-content">
-            <div class="container mt-5">
+        <div class="container">
+              <h2 class="text-center" >View Franchise</h2>
         <table class="table table-striped table-bordered mt-10" id="myTable">
           <thead>
             <tr>
