@@ -85,7 +85,7 @@
                             <div class="dropdown-menu" aria-labelledby="franchiseDropdown">
                                 <a class="dropdown-item" href="Inquiry.php">Inquiry</a>
                                 <a class="dropdown-item" href="OurFranchise.php">Our Franchise</a>
-                                <a class="dropdown-item" href="Inquiry.php">Criteria for Franchise</a>
+                                <a class="dropdown-item" href="CriteriaFranchise.php">Criteria for Franchise</a>
                             </div>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="Events.php">Events</a></li>

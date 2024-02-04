@@ -121,8 +121,8 @@
                 </a>
             </li>
             <li class="dropdown">
-                <a href="reviews.php" aria-expanded="false">
-                    <i class="material-icons">star</i> Reviews
+                <a href="testimonials.php" aria-expanded="false">
+                    <i class="material-icons">star</i> Testimonials
                 </a>
             </li>
  

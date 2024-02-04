@@ -4,89 +4,134 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criteria Franchise</title>
-    <link rel="stylesheet" href="css/criteriafranchise.css">
+    <link rel="stylesheet" href="css/criteria.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">     
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <img src="image/icon.jpeg" alt="Education Logo">
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.php">Home</a></li>
-                <li>
-                    <a href="#">Courses</a>
-                    <ul class="submenu">
-                        <li><a href="SpokenEnglish.php">Spoken English</a></li>
-                        <li><a href="ConfidenceBuilding.php">Confidence Building</a></li>
-                        <li><a href="PublicSpeaking.php">Public Speaking</a></li>
-                        <li><a href="SuccessKey.php">Success Key</a></li>
-                        <li><a href="LeadershipQuality.php">Leadership Quality</a></li>
-                        <li><a href="LRBrain.php">L & R Brain</a></li>
-                        <li><a href="StudySkills.php">Study Skills</a></li>
-                        <li><a href="Discipline.php">Discipline</a></li>
-                        <li><a href="GoodRelationship.php">Good Relationship</a></li>
-                        <li><a href="PersonalityDevelopment.php">Personality Development</a></li>
-                        <li><a href="TimeManagement.php">Time Management</a></li>
-                    </ul>
-                </li>
-                <li><a href="gallery.php">Gallery</a>
-                    <!-- <ul class="submenu">
-                        <li><a href="gallery.php">Photos</a></li>
-                        <li><a href="#">Events Photo</a></li>
-                    </ul> -->
-                </li>
-                <li><a href="#">Business Activities</a>
-                    <ul class="submenu">
-                        <li><a href="Training.php">Training</a></li>
-                        <li><a href="Placement.php">Placement</a></li>
-                        <li><a href="Marketing.php">Marketing</a></li>
-                        <li><a href="BusinessMeetUp.php">Business Meet-up</a></li>
-                        <li><a href="Exhibition.php">Exhibition</a></li>
-                        <li><a href="Seminars.php">Seminars</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Franchise</a>
-                    <ul class="submenu">
-                        <li><a href="Inquiry.php">Inquiry</a></li>
-                        <li><a href="OurFranchise.php">Our Franchise</a></li>
-                        <li><a href="CriteriaFranchise.php">Criteria for Franchise</a></li>
-                    </ul>
-                </li>
-                <li><a href="Events.php">Events</a>
-                   
-                </li>
-                <li><a href="index.php#about-us">About Us</a></li>
-                <li><a href="Career.php">Career</a>
-                </li>
-                <li><a href="Internship.php">Internship</a>
-                </li>
-            </ul>
-            <div class="user-account">
-                <!-- You can include login/signup buttons or user account information here -->
-                <a href="#">Login</a>
-                <a href="#">Sign Up</a>
-            </div>
-        </nav>
-    </header>  
+    <?php include('navbar.php')?>
+    <div class="container mt-5">
+    <header class="jumbotron text-center">
+        <h1>Franchise Opportunity</h1>
+        <p class="lead">Join our mission to provide quality education!</p>
+    </header>
 
-    
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="copyright">
-                    <p>&copy; 2024 Your Website. All rights reserved.</p>
-                </div>
-                <div class="social-media-icons">
-                    <a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" target="_blank" title="Pinterest"><i class="fab fa-pinterest"></i></a>                    
-                    <a href="#" target="_blank" title="Youtube"><i class="fab fa-youtube"></i></a>                    
-                </div>
+    <section class="criteria-section mt-5">
+        <div class="row" >
+            <div class="col-md-8">
+                <h3>1. Business Experience</h3>
+                <p>Assess the prospective franchisee's background in business management, particularly in the service or education sector. Experience in managing similar operations can be beneficial.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="image/business-experience.jpeg" alt="Business Experience Image" class="img-fluid">
             </div>
         </div>
-    </footer>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="image/passion-education.jpeg" alt="Passion for Education Image">
+            </div>
+        <div class="col-md-8">
+            <h3>2. Passion for Education</h3>
+            <p>Look for individuals passionate about education and dedicated to fostering learning environments conducive to student success.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <h3>3. Financial Stability</h3>
+            <p>Evaluate the financial stability of the potential franchisee to ensure they have the capital required to invest in the franchise and sustain operations during the initial growth phase.</p>
+        </div>
+        <div class="col-md-4">
+            <img src="image/financial-stability.jpeg" alt="Financial Stability Image">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="image/brand-standards.jpeg" alt="Brand Standards Image">
+        </div>
+        <div class="col-md-8">
+            <h3>4. Commitment to Brand Standards</h3>
+            <p>Ensure that the franchisee is committed to upholding the brand's standards for quality, curriculum delivery, and customer service.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <h3>5. Location Analysis</h3>
+            <p>Analyze the proposed location for the franchise to ensure it aligns with the target market and has sufficient demand for the classes being offered.</p>
+        </div>
+        <div class="col-md-4">
+            <img src="image/location-analysis.jpeg" alt="Location Analysis Image">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="image/training-support.jpeg" alt="Training and Support Image">
+        </div>
+        <div class="col-md-8">
+            <h3>6. Training and Support</h3>
+            <p>Assess the franchisee's willingness to undergo training provided by the franchisor and their ability to implement and adhere to standardized operating procedures.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <h3>7. Marketing and Sales Skills</h3>
+            <p>Consider the franchisee's ability to market and promote the classes effectively within the local community to attract students and drive enrollment.</p>
+        </div>
+        <div class="col-md-4">
+            <img src="image/marketing-sales.jpeg" alt="Marketing and Sales Skills Image">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="image/legal-compliance.jpeg" alt="Legal and Regulatory Compliance Image">
+        </div>
+        <div class="col-md-8">
+            <h3>8. Legal and Regulatory Compliance</h3>
+            <p>Ensure that the franchisee understands and complies with all legal and regulatory requirements related to operating an educational institution in the specified location.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <h3>9. Communication and Collaboration</h3>
+            <p>Look for individuals who are effective communicators and team players, capable of collaborating with the franchisor and other franchisees to share best practices and drive collective success.</p>
+        </div>
+        <div class="col-md-4">
+            <img src="image/communication-collaboration.jpeg" alt="Communication and Collaboration Image">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="image/long-term-vision.jpeg" alt="Long-Term Vision Image">
+        </div>
+        <div class="col-md-8">
+            <h3>10. Long-Term Vision</h3>
+            <p>Seek franchisees who demonstrate a long-term vision for the business and are committed to its growth and sustainability over time.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <h3>11. Infrastructure</h3>
+            <p>Should have minimum infrastructure for 50 students Batches, or ready to develop required infrastructure according to requirements.</p>
+        </div>
+        <div class="col-md-4">
+            <img src="image/infrastructure.jpeg" alt="Infrastructure Image">
+        </div>
+    </div>
+        <!-- Repeat the above structure for other criteria -->
+
+    </section>
+</div>
+
+
+
+
+
+    <?php include('footer.php');?>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>

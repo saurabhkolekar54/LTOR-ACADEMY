@@ -147,6 +147,10 @@ if ($result) {
                     if ($result) {
                         // Fetch data and dynamically generate team members
                         while ($row = $result->fetch_assoc()) {
+                            
+                            $status = $row['status'];
+                if ($status == 1)
+                            {
                             echo '<div class="col-lg-3">';
                             echo '<div class="team-member">';
                             echo '<img src="admin/' . $row['image'] . '" alt="' . $row['name'] . '" class="img-fluid">';
@@ -156,6 +160,7 @@ if ($result) {
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
+                            }
                         }
                     } else {
                         echo "Error: " . $sql . "<br>" . $con->error;
@@ -339,84 +344,44 @@ if ($result) {
                     style="color: #fff"></i></div>
             <div class="testimonials-carousel">
                 <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="testi-item">
-                                <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
-                                <div class="testimonials-text">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen
-                                        book.</p>
-                                    <a href="#" class="text-link"></a>
-                                    <div class="testimonials-avatar">
-                                        <h3>John Doe</h3>
-                                        <h4>Owner</h4>
-                                    </div>
-                                </div>
-                                <div class="testimonials-text-after"><i class="fa fa-quote-left"></i></div>
-                            </div>
-                        </div>
+                    <?php
+                    // Retrieve testimonial data from the database
+                    $sql = "SELECT * FROM testimonials";
+                    $result = $con->query($sql);
 
-                        <!--second--->
-                        <div class="swiper-slide">
-                            <div class="testi-item">
-                                <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
-                                <div class="testimonials-text">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen
-                                        book.</p>
-                                    <a href="#" class="text-link"></a>
-                                    <div class="testimonials-avatar">
-                                        <h3>Doe Boe</h3>
-                                        <h4>Director</h4>
-                                    </div>
-                                </div>
-                                <div class="testimonials-text-after"><i class="fa fa-quote-left"></i></div>
-                            </div>
-                        </div>
-                        <!--third-->
+                    // Check if there are testimonials in the database
+                    if ($result->num_rows > 0) {
+                        echo '<div class="swiper-wrapper">';
+                        
+                        // Loop through each testimonial
+                        while ($row = $result->fetch_assoc()) 
+                        {
+                            $status = $row['status'];
+                            if ($status == 1)
+                            {
+                                echo '<div class="swiper-slide">
+                                        <div class="testi-item">
+                                            <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
+                                            <div class="testimonials-text">
+                                                <p>' . $row['testimonialText'] . '</p>
+                                                <a href="#" class="text-link"></a>
+                                                <div class="testimonials-avatar">
+                                                    <h3>' . $row['studentName'] . '</h3>
+                                                    <h4>' . $row['courseName'] . '</h4>
+                                                </div>
+                                            </div>
+                                            <div class="testimonials-text-after"><i class="fa fa-quote-left"></i></div>
+                                        </div>
+                                    </div>';
+                        }
+                    }
+                        echo '</div>';
+                    } else {
+                        echo "No testimonials found!";
+                    }
 
-                        <div class="swiper-slide">
-                            <div class="testi-item">
-                                <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
-                                <div class="testimonials-text">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen
-                                        book.</p>
-                                    <a href="#" class="text-link"></a>
-                                    <div class="testimonials-avatar">
-                                        <h3>Boe Doe</h3>
-                                        <h4>Developer</h4>
-                                    </div>
-                                </div>
-                                <div class="testimonials-text-after"><i class="fa fa-quote-left"></i></div>
-                            </div>
-                        </div>
-
-                        <!--fourth-->
-                        <div class="swiper-slide">
-                            <div class="testi-item">
-                                <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
-                                <div class="testimonials-text">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen
-                                        book.</p>
-                                    <a href="#" class="text-link"></a>
-                                    <div class="testimonials-avatar">
-                                        <h3>Doe John</h3>
-                                        <h4>Designer</h4>
-                                    </div>
-                                </div>
-                                <div class="testimonials-text-after"><i class="fa fa-quote-left"></i></div>
-                            </div>
-                        </div>
-                        <!--testi end-->
-
-                    </div>
+                    
+                    ?>
                 </div>
             </div>
 

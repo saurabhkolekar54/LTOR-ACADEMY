@@ -22,24 +22,26 @@
             </div>
             <div class="container">
                 <?php
-                                
-                    $sql = "SELECT id, image_path, image_text FROM gallery";
-                    $result = $conn->query($sql);
+                    require 'connection.php'; 
+                    $sql = "SELECT * FROM gallery";
+                    $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             $imagePath = $row["image_path"];
-                            $imageText = $row["image_text"];
-
+                            $imageText = $row["description"];                          
+                            $status = $row['status'];
+                            if ($status == 1){
                             echo '<div class="card">
                                     <div class="card-image">
-                                      <a href="' . $imagePath . '" data-fancybox="gallery">
-                                        <img src="' . $imagePath . '" alt="Image Gallery">
+                                      <a href="admin/' . $imagePath . '" data-fancybox="gallery">
+                                        <img src="admin/' . $imagePath . '" alt="Image Gallery">
                                         <div class="image-text">' . $imageText . '</div>
                                       </a>
                                     </div>
                                   </div>';
                         }
+                    }
                     } else {
                         echo "No images found in the database.";
                     }

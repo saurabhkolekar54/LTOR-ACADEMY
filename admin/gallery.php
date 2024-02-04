@@ -25,7 +25,39 @@
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($con);
         }
+    }  
+    
+    if (isset($_POST['updategallery'])) {
+        // Get values from the form
+        $gallery_id = isset($_POST["gallery_id"]) ? $_POST["gallery_id"] : '';
+        $new_description = isset($_POST["gallery_description"]) ? mysqli_real_escape_string($con, $_POST["gallery_description"]) : '';
+    
+        // Handle image upload if a new image is selected
+        if (isset($_FILES["gallery_image"]) && $_FILES["gallery_image"]["size"] > 0) {
+            $target_dir = "image/";
+            $target_file = $target_dir . basename($_FILES["gallery_image"]["name"]);
+            move_uploaded_file($_FILES["gallery_image"]["tmp_name"], $target_file);
+    
+            // Update database with new image path
+            $sql_update_image = "UPDATE gallery SET image_path = '$target_file' WHERE id = $gallery_id";
+            $result_update_image = $con->query($sql_update_image);
+    
+            if (!$result_update_image) {
+                echo "Error updating image: " . $con->error;
+            }
+        }
+    
+        if (!empty($gallery_id)) {
+            // Update database with new description
+            $sql_update_description = "UPDATE gallery SET description = '$new_description' WHERE id = $gallery_id";
+            $result_update_description = $con->query($sql_update_description);
+        
+            if (!$result_update_description) {
+                echo "Error updating description: " . $con->error;
+            }
+        }
     }
+
 ?>
 
 <!doctype html>
@@ -45,13 +77,10 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
-	
-	
-	
+<script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 	<!--google material icon-->
-        <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
-      rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
   </head>
   <body>
   
@@ -97,10 +126,10 @@
 			
 			<div class="main-content">
             <section class="add-team-member">
-                <div class="container">
-                    <h2 class="text-center mt-3">Add Image in Gallery</h2>
+                <div class="container align-items-center">
+                    <h2 class="text-center">Add Image in Gallery</h2>
                     <form id="addTeamMemberForm" action="gallery.php" method="post" enctype="multipart/form-data">
-                        <div class="form-row align-items-center">
+                        <div class="form-row align-items-center mb-5">
                             <div class="form-group col-md-5">
                                 <label for="galleryImage">Upload Image:</label>
                                 <div class="border p-1" style="border-radius:5px;">
@@ -119,33 +148,49 @@
                         </div>
                     </form>
 
-                    <table id="galleryTable" class="table mt-4">
+                    <table class="table table-striped table-bordered mt-10" id="myTable">
                         <thead>
                             <tr>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Operations</th>
+                                <th class="text-center">Image</th>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">Enable and Disable</th>
+                                <th class="text-center">Operations</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php
-                                $sql = "SELECT image_path, description FROM gallery";
-                                $result = mysqli_query($con, $sql);
-
-                                // Check if the query was successful
-                                if ($result) {
-                                    // Fetch data and display it in the table
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        echo "<tr>";
-                                        echo "<td width='500'><img src='" . $row['image_path'] . "' width='200' height='200'></td>";
-                                        echo "<td>" . $row['description'] . "</td>";
-                                        echo "<td><button class='btn btn-primary'>Edit</button></td>"; // Add your edit button
-                                        echo "</tr>";
-                                    }
-                                } else {
-                                    echo "Error: " . $sql . "<br>" . mysqli_error($con);
-                                }
-                            ?>
+                        <tbody class="text-center">
+                        <?php
+                               $sqlRetrieve = "SELECT * FROM gallery";
+                               $result = $con->query($sqlRetrieve);
+                              
+                               if ($result->num_rows > 0) {                           
+                                while ($row = $result->fetch_assoc()) {
+                                    $status = $row['status'];
+                                    echo "<tr class='text-center'><td width='300'><img src='" . $row['image_path'] . "' width='100' height='100'></td><td>" . $row['description'] . "</td>";
+                                    echo '
+                                     <td>
+                                                <input type="checkbox" id="statusSwitch' . $row['id'] . '" data-toggle="toggle" ' . ($row['status'] == 1 ? 'checked' : '') . ' onchange="toggleStatus(' . $row['id'] . ', this.checked)">
+                                            </td>';
+                                
+                                    // JavaScript function to handle the toggle and redirect (outside the loop)
+                                    echo '<script>
+                                            function toggleStatus(memberId, isChecked) {
+                                                var status = isChecked ? 1 : 0;
+                                                window.location.href = "GalleryStatus.php?id=" + memberId + "&status=" + status;
+                                            }
+                                          </script>';
+                                    
+                                          echo '<td>
+                                          <button class="btn btn-primary edit-testimonial-btn" data-toggle="modal" data-target="#editGalleryModal">
+                                              Edit
+                                          </button> 
+                                      </td>
+                                  </tr>';
+                                      }
+                                
+                               } else {
+                                   echo "No Image found!";
+                               }
+                               ?>
                         </tbody>
                     </table>
                 </div>
@@ -153,6 +198,40 @@
 			</div>
         </div>
     </div>
+
+    <div class="modal fade" id="editGalleryModal" tabindex="-1" role="dialog" aria-labelledby="editGalleryModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="editGalleryModalLabel">Edit Gallery</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="gallery.php" method="post" enctype="multipart/form-data">
+                                                        <!-- Add hidden input for gallery ID or any unique identifier -->
+                                                        <input type="hidden" name="gallery_id" id="editGalleryId" value="">
+                                    
+                                                        <!-- Add input for image -->
+                                                        <div class="form-group">
+                                                            <label for="gallery_image">Gallery Image:</label>
+                                                            <input type="file" class="form-control" id="gallery_image" name="gallery_image">
+                                                        </div>
+                                    
+                                                        <!-- Add textarea for description -->
+                                                        <div class="form-group">
+                                                            <label for="gallery_description">Gallery Description:</label>
+                                                            <textarea class="form-control" id="gallery_description" name="gallery_description" rows="3"></textarea>
+                                                        </div>
+                                    
+                                                        <button type="submit" name="updategallery"class="btn btn-primary">Update gallery</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
      <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
    <script src="js/jquery-3.3.1.slim.min.js"></script>
@@ -173,10 +252,14 @@
             });
 			
         });
-
-   
-</script>
   
+$(document).ready(function() {
+        $("#myTable").dataTable();
+    });
+</script>
+<script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js">
+    let table = new DataTable('#myTable');
+    </script>
   </body>
   
   </html>

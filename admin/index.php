@@ -1,3 +1,70 @@
+<?php
+ require 'connection.php';
+
+if ($con->connect_error) {
+    die("Connection failed: " . $con->connect_error);
+}
+
+// Query to retrieve the count of students
+$sql = "SELECT COUNT(*) as student_count FROM studentinfo";
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $studentCount = $row['student_count'];
+} 
+else {
+    echo "No students found";
+}
+
+$sql1 = "SELECT COUNT(*) as faculty_count FROM facultyinfo";
+$result = $con->query($sql1);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $facultyCount = $row['faculty_count'];
+} 
+else {
+    echo "No faculty found";
+}
+
+$sql = "SELECT COUNT(*) as franchise_count FROM franchise";
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $franchiseCount = $row['franchise_count'];
+} 
+else {
+    echo "No franchise found";
+}
+
+$sql = "SELECT COUNT(*) as course_count FROM course";
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $courseCount = $row['course_count'];
+} 
+else {
+    echo "No course found";
+}
+
+$sql = "SELECT COUNT(*) as batch_count FROM batch";
+$result = $con->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $batchCount = $row['batch_count'];
+} 
+else {
+    echo "No batch found";
+}
+
+// Close the database connection
+$con->close();
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -73,12 +140,12 @@
                         <div class="card card-stats">
                             <div class="card-header">
                                 <div class="icon icon-warning">
-                                    <span class="material-icons">equalizer</span>
+                                    <span class="material-icons">people</span>
                                 </div>
                             </div>
                             <div class="card-content">
-                                <p class="category"><strong>Visits</strong></p>
-                                <h3 class="card-title">70,340</h3>
+                                <p class="category"><strong>Students</strong></p>
+                                <h3 class="card-title"><?php echo"$studentCount"?></h3>
                             </div>
                         </div>
                     </div>
@@ -86,13 +153,13 @@
                         <div class="card card-stats">
                             <div class="card-header">
                                 <div class="icon icon-rose">
-                                    <span class="material-icons">shopping_cart</span>
+                                    <span class="material-icons">school</span>
 
                                 </div>
                             </div>
                             <div class="card-content">
-                                <p class="category"><strong>Orders</strong></p>
-                                <h3 class="card-title">102</h3>
+                                <p class="category"><strong>Faculty</strong></p>
+                                <h3 class="card-title"><?php echo"$facultyCount"?></h3>
                             </div>
 
                         </div>
@@ -101,30 +168,14 @@
                         <div class="card card-stats">
                             <div class="card-header">
                                 <div class="icon icon-success">
-                                    <span class="material-icons">attach_money
+                                    <span class="material-icons">store
                                     </span>
 
                                 </div>
                             </div>
                             <div class="card-content">
-                                <p class="category"><strong>Revenue</strong></p>
-                                <h3 class="card-title">$23,100</h3>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-header">
-                                <div class="icon icon-info">
-                                    <span class="material-icons">
-                                        follow_the_signs
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <p class="category"><strong>Followers</strong></p>
-                                <h3 class="card-title">+245</h3>
+                                <p class="category"><strong>Franchise</strong></p>
+                                <h3 class="card-title"><?php echo"$franchiseCount"?></h3>
                             </div>
 
                         </div>
@@ -134,13 +185,29 @@
                             <div class="card-header">
                                 <div class="icon icon-info">
                                     <span class="material-icons">
-                                        follow_the_signs
+                                        assignment
                                     </span>
                                 </div>
                             </div>
                             <div class="card-content">
-                                <p class="category"><strong>Followers</strong></p>
-                                <h3 class="card-title">+245</h3>
+                                <p class="category"><strong>Batch</strong></p>
+                                <h3 class="card-title"><?php echo"$batchCount"?></h3>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header">
+                                <div class="icon icon-info">
+                                    <span class="material-icons">
+                                        book
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <p class="category"><strong>Courses</strong></p>
+                                <h3 class="card-title"><?php echo"$courseCount"?></h3>
                             </div>
 
                         </div>
