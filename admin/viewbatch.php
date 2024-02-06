@@ -1,5 +1,3 @@
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -27,10 +25,6 @@
       rel="stylesheet">
   </head>
   <body>
-  
-
-
-
 <div class="wrapper">
 
 
@@ -117,10 +111,7 @@
               <td>' . $facultyName . '</td>
               <td>' . $franchiseId . '</td>
               <td>
-              <div class="btn-group" role="group">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update</button> &nbsp
-             <button class="btn btn-danger btn-sm "><a href="delete.php?deleteid=' . $srno . '" class="text-light">Delete</a></button>
-              </div>
+              <a href="updatebatch.php? updateid=' . $srno . '" class="btn btn-primary text-light">Update</a>
           </td>
           
             </tr>';

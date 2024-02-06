@@ -1,15 +1,8 @@
 <?php
 // Database connection details
-$servername = "localhost:3307";
-$username = "root";
-$password = "";
-$dbname = "ltor_academy"; // Updated database name
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
+require 'connection.php';
 // Check connection
-if ($conn->connect_error) {
+if ($con->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
@@ -32,17 +25,17 @@ if(isset($_POST['sub'])) {
     $sql = "INSERT INTO inquiry VALUES ('','$name','$countryCode', '$contact','$email', '$country', '$state', '$district', '$subdistrict', '$village', '$zip','$subject')";
 
     // Execute query
-    if ($conn->query($sql) === TRUE) {
+    if ($con->query($sql) === TRUE) {
         header("Location: inquiry.php");
         exit();
 
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql . "<br>" . $con->error;
     }
 }
 
 // Close the database connection
-$conn->close();
+$con->close();
 ?>
 
 <!DOCTYPE html>

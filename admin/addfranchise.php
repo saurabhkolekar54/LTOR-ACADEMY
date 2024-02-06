@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
     $district = $_POST['district'];
     $subdistrict = $_POST['subdistrict'];
     $village = $_POST['village'];
-    $pincode = $_POST['pincode'];
+    $pincode = $_POST['zip'];
 
     // Validate image extension
     $validate_img_extension = in_array($_FILES["franchiseImage"]["type"], ["image/jpg", "image/jpeg", "image/png"]);

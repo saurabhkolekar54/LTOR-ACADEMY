@@ -5,7 +5,7 @@
             </div>
             <ul class="list-unstyled components" style="margin-top:70px">
 			<li  class="active">
-                    <a href="#" class="dashboard"><i class="material-icons">dashboard</i><span>Dashboard</span></a>
+                    <a href="index.php" class="dashboard"><i class="material-icons">dashboard</i><span>Dashboard</span></a>
                 </li>
 		
 		      <!-- <div class="small-screen navbar-display">

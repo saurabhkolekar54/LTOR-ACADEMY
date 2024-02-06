@@ -122,7 +122,7 @@ if ($result) {
                 </div>
                 <div class="col-md-5">
                     <div class="image">
-                        <img src="<?php echo $aboutUsImage; ?>" alt="About Us Image" class="img-fluid">
+                        <img src="admin/<?php echo $aboutUsImage; ?>" alt="About Us Image" class="img-fluid">
                     </div>
                 </div>
             </div>

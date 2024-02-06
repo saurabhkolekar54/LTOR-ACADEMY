@@ -31,7 +31,7 @@
               if ($result->num_rows > 0) {
                   while ($row = $result->fetch_assoc()) {
                       echo '<div class="card mx-4 g-4" style="width: 18rem;">
-                              <img src="' . $row['t_image'] . '" class="card-img-top" alt="..." style="height: 200px;">
+                              <img src="admin/image/' . $row['t_image'] . '" class="card-img-top" alt="..." style="height: 200px;">
                               <div class="card-body">
                                   <p class="card-text p-2">
                                       <i class="fas fa-map-marker-alt location-icon mb-2"></i> ' . $row['t_location'] . ', ' . $row['t_district'] . ', ' . $row['t_state'] . '<br>
