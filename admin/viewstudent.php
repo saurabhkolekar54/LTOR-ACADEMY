@@ -25,15 +25,9 @@
 </head>
 
 <body>
-
-
-
-
     <div class="wrapper">
-
-
         <div class="body-overlay"></div>
-        <?php require 'sidebar.php'?>
+        <?php require 'sidebar.php' ?>
         <!-- Page Content  -->
         <div id="content" style="background-color:white;">
 
@@ -47,14 +41,11 @@
 
                         <a class="navbar-brand" href="#"> Dashboard </a>
 
-                        <button class="d-inline-block d-lg-none ml-auto more-button" type="button"
-                            data-toggle="collapse" data-target="#navbarSupportedContent"
-                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="d-inline-block d-lg-none ml-auto more-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="material-icons">more_vert</span>
                         </button>
 
-                        <div class="collapse navbar-collapse d-lg-block d-xl-block d-sm-none d-md-none d-none"
-                            id="navbarSupportedContent">
+                        <div class="collapse navbar-collapse d-lg-block d-xl-block d-sm-none d-md-none d-none" id="navbarSupportedContent">
                             <ul class="nav navbar-nav ml-auto">
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">
@@ -70,6 +61,7 @@
 
             <div class="main-content">
                 <div class="container mt-5">
+                    <h2 class="text-center">View Student</h2>
                     <table class="table table-striped table-bordered mt-10" id="myTable">
                         <thead>
                             <tr>
@@ -86,21 +78,21 @@
                         </thead>
                         <tbody>
                             <?php
-                        require 'connection.php';                        
-                        $sql = "SELECT * FROM studentinfo";
-                        $result = mysqli_query($con, $sql);
+                            require 'connection.php';
+                            $sql = "SELECT * FROM studentinfo";
+                            $result = mysqli_query($con, $sql);
 
-                        if ($result) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $srno = $row['t_id'];
-                                $name = $row['t_name'];
-                                $email = $row['t_email'];
-                                $contact = $row['t_contact'];
-                                $gender = $row['t_gender'];
-                                $courseId = $row['t_courseid'];
-                                $batchId = $row['t_batchid'];
-                                $franchiseId = $row['t_franchiseid'];
-                                echo '<tr>
+                            if ($result) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $srno = $row['t_id'];
+                                    $name = $row['t_name'];
+                                    $email = $row['t_email'];
+                                    $contact = $row['t_contact'];
+                                    $gender = $row['t_gender'];
+                                    $courseId = $row['t_courseid'];
+                                    $batchId = $row['t_batchid'];
+                                    $franchiseId = $row['t_franchiseid'];
+                                    echo '<tr>
                                         <th scope="row">' . $srno . '</th>
                                         <td>' . $name . '</td>
                                         <td>' . $email . '</td>
@@ -109,12 +101,12 @@
                                         <td>' . $courseId . '</td>
                                         <td>' . $batchId . '</td>
                                         <td>' . $franchiseId . '</td>
-                                        <td><a href="updateStudent.php? studentId=' . $srno . '" class="btn btn-primary text-light">Update</a>
-                                        </td>
+                                        <td><a href="updateStudent.php? updateid=' . $srno . '" class="btn btn-primary text-light">Update</a>
+                                        
                                     </tr>';
+                                }
                             }
-                        }
-                        ?>
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -131,24 +123,27 @@
 
 
     <script type="text/javascript">
-    $(document).ready(function() {
-        $('#sidebarCollapse').on('click', function() {
-            $('#sidebar').toggleClass('active');
-            $('#content').toggleClass('active');
-        });
+        $(document).ready(function() {
+            $('#sidebarCollapse').on('click', function() {
+                $('#sidebar').toggleClass('active');
+                $('#content').toggleClass('active');
+            });
 
-        $('.more-button,.body-overlay').on('click', function() {
-            $('#sidebar,.body-overlay').toggleClass('show-nav');
-        });
+            $('.more-button,.body-overlay').on('click', function() {
+                $('#sidebar,.body-overlay').toggleClass('show-nav');
+            });
 
-    });
-    $(document).ready(function() {
+        });
+   
+        $(document).ready(function() {
         $("#myTable").dataTable();
     });
-    </script>
-    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js">
+</script>
+<script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js">
     let table = new DataTable('#myTable');
     </script>
+  
+
 </body>
 
 </html>

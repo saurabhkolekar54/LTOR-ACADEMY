@@ -125,6 +125,16 @@
                     <i class="material-icons">star</i> Testimonials
                 </a>
             </li>
+            <li class="dropdown">
+                <a href="testimonials.php" aria-expanded="false">
+                    <i class="material-icons">star</i> View Application
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="testimonials.php" aria-expanded="false">
+                    <i class="material-icons">star</i>Add Events
+                </a>
+            </li>
  
                
             </ul>

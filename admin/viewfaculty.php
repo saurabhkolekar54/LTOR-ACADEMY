@@ -19,19 +19,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-
-
-
-
     <!--google material icon-->
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
-
-
-
-
     <div class="wrapper">
 
 
@@ -73,7 +65,7 @@
 
             <div class="main-content">
                 
-                <div class="container">
+                <div class="container-fluid mt-5">
                 <h2 class="text-center" >View Faculty</h2>
         <table class="table table-striped table-bordered mt-10" id="myTable">
           <thead>
@@ -138,12 +130,9 @@
                 <td>' . $education . '</td>
                 <td>' . $qualification . '</td>
                 <td>' . $franchiseId . '</td>
-                <td>
-                <div class="btn-group" role="group">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Update</button> &nbsp
-               <button class="btn btn-danger btn-sm "><a href="delete.php?deleteid=' . $srno . '" class="text-light">Delete</a></button>
-                </div>
-                </td>
+                
+                <td><a href="updatefaculty.php? updateid=' . $srno . '" class="btn btn-primary text-light">Update</a>
+            
                 </tr>';
               }
             }
@@ -178,13 +167,15 @@
         });
 
     });
+   
+   
     $(document).ready(function() {
         $("#myTable").dataTable();
     });
-    </script>
-    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js">
+</script>
+<script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js">
     let table = new DataTable('#myTable');
     </script>
-</body>
+  </body>
 
 </html>
