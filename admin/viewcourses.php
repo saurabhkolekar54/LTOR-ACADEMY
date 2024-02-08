@@ -72,6 +72,7 @@
                 <th scope="col">Course Image</th>
                 <th scope="col">Course Syllabus</th>
                 <th scope="col">Course Mode</th>
+                <th scope="col">Status</th>
                 <th scope="col">Operation</th>
               </tr>
             </thead>
@@ -89,6 +90,7 @@
                   $image = $row['t_image'];
                   $syllabus = $row['t_syllabus'];
                   $mode = $row['t_mode'];
+                  $status = $row['status'];
                   echo '<tr>
                 <th scope="row">' . $srno . '</th>
                 <td>' . $name . '</td>
@@ -97,7 +99,15 @@
                 <td><img src="image/' . $image . '" width="100" height="100"></td>
                 <td>' . $syllabus . '</td>
                 <td>' . $mode . '</td>
-                
+                <td>
+                        <input type="checkbox" id="statusSwitch' . $srno . '" data-toggle="toggle" ' . ($row['status'] == 1 ? 'checked' : '') . ' onchange="toggleStatus(' . $srno . ', this.checked)">
+                      </td>
+                      <script>
+                      function toggleStatus(memberId, isChecked) {
+                          var status = isChecked ? 1 : 0;
+                          window.location.href = "CourseStatus.php?id=" + memberId + "&status=" + status;
+                      }
+                    </script>
                 <td><a href="updatecourse.php? updateid=' . $srno . '" class="btn btn-primary text-light">Update</a>
 
                 

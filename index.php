@@ -214,28 +214,28 @@ if ($result) {
             <div class="slider">
                 <div class="list d-flex">
                     <div class="item">
-                        <img src="img/dish1.jpg" alt="">
+                        <img src="image/index1.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="img/dish2.jpg" alt="">
+                        <img src="image/index2.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="img/dish3.jpg" alt="">
+                        <img src="image/index1.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="img/dish4.jpg" alt="">
+                        <img src="image/index2.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="img/dish5.jpg" alt="">
+                        <img src="image/index5.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="img/dish6.jpg" alt="">
+                        <img src="image/index1.jpeg" alt="">
                     </div>
                     <!-- Add more items as needed -->
                 </div>
                 <div class="buttons d-flex justify-content-between">
                     <button class="btn btn-primary" id="prev">
-                        << /button>
+                        < </button>
                             <button class="btn btn-primary" id="next">></button>
                 </div>
                 <ul class="dots list-inline text-center">
@@ -253,28 +253,28 @@ if ($result) {
             <div class="slider">
                 <div class="list d-flex">
                     <div class="item">
-                        <img src="img/dish1.jpg" alt="">
+                        <img src="image/g1.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="img/dish2.jpg" alt="">
+                        <img src="image/g2.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="img/dish3.jpg" alt="">
+                        <img src="image/g3.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="img/dish4.jpg" alt="">
+                        <img src="image/g4.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="img/dish5.jpg" alt="">
+                        <img src="image/g5.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="img/dish6.jpg" alt="">
+                        <img src="image/g6.jpeg" alt="">
                     </div>
                     <!-- Add more items as needed -->
                 </div>
                 <div class="buttons d-flex justify-content-between">
                     <button class="btn btn-primary" id="prev">
-                        << /button>
+                        <</button>
                             <button class="btn btn-primary" id="next">></button>
                 </div>
                 <ul class="dots list-inline text-center">
@@ -292,28 +292,28 @@ if ($result) {
             <div class="slider">
                 <div class="list d-flex">
                     <div class="item">
-                        <img src="img/dish1.jpg" alt="">
+                        <img src="image/index5.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="img/dish2.jpg" alt="">
+                        <img src="image/g3.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="img/dish3.jpg" alt="">
+                        <img src="image/g1.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="img/dish4.jpg" alt="">
+                        <img src="image/index2.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="img/dish5.jpg" alt="">
+                        <img src="image/g1.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="img/dish6.jpg" alt="">
+                        <img src="image/index1.jpeg" alt="">
                     </div>
                     <!-- Add more items as needed -->
                 </div>
                 <div class="buttons d-flex justify-content-between">
                     <button class="btn btn-primary" id="prev">
-                        << /button>
+                        < </button>
                             <button class="btn btn-primary" id="next">></button>
                 </div>
                 <ul class="dots list-inline text-center">

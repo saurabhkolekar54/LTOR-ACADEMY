@@ -229,14 +229,14 @@ if (isset($_POST['submit'])) {
 
                         <div class="form-group col-md-4">
                             <label for="district">District:</label>
-                            <select class="form-control" id="district" name="district" onchange="loadDistricts()" value="<?php echo $district; ?>" required>
+                            <select class="form-control" id="district" name="district" onchange="loadSubDistricts()" value="<?php echo $district; ?>" required>
                                 <option value="">Select District</option>
                             </select>
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="subdistrict">Subdistrict:</label>
-                            <select class="form-control" id="subdistrict" name="subdistrict" onchange="loadDistricts()" value="<?php echo $subdistrict; ?>" required>
+                            <select class="form-control" id="subdistrict" name="subdistrict" value="<?php echo $subdistrict; ?>" required>
                                 <option value="">Select Sub District</option>
                                   </select>
                         </div>
@@ -267,6 +267,7 @@ if (isset($_POST['submit'])) {
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/dist.js"></script>
 
 
     <script type="text/javascript">

@@ -70,7 +70,7 @@
 			
 			<div class="main-content">
         <div class="container">
-              <h2 class="text-center" >View Leads</h2>
+              <h2 class="text-center" >View Application</h2>
               <table class="table table-striped table-bordered mt-10" id="myTable">
     <thead>
         <tr>

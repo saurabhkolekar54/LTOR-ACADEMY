@@ -60,7 +60,7 @@
 
 
             <div class="main-content">
-                <div class="container mt-5">
+                <div class="container">
                     <h2 class="text-center">View Student</h2>
                     <table class="table table-striped table-bordered mt-10" id="myTable">
                         <thead>
@@ -73,6 +73,7 @@
                                 <th scope="col">Course Id</th>
                                 <th scope="col">Batch Id</th>
                                 <th scope="col">Franchise Id</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Operations</th>
                             </tr>
                         </thead>
@@ -84,7 +85,7 @@
 
                             if ($result) {
                                 while ($row = mysqli_fetch_assoc($result)) {
-                                    $srno = $row['t_id'];
+                                    $id = $row['t_id'];
                                     $name = $row['t_name'];
                                     $email = $row['t_email'];
                                     $contact = $row['t_contact'];
@@ -92,8 +93,9 @@
                                     $courseId = $row['t_courseid'];
                                     $batchId = $row['t_batchid'];
                                     $franchiseId = $row['t_franchiseid'];
+                                    $status = $row['status'];
                                     echo '<tr>
-                                        <th scope="row">' . $srno . '</th>
+                                        <th scope="row">' . $id . '</th>
                                         <td>' . $name . '</td>
                                         <td>' . $email . '</td>
                                         <td>' . $contact . '</td>
@@ -101,7 +103,16 @@
                                         <td>' . $courseId . '</td>
                                         <td>' . $batchId . '</td>
                                         <td>' . $franchiseId . '</td>
-                                        <td><a href="updateStudent.php? updateid=' . $srno . '" class="btn btn-primary text-light">Update</a>
+                                        <td>
+                        <input type="checkbox" id="statusSwitch' .$id. '" data-toggle="toggle" ' . ($row['status'] == 1 ? 'checked' : '') . ' onchange="toggleStatus(' . $id . ', this.checked)">
+                      </td>
+                      <script>
+                        function toggleStatus(memberId, isChecked) {
+                            var status = isChecked ? 1 : 0;
+                            window.location.href = "StudentStatus.php?id=" + memberId + "&status=" + status;
+                        }
+                      </script>
+                                        <td><a href="updateStudent.php? updateid=' . $id . '" class="btn btn-primary text-light">Update</a>
                                         
                                     </tr>';
                                 }

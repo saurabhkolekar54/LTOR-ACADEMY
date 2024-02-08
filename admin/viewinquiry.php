@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -70,7 +72,7 @@
 			
 			<div class="main-content">
         <div class="container">
-              <h2 class="text-center" >View Leads</h2>
+              <h2 class="text-center" >View Franchise Inquiry</h2>
               <table class="table table-striped table-bordered mt-10" id="myTable">
     <thead>
         <tr>
@@ -78,41 +80,56 @@
             <th scope="col">Name</th>
             <th scope="col">Contact</th>
             <th scope="col">Email</th>
+            <th scope="col">Country</th>
             <th scope="col">State</th>
             <th scope="col">District</th>
             <th scope="col">Subdistrict</th>
+            <th scope="col">Taluka</th>
             <th scope="col">Pincode</th>
             <th scope="col">Inquiry Subject</th>
-            <th scope="col">Submitted Time</th>
-            <th scope="col">Submitted Date</th>
         </tr>
     </thead>
     <tbody>
         <?php
         require 'connection.php';
-        $sql = "SELECT * FROM leads";
-        $result = mysqli_query($con, $sql);
-        if ($result) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo '<tr>
-                <td>' . $row['l_id'] . '</td>
-                <td>' . $row['l_name'] . '</td>
-                <td>' . $row['l_contact'] . '</td>
-                <td>' . $row['l_email'] . '</td>
-                <td>' . $row['l_state'] . '</td>
-                <td>' . $row['l_district'] . '</td>
-                <td>' . $row['l_subdistrict'] . '</td>
-                <td>' . $row['l_pincode'] . '</td>
-                <td>' . $row['l_inquiry_subject'] . '</td>
-                <td>' . $row['l_created_at'] . '</td>
-                <td>' . $row['l_date'] . '</td>
-                </tr>';
-            }
+        $sql="select * from inquiry";
+        $result=mysqli_query($con,$sql);
+        if($result)
+        {
+           while( $row=mysqli_fetch_assoc($result))
+           {
+            $t_id = $row['t_id'];
+            $t_name = $row['t_name'];
+            $t_countrycode = $row['t_countrycode'];
+            $t_contact = $row['t_contact'];
+            $t_email = $row['t_email'];
+            $t_country = $row['t_country'];
+            $t_state = $row['t_state'];
+            $t_district = $row['t_district'];
+            $t_subdistrict = $row['t_subdistrict'];
+            $t_taluka = $row['t_taluka'];
+            $t_pincode = $row['t_pincode'];
+            $t_inquirysubject = $row['t_inquirysubject'];
+
+            echo '<tr>
+            <td>'.$t_id.'</td>
+            <td>'.$t_name.'</td>
+            <td>'.$row['t_countrycode'].''.$row['t_contact'].'</td>
+            <td>'.$t_email.'</td>
+            <td>'.$t_country.'</td>
+            <td>'.$t_state.'</td>
+            <td>'.$t_district.'</td>
+            <td>'.$t_subdistrict.'</td>
+            <td>'.$t_taluka.'</td>
+            <td>'.$t_pincode.'</td>
+            <td>'.$t_inquirysubject.'</td>
+            </tr>'; 
+           }
+
         }
         ?>
     </tbody>
 </table>
-
 
       </div>
 

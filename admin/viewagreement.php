@@ -84,6 +84,7 @@
                                 <th scope="col">Party B Email</th>
                                 <th scope="col">Party B Photo</th>
                                 <th scope="col">Franchiseid</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Operation</th>
 
                             </tr>
@@ -109,6 +110,7 @@
                 $partyBEmail = $row['t_partybemail'];
                 $partyBPhoto = $row['t_partybphoto'];
                 $franchiseId = $row['t_franchiseid'];
+                $status = $row['status'];
 
                 echo '<tr>
         <th scope="row">' . $srno . '</th>
@@ -125,7 +127,15 @@
         <td>' . $partyBEmail . '</td>
         <td>' . $partyBPhoto . '</td>
         <td>' . $franchiseId . '</td>
-        
+        <td>
+                        <input type="checkbox" id="statusSwitch' . $srno . '" data-toggle="toggle" ' . ($row['status'] == 1 ? 'checked' : '') . ' onchange="toggleStatus(' . $srno . ', this.checked)">
+                      </td>
+                      <script>
+                      function toggleStatus(memberId, isChecked) {
+                          var status = isChecked ? 1 : 0;
+                          window.location.href = "AgreementStatus.php?id=" + memberId + "&status=" + status;
+                      }
+                    </script>
         <td><a href="updateagreement.php? updateid=' . $srno . '" class="btn btn-primary text-light">Update</a>
 
         

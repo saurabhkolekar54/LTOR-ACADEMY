@@ -5,6 +5,5 @@ $password = "";
 $database = "LTOR_ACADEMY";
 
 // Create connection
-$conn = new mysqli($host, $username, $password, $database);
-
+$con = new mysqli($host, $username, $password, $database);
 ?>

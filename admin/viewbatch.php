@@ -80,6 +80,7 @@
                 <th scope="col">Batch Capacity</th>
                 <th scope="col">Faculty Name</th>
                 <th scope="col">Franchiseid</th>
+                <th scope="col">Status</th>          
                 <th scope="col">Operation</th>
 
               </tr>
@@ -102,6 +103,7 @@
                   $mode = $row['t_mode'];
                   $capacity = $row['t_capacity'];
                   $franchiseId = $row['t_franchiseid'];
+                  $status = $row['status'];
                   echo '<tr>
               <th scope="row">' . $srno . '</th>
               <td>' . $name . '</td>
@@ -113,6 +115,15 @@
               <td>' . $facultyName . '</td>
               <td>' . $franchiseId . '</td>
               <td>
+                        <input type="checkbox" id="statusSwitch' . $srno . '" data-toggle="toggle" ' . ($row['status'] == 1 ? 'checked' : '') . ' onchange="toggleStatus(' . $srno . ', this.checked)">
+                      </td>
+              <td>
+              <script>
+                        function toggleStatus(memberId, isChecked) {
+                            var status = isChecked ? 1 : 0;
+                            window.location.href = "BatchStatus.php?id=" + memberId + "&status=" + status;
+                        }
+                      </script>
               <a href="updatebatch.php? updateid=' . $srno . '" class="btn btn-primary text-light">Update</a>
           </td>
           

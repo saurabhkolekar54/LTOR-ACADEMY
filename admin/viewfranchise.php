@@ -76,6 +76,7 @@
               <th scope="col">Taluka</th>
               <th scope="col">Location</th>
               <th scope="col">Pincode</th>
+              <th scope="col">Status</th>
               <th scope="col">Operation</th>
             </tr>
           </thead>
@@ -97,6 +98,7 @@
                 $taluka = $row['t_taluka'];
                 $location = $row['t_location'];
                 $pincode = $row['t_pincode'];
+                $status = $row['status'];
                 echo '<tr>
                 <th scope="row">' . $srno . '</th>
                 <td>' . $name . '</td>
@@ -109,7 +111,15 @@
                 <td>' . $taluka . '</td>
                 <td>' . $location . '</td>
                 <td>' . $pincode . '</td>
-        
+                <td>
+                <input type="checkbox" id="statusSwitch' . $srno . '" data-toggle="toggle" ' . ($row['status'] == 1 ? 'checked' : '') . ' onchange="toggleStatus(' . $srno . ', this.checked)">
+              </td>
+              <script>
+                        function toggleStatus(memberId, isChecked) {
+                            var status = isChecked ? 1 : 0;
+                            window.location.href = "FranchiseStatus.php?id=" + memberId + "&status=" + status;
+                        }
+                      </script>
         <td><a href="updatefranchise.php? updateid=' . $srno . '" class="btn btn-primary text-light">Update</a>
 
         

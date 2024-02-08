@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
 
             if ($stmt) {
                 // Bind parameters
-                mysqli_stmt_bind_param($stmt, "sssssss", $courseId, $courseName, $courseMembers, $courseDuration, $courseImage, $courseSyllabus, $courseMode);
+                mysqli_stmt_bind_param($stmt, "sssssss", $courseId, $courseName, $courseDuration,$courseMembers, $courseImage, $courseSyllabus, $courseMode);
 
                 // Execute the statement
                 $result = mysqli_stmt_execute($stmt);

@@ -86,6 +86,7 @@
               <th scope="col">Education</th>
               <th scope="col">Qualification</th>
               <th scope="col">FranchiseId</th>
+              <th scope="col">Status</th>
               <th scope="col">Operation</th>
 
             </tr>
@@ -113,6 +114,7 @@
                 $education = $row['t_education'];
                 $qualification = $row['t_qualification'];
                 $franchiseId = $row['t_franchiseid'];
+                $status = $row['status'];
                 echo '<tr>
                 <th scope="row">' . $srno . '</th>
                 <td>' . $name . '</td>
@@ -130,6 +132,15 @@
                 <td>' . $education . '</td>
                 <td>' . $qualification . '</td>
                 <td>' . $franchiseId . '</td>
+                <td>
+                        <input type="checkbox" id="statusSwitch' . $srno . '" data-toggle="toggle" ' . ($row['status'] == 1 ? 'checked' : '') . ' onchange="toggleStatus(' . $srno . ', this.checked)">
+                      </td>
+                      <script>
+                      function toggleStatus(memberId, isChecked) {
+                          var status = isChecked ? 1 : 0;
+                          window.location.href = "FacultyStatus.php?id=" + memberId + "&status=" + status;
+                      }
+                    </script>
                 
                 <td><a href="updatefaculty.php? updateid=' . $srno . '" class="btn btn-primary text-light">Update</a>
             
