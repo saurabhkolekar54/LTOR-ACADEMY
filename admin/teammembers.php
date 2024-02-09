@@ -141,7 +141,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Check if the query was successful
                 if ($result) {
                         while ($row = $result->fetch_assoc()) {
-                        echo "<tr class='text-center'><td>" . $row['name'] . "</td><td>" . $row['role'] . "</td><td><img src='" . $row['image'] . "' width='100' height='100'></td>";
+                        $srno=$row['id'];
+                        echo "<tr class='text-center'><td>" . $row['member_name'] . "</td><td>" . $row['member_role'] . "</td><td><img src='" . $row['member_image'] . "' width='100' height='100'></td>";
                         $status = $row['status'];
                         echo '<td>
                         <input type="checkbox" id="statusSwitch' . $row['id'] . '" data-toggle="toggle" ' . ($row['status'] == 1 ? 'checked' : '') . ' onchange="toggleStatus(' . $row['id'] . ', this.checked)">
@@ -154,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             window.location.href = "TeamStatus.php?id=" + memberId + "&status=" + status;
                         }
                       </script>';
-                       echo "<td><button class='btn btn-primary' data-toggle='modal' data-target='#editMemberModal' data-memberid='" . $row['id'] . "' data-membername='" . $row['name'] . "'>Edit</button></td>";
+                       echo "<td><a href='UpdateTeamMember.php?updateid=$srno' class='btn btn-primary text-light'>Update</a></td>";
 
                         echo "</tr>";
                     }
@@ -171,56 +172,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			</div>
         </div>
     </div>
-<div class="modal" id="editMemberModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Edit Member Information</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- Your form for editing member information goes here -->
-                <form action="" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="memberId" id="editMemberId">
-                    <div class="form-group">
-                        <label for="memberName">Member Name</label>
-                        <input type="text" class="form-control" id="memberName" name="memberName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="memberName">Member Role</label>
-                        <input type="text" class="form-control" id="memberName" name="memberName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="memberImage">Member Image</label>
-                        <input type="file" class="form-control-file" id="memberImage" name="memberImage">
-                    </div>
-                    <!-- Add other input fields as needed -->
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Use this script to handle setting values when the modal is shown -->
-<script>
-    $('#editMemberModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget);
-        var memberId = button.data('memberid');
-        var memberName = button.data('membername');
-
-        var modal = $(this);
-        modal.find('#editMemberId').val(memberId);
-        modal.find('#memberName').val(memberName);
-    });
-</script>
-
 
      <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

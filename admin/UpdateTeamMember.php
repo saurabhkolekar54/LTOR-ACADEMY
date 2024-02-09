@@ -8,63 +8,61 @@ if (!is_numeric($Id)) {
     // echo "Invalid ID";
     exit;
 }
-// Retrieve current About Us content from the database
-$sql = "SELECT * FROM about_us WHERE id ='$Id' "; // Assuming id 1 is used for About Us content
+
+// Retrieve team member data from the database
+$sql = "SELECT * FROM team_members WHERE id ='$Id'";
 $result = mysqli_query($con, $sql);
 
 // Check if there is any data available
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
-    $aboutUsText = $row['about_us_text'];
-    $aboutUsImage = $row['about_us_image'];
+    $memberName = $row['member_name'];
+    $memberRole = $row['member_role'];
+    $memberImage = $row['member_image']; 
+    // You can retrieve other fields similarly
 } else {
-    $aboutUsText = '';
-    $aboutUsImage = '';
+    echo "<script>alert('Problem in retrieval of data.')</script>";
 }
 
 // Check if form is submitted
 if(isset($_POST['update'])) {
+    // Retrieve form data
+    $newMemberName = $_POST['memberName'];
+    $newMemberRole = $_POST['memberRole'];
+    // You can retrieve other form fields similarly
 
-       // Assign form values to variables
-       $newAboutUsText = $_POST['aboutustext'] ?? '';
-       $newAboutUsImage = $_FILES['aboutusimage']['name'] ?? '';
-   
-       if(!empty($newAboutUsImage)) {
-        $targetDir = "image/";
-        $targetFilePath = $targetDir . basename($newAboutUsImage);
-        // Move the uploaded file to the target directory
-        if(move_uploaded_file($_FILES["aboutusimage"]["tmp_name"], $targetFilePath)) {
-            // If file upload is successful, update the database with the complete path
-            $newAboutUsImage = $targetFilePath; // Update $newAboutUsImage with the complete path
-        } else {
-            echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
+    // Check if any changes are made
+    if($newMemberName != $memberName || $newMemberRole != $memberRole || !empty($_FILES['memberImage']['name'])) {
+        // Update database with new data
+        $updateQuery = "UPDATE team_members SET ";
+        if(!empty($newMemberName)) {
+            $updateQuery .= "member_name = '$newMemberName'";
         }
-        
-    }
-    // Check if new data is provided
-    if(!empty($newAboutUsText) || !empty($newAboutUsImage)) {
-        // Update data with new values
-        $updateQuery = "UPDATE about_us SET ";
-        if(!empty($newAboutUsText)) {
-            $updateQuery .= "about_us_text = '$newAboutUsText'";
-        }
-        if(!empty($newAboutUsImage)) {
-            if(!empty($newAboutUsText)) {
+        if(!empty($_FILES['memberImage']['name'])) {
+            if(!empty($newMemberName)) {
                 $updateQuery .= ", ";
             }
-            $updateQuery .= "about_us_image = '$newAboutUsImage'";
+            $targetDir = "image/";
+            $targetFilePath = $targetDir . basename($_FILES['memberImage']['name']);
+            move_uploaded_file($_FILES['memberImage']['tmp_name'], $targetFilePath);
+            $updateQuery .= "member_image = '$targetFilePath'";
+        }
+        if(!empty($newMemberRole)) {
+            if(!empty($newMemberName) || !empty($_FILES['memberImage']['name'])) {
+                $updateQuery .= ", ";
+            }
+            $updateQuery .= "member_role = '$newMemberRole'";
         }
         $updateQuery .= " WHERE id = '$Id'";
         
         // Execute update query
         mysqli_query($con, $updateQuery);
         
-        
-        // Redirect to the same page or any other page after successful update
-         header("Location: aboutus.php");
-        // exit();
+        echo "<script>alert('Data updated successfully.')</script>";
+        header("Location: teammembers.php");
     } else {
-        echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
+        // No changes made, redirect or display a message
+        echo "<script>alert('No changes made.')</script>";
     }
 }
 ?>
@@ -119,22 +117,25 @@ if(isset($_POST['update'])) {
             </div>
             <div class="main-content">
                 <div class="container">
-                    <h2 class="text-center">Update About Us</h2>
+                    <h2 class="text-center">Update Team Member</h2>
                     <div class="row justify-content-center">
                         <div class="col-md-10">
-                            <form id="updateAboutUsForm" method="post" enctype="multipart/form-data">
+                            <form action="" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label for="aboutustext">About Us Text:</label>
-                                    <textarea class="form-control" id="aboutustext" name="aboutustext" rows="6"
-                                        required><?php echo $aboutUsText; ?></textarea>
+                                    <label for="memberName">Member Name</label>
+                                    <input type="text" class="form-control" id="memberName" name="memberName" value="<?php echo $memberName; ?>" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="aboutusimage">About Image:</label>
+                                    <label for="memberRole">Member Role</label>
+                                    <input type="text" class="form-control" id="memberRole" name="memberRole" value="<?php echo $memberRole; ?>" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="memberImage">Member Image</label><br>
                                     <div class="border p-1" style="border-radius: 5px;">
-                                        <img src="<?php echo $aboutUsImage; ?>" alt="About Us Image"
+                                        <img src="<?php echo $memberImage; ?>" alt="Member Image"
                                             style="max-width: 100px; max-height: 100px;">
-                                        <input type="file" class="form-control-file mt-2" id="aboutusimage"
-                                            name="aboutusimage" accept="image/*">
+                                        <input type="file" class="form-control-file mt-2" id="memberImage"
+                                            name="memberImage" accept="image/*">
                                     </div>
                                 </div>
                                 <div class="form-group text-center">

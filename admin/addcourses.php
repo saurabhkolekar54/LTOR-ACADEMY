@@ -20,43 +20,38 @@ if (isset($_POST['submit'])) {
     $validate_img_extension = in_array($_FILES["courseImage"]["type"], ["image/jpg", "image/jpeg", "image/png"]);
 
     if ($validate_img_extension) {
-        // Check if image already exists
-        if (file_exists("image/" . $_FILES["courseImage"]["name"])) {
-            $_SESSION['status'] = "Image already exists: " . $_FILES["courseImage"]["name"];
-            header('Location: viewfranchise.php');
-        } else {
-            // Use prepared statement to avoid SQL injection
-            $query = "INSERT INTO course VALUES (?, ?, ?, ?, ?, ?, ?)";
+        // Use prepared statement to avoid SQL injection
+        $query = "INSERT INTO course (course_id, course_name, course_duration, course_members, course_image, course_syllabus, course_mode, status) VALUES (?, ?, ?, ?, ?, ?, ?, 1)";
 
-            $stmt = mysqli_prepare($con, $query);
+        $stmt = mysqli_prepare($con, $query);
 
-            if ($stmt) {
-                // Bind parameters
-                mysqli_stmt_bind_param($stmt, "sssssss", $courseId, $courseName, $courseDuration,$courseMembers, $courseImage, $courseSyllabus, $courseMode);
+        if ($stmt) {
+            // Bind parameters
+            mysqli_stmt_bind_param($stmt, "sssssss", $courseId, $courseName, $courseDuration,$courseMembers, $courseImage, $courseSyllabus, $courseMode);
 
-                // Execute the statement
-                $result = mysqli_stmt_execute($stmt);
+            // Execute the statement
+            $result = mysqli_stmt_execute($stmt);
 
-                if ($result) {
-                    move_uploaded_file($_FILES["courseImage"]["tmp_name"], "image/" . $_FILES["courseImage"]["name"]);
-                    move_uploaded_file($_FILES["courseSyllabus"]["tmp_name"], "syllabus/" . $_FILES["courseSyllabus"]["name"]);
+            if ($result) {
+                move_uploaded_file($_FILES["courseImage"]["tmp_name"], "image/" . $_FILES["courseImage"]["name"]);
+                move_uploaded_file($_FILES["courseSyllabus"]["tmp_name"], "syllabus/" . $_FILES["courseSyllabus"]["name"]);
 
-                    $_SESSION['success'] = "Course Added";
-                    header('Location: addcourses.php');
-                } else {
-                    $_SESSION['success'] = "Course Not Added";
-                    header('Location: addcourses.php');
-                }
-
-                mysqli_stmt_close($stmt);
+                echo "<script>alert('Data Inserted Successfully');</script>";
+                header('Location: addcourses.php');
             } else {
-                $_SESSION['status'] = "Error in prepared statement: " . mysqli_error($con);
-                header('Location: viewfranchise.php');
+                echo "<script>alert('Data Inserted Successfully');</script>";
+                header('Location: addcourses.php');
             }
+
+            mysqli_stmt_close($stmt);
+        } else {
+            echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
+            header('Location: viewcourses.php');
         }
     } else {
-        $_SESSION['status'] = "Only PNG, JPG, JPEG Images are allowed";
-        header('Location: viewfranchise.php');
+        echo "<script>alert('Only PNG, JPG, JPEG Images are allowed');</script>";
+
+        header('Location: viewcourses.php');
     }
 }
 

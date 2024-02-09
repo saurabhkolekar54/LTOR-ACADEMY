@@ -17,35 +17,44 @@
     <section class="container mt-5">
         <h2 style="margin-top:110px">Careers</h2>
 
-        <!-- Job Card 1 -->
-        <div class="card job-card mb-4">
-            <h3 class="card-title">Job Title</h3>
-            <p class="card-text">Job Description goes here. It includes details about the responsibilities and
-                qualifications required for the position.</p>
-            <p class="card-text">Location: City, Country</p>
-            <a href="#" class="btn btn-primary apply-button" data-toggle="modal" data-target="#applyModal">Apply Now</a>
-        </div>
+        <?php
+// Assuming you already have a database connection
+require 'connection.php';
+// SQL query to retrieve job details
+$sql = "SELECT * FROM job_vacancies WHERE status = 1";
 
-        <!-- Job Card 2 -->
-        <div class="card job-card mb-4">
-            <h3 class="card-title">Job Title</h3>
-            <p class="card-text">Job Description goes here. It includes details about the responsibilities and
-                qualifications required for the position.</p>
-            <p class="card-text">Location: City, Country</p>
-            <p class="card-text">Salary: $X,XXX - $Y,XXX per month</p>
-            <a href="#" class="btn btn-primary apply-button" data-toggle="modal" data-target="#applyModal">Apply Now</a>
-        </div>
+// Execute the query
+$result = mysqli_query($con, $sql);
 
-        <!-- Job Card 3 -->
+// Check if there are any rows returned
+if (mysqli_num_rows($result) > 0) {
+    // Loop through each row of data
+    while ($row = mysqli_fetch_assoc($result)) {
+        // Extract job details from the current row
+        $jobTitle = $row['job_title'];
+        $jobDescription = $row['skills_required'];
+        $location = $row['location'];
+        $salary = $row['salary'];
+        $lateDate = $row['late_date'];
+
+        // Output the HTML template for each job
+        ?>
         <div class="card job-card mb-4">
-            <h3 class="card-title">Job Title</h3>
-            <p class="card-text">Job Description goes here. It includes details about the responsibilities and
-                qualifications required for the position.</p>
-            <p class="card-text">Location: City, Country</p>
-            <p class="card-text">Salary: $X,XXX - $Y,XXX per month</p>
+            <h3 class="card-title">Job Title: <?php echo $jobTitle; ?></h3>
+            <p class="card-text"><strong>Basic Skills:</strong> <?php echo $jobDescription; ?></p>
+            <p class="card-text"><strong>Location:</strong> <?php echo $location; ?></p>
+            <p class="card-text"><strong>Salary:</strong> <?php echo $salary; ?></p>
+            <p class="card-text"><strong>Late Date:</strong> <?php echo $lateDate; ?></p>
             <a href="#" class="btn btn-primary apply-button" data-toggle="modal" data-target="#applyModal">Apply Now</a>
         </div>
-    </section>
+        <?php
+    }
+} else {
+    echo "No job vacancies found.";
+}
+// Close the database connection
+mysqli_close($con);
+?>
 
     <!-- Button to trigger modal -->
     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#applyModal">Apply Now </button> -->
@@ -145,7 +154,6 @@
         </div>
     </div>
 
-    <?php include('footer.php')?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

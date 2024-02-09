@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
     $Franchiseid = $_POST['Franchiseid'];
 
     // Use prepared statement to avoid SQL injection
-    $sql = "INSERT INTO `batch` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO `batch` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
 
     $stmt = mysqli_prepare($con, $sql);
 
@@ -27,35 +27,24 @@ if (isset($_POST['submit'])) {
         $result = mysqli_stmt_execute($stmt);
 
         if ($result) {
-            echo '<div class="alert alert-success" role="alert">
-                    <b>Your Record Submitted Successfully!</b>
-                  </div>';
-            echo '<script>
-                    setTimeout(function() {
-                        var alertDiv = document.querySelector(".alert");
-                        if (alertDiv) {
-                            alertDiv.style.display = "none";
-                        }
-                    }, 3000); // 5000 milliseconds = 5 seconds
-                  </script>';
+            echo "<script>alert('Data Inserted Successfully');</script>";
             header('location:addbatch.php');
         } else {
-            echo '<div class="alert alert-danger" role="alert">
-                    <b>Error: ' . mysqli_error($con) . '</b>
-                  </div>';
+            echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
+
         }
 
         mysqli_stmt_close($stmt);
     } else {
-        echo '<div class="alert alert-danger" role="alert">
-                <b>Error in prepared statement: ' . mysqli_error($con) . '</b>
-              </div>';
+        echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
+
     }
 }
 
 // Close the database connection
 mysqli_close($con);
 ?>
+
 
 
 <!doctype html>

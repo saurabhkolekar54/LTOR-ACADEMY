@@ -80,6 +80,8 @@
             <th scope="col">Location</th>
             <th scope="col">Salary</th>
             <th scope="col">Apply By</th>
+            <th scope="col">Status</th>
+            <th scope="col">Operation</th>
            </tr>
     </thead>
     <tbody>
@@ -98,6 +100,15 @@ if ($result) {
             <td>' . $row['location'] . '</td>
             <td>' . $row['salary'] . '</td>
             <td>' . $row['late_date'] . '</td>
+            <td><input type="checkbox" id="statusSwitch' . $row['id'] . '" data-toggle="toggle" ' . ($row['status'] == 1 ? 'checked' : '') . ' onchange="toggleStatus(' . $row['id'] . ', this.checked)">
+                </td>
+                <script>
+                function toggleStatus(memberId, isChecked) {
+                    var status = isChecked ? 1 : 0;
+                    window.location.href = "VacancyStatus.php?id=" + memberId + "&status=" + status;
+                }
+              </script>
+              <td><a href="UpdateVacancy.php?updateid=$srno" class="btn btn-primary text-light">Update</a></td>
         </tr>';
     }
 }

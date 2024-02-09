@@ -30,13 +30,13 @@ if (isset($_POST['submit'])) {
             header('Location: viewfranchise.php');
         } else {
             // Use prepared statement to avoid SQL injection
-            $sql = "INSERT INTO `franchise` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO `franchise` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
             $stmt = mysqli_prepare($con, $sql);
-
+            $status=1;
             if ($stmt) {
                 // Bind parameters
-                mysqli_stmt_bind_param($stmt, "sssssssssss", $id, $name, $email, $contact, $franchiseImage, $franchiseName, $state, $district, $subdistrict, $village, $pincode);
+                mysqli_stmt_bind_param($stmt, "sssssssssssi", $id, $name, $email, $contact, $franchiseImage, $franchiseName, $state, $district, $subdistrict, $village, $pincode,$status);
 
                 // Execute the statement
                 $result = mysqli_stmt_execute($stmt);

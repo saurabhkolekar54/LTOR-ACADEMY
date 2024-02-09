@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
     $validate_img_extension = in_array($_FILES["partybimage"]["type"], ["image/jpg", "image/jpeg", "image/png"]);
 
     if ($validate_img_extension) {
-        $sql = "INSERT INTO `agreementdetails` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO `agreementdetails` VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
 
         $stmt = mysqli_prepare($con, $sql);
         mysqli_stmt_bind_param($stmt, "ssssssssssssss", $agreementId, $partyA, $partyB, $agreementPdf, $startDate, $endDate, $joiningFee, $revenueAPercentage, $revenueBPercentage, $revenueDate, $partyBContact, $partyBEmail, $partyBImage, $Franchiseid);

@@ -140,7 +140,7 @@ if ($result) {
                 <!-- Team Member 1 -->
                 <?php
                 // Perform SQL query to fetch data from the database
-                    $sql = "SELECT * FROM team_members";
+                    $sql = "SELECT * FROM team_members WHERE status=1";
                     $result = $con->query($sql);
 
                     // Check if the query was successful
@@ -148,20 +148,16 @@ if ($result) {
                         // Fetch data and dynamically generate team members
                         while ($row = $result->fetch_assoc()) {
                             
-                            $status = $row['status'];
-                if ($status == 1)
-                            {
                             echo '<div class="col-lg-3">';
                             echo '<div class="team-member">';
-                            echo '<img src="admin/' . $row['image'] . '" alt="' . $row['name'] . '" class="img-fluid">';
+                            echo '<img src="admin/' . $row['member_image'] . '" alt="' . $row['member_name'] . '" class="img-fluid">';
                             echo '<div class="member-info">';
-                            echo '<h3>' . $row['name'] . '</h3>';
-                            echo '<p>' . $row['role'] . '</p>';
+                            echo '<h3>' . $row['member_name'] . '</h3>';
+                            echo '<p>' . $row['member_role'] . '</p>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
                             }
-                        }
                     } else {
                         echo "Error: " . $sql . "<br>" . $con->error;
                     }
@@ -179,7 +175,7 @@ if ($result) {
             <div class="row">
 
                 <?php
-           $sql = "SELECT t_name, t_image FROM course";
+           $sql = "SELECT t_name, t_image FROM course WHERE status=1";
             $result = mysqli_query($con, $sql);
 
             // Check if the query was successful
@@ -188,7 +184,7 @@ if ($result) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<div class="col-lg-3 col-md-6 mb-4">';
                     echo '<div class="card">';
-                    echo '<img src="admin/image/' . $row['t_image'] . '" class="card-img-top" alt="Course Image" style="height: 180px;">';
+                    echo '<img src="admin/' . $row['t_image'] . '" class="card-img-top" alt="Course Image" style="height: 180px;">';
                     echo '<div class="card-body text-center">';
                     echo '<h5 class="card-title">' . $row['t_name'] . '</h5>';
                     echo '<a href="" class="btn btn-primary btn-learn-more">Learn More</a>';
@@ -274,7 +270,7 @@ if ($result) {
                 </div>
                 <div class="buttons d-flex justify-content-between">
                     <button class="btn btn-primary" id="prev">
-                        <</button>
+                        << /button>
                             <button class="btn btn-primary" id="next">></button>
                 </div>
                 <ul class="dots list-inline text-center">
@@ -346,7 +342,7 @@ if ($result) {
                 <div class="swiper-container">
                     <?php
                     // Retrieve testimonial data from the database
-                    $sql = "SELECT * FROM testimonials";
+                    $sql = "SELECT * FROM testimonials WHERE status =1";
                     $result = $con->query($sql);
 
                     // Check if there are testimonials in the database
@@ -356,10 +352,7 @@ if ($result) {
                         // Loop through each testimonial
                         while ($row = $result->fetch_assoc()) 
                         {
-                            $status = $row['status'];
-                            if ($status == 1)
-                            {
-                                echo '<div class="swiper-slide">
+                            echo '<div class="swiper-slide">
                                         <div class="testi-item">
                                             <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
                                             <div class="testimonials-text">
@@ -374,7 +367,6 @@ if ($result) {
                                         </div>
                                     </div>';
                         }
-                    }
                         echo '</div>';
                     } else {
                         echo "No testimonials found!";
@@ -410,18 +402,55 @@ if ($result) {
 
                 <!-- Contact form on the right side -->
                 <div class="contact-form col-md-6">
-                    <form action="#" method="post">
-                        <input type="text" class="form-control" placeholder="Name" name="name" required>
+                <form action="#" method="post">
+    <input type="text" class="form-control mb-2" placeholder="Name" name="name" required>
 
-                        <input type="email" class="form-control" placeholder="Email" name="email" required>
+    <div class="row">
+        <div class="col-md-6 mb-2">
+            <!-- Email input -->
+            <div class="">
+                <input type="email" class="form-control" placeholder="Email" name="email" required>
+            </div>
+        </div>
+        <div class="col-md-6 mb-2">
+            <!-- Phone number input -->
+            <div class="">
+                <input type="tel" class="form-control" placeholder="Phone Number" name="phone" required>
+            </div>
+        </div>
+    </div>
 
-                        <input type="tel" class="form-control" placeholder="Phone Number" name="phone" required>
+    <!-- New fields for state, district, subdistrict, and pincode -->
+    <div class="row">
+        <div class="col-md-6 mb-2">
+            <select class="form-select form-control" id="state" name="state" onchange="loadDistricts()" required>
+                <option value="">Select State</option>
+                <!-- Options for states -->
+            </select>
+        </div>
+        <div class="col-md-6 mb-2">
+            <div class="form-group">
+                <select id="district" name="district" class="form-control" onchange="loadSubDistricts()"></select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-2">
+            <div class="form-group">
+                <select id="subdistrict" name="subdistrict" class="form-control"></select>
+            </div>
+        </div>
+        <div class="col-md-6 mb-2">
+            <div class="">
+                <input type="text" class="form-control" id="zip" name="zip" placeholder="Pin Code" required>
+            </div>
+        </div>
+    </div>
+    <textarea class="form-control mb-2" placeholder="Message" name="message" rows="2" required></textarea>
 
-                        <textarea class="form-control" placeholder="Message" name="message" rows="4"
-                            required></textarea>
+    <button type="submit" class="btn btn-primary">Send Message</button>
+</form>
 
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
                 </div>
             </div>
 
@@ -469,6 +498,7 @@ if ($result) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
     <script src="js/review.js"></script>
+    <script src="js/dist.js"></script>
     <script src="js/event.js"></script>
 </body>
 

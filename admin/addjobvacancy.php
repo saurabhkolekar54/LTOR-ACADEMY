@@ -1,5 +1,6 @@
 <?php
 require 'connection.php';
+
 // Check if the form is submitted
 if (isset($_POST['addvacancy'])) {
     // Retrieve form data
@@ -7,29 +8,31 @@ if (isset($_POST['addvacancy'])) {
     $skills = $_POST["skills"];
     $location = $_POST["location"];
     $salary = $_POST["salary"];
-    $lateDate = $_POST["lateDate"];
+    $lastDate = $_POST["lastDate"];
 
-// Check connection
+    // Check connection
     if ($con->connect_error) {
         die("Connection failed: " . $con->connect_error);
     }
 
-    // Prepare SQL statement
-    $sql = "INSERT INTO job_vacancies (job_title, skills_required, location, salary, late_date)
-            VALUES ('$jobTitle', '$skills', '$location', '$salary', '$lateDate')";
+    // Prepare and bind parameters for the SQL statement
+    $stmt = $con->prepare("INSERT INTO job_vacancies (job_title, skills_required, location, salary, late_date, status) VALUES (?, ?, ?, ?, ?, '1')");
+    $stmt->bind_param("sssss", $jobTitle, $skills, $location, $salary, $lastDate);
 
     // Execute SQL statement
-    if ($con->query($sql) === TRUE) {
-        // echo "New record created successfully";
+    if ($stmt->execute() === TRUE) {
+        // Redirect to the add job vacancy page
         header('location:addjobvacancy.php');
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $stmt->error;
     }
 
-    // Close connection
+    // Close statement and connection
+    $stmt->close();
     $con->close();
 }
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -128,8 +131,8 @@ if (isset($_POST['addvacancy'])) {
                                     <input type="text" class="form-control" id="salary" name="salary" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="lateDate" class="form-label">Late Date to Apply</label>
-                                    <input type="date" class="form-control" id="lateDate" name="lateDate" required>
+                                    <label for="lastDate" class="form-label">Last Date to Apply</label>
+                                    <input type="date" class="form-control" id="lastDate" name="lastDate" required>
                                 </div>
                             </div>
                         </div>

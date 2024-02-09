@@ -82,22 +82,22 @@
             </a>
         </li>
         <li class="dropdown">
-            <a href="aboutus.php" aria-expanded="false">
+            <a href="Aboutus.php" aria-expanded="false">
                 <i class="material-icons">info</i>About Us
             </a>
         </li>
         <li class="dropdown">
-            <a href="teammembers.php" aria-expanded="false">
+            <a href="Teammembers.php" aria-expanded="false">
                 <i class="material-icons">group</i>Team Members
             </a>
         </li>
         <li class="dropdown">
-            <a href="gallery.php" aria-expanded="false">
+            <a href="Gallery.php" aria-expanded="false">
                 <i class="material-icons">photo</i> Gallery
             </a>
         </li>
         <li class="dropdown">
-            <a href="testimonials.php" aria-expanded="false">
+            <a href="Testimonials.php" aria-expanded="false">
                 <i class="material-icons">star</i> Testimonials
             </a>
         </li>

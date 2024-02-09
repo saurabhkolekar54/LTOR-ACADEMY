@@ -23,15 +23,13 @@
             <div class="container">
                 <?php
                     require 'connection.php'; 
-                    $sql = "SELECT * FROM gallery";
+                    $sql = "SELECT * FROM gallery WHERE status=1";
                     $result = $con->query($sql);
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                            $imagePath = $row["image_path"];
-                            $imageText = $row["description"];                          
-                            $status = $row['status'];
-                            if ($status == 1){
+                            $imagePath = $row["gallery_image"];
+                            $imageText = $row["gallery_description"];                          
                             echo '<div class="card">
                                     <div class="card-image">
                                       <a href="admin/' . $imagePath . '" data-fancybox="gallery">
@@ -41,7 +39,6 @@
                                     </div>
                                   </div>';
                         }
-                    }
                     } else {
                         echo "No images found in the database.";
                     }

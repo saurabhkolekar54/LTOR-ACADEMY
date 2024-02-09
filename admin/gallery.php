@@ -1,64 +1,39 @@
 <?php
-    require 'connection.php';
+require 'connection.php';
 
-    // Check if the form is submitted
-    if (isset($_POST['addGallery'])) {
-        // Check connection
-        if (mysqli_connect_errno()) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
-
-        // Retrieve data from the form
-        $description = mysqli_real_escape_string($con, $_POST['Description']);
-
-        // Upload image
-        $uploadDirectory = "image/"; // Change this to your desired directory
-        $galleryImage = $_FILES['galleryImage']['name'];
-        $uploadedFilePath = $uploadDirectory . basename($galleryImage);
-        move_uploaded_file($_FILES['galleryImage']['tmp_name'], $uploadedFilePath);
-
-        // Perform SQL query to insert data into the database
-        $sql = "INSERT INTO gallery (image_path, description) VALUES ('$uploadedFilePath', '$description')";
-
-        if (mysqli_query($con, $sql)) {
-            header('Location: gallery.php');
-        } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($con);
-        }
-    }  
-    
-    if (isset($_POST['updategallery'])) {
-        // Get values from the form
-        $gallery_id = isset($_POST["gallery_id"]) ? $_POST["gallery_id"] : '';
-        $new_description = isset($_POST["gallery_description"]) ? mysqli_real_escape_string($con, $_POST["gallery_description"]) : '';
-    
-        // Handle image upload if a new image is selected
-        if (isset($_FILES["gallery_image"]) && $_FILES["gallery_image"]["size"] > 0) {
-            $target_dir = "image/";
-            $target_file = $target_dir . basename($_FILES["gallery_image"]["name"]);
-            move_uploaded_file($_FILES["gallery_image"]["tmp_name"], $target_file);
-    
-            // Update database with new image path
-            $sql_update_image = "UPDATE gallery SET image_path = '$target_file' WHERE id = $gallery_id";
-            $result_update_image = $con->query($sql_update_image);
-    
-            if (!$result_update_image) {
-                echo "Error updating image: " . $con->error;
-            }
-        }
-    
-        if (!empty($gallery_id)) {
-            // Update database with new description
-            $sql_update_description = "UPDATE gallery SET description = '$new_description' WHERE id = $gallery_id";
-            $result_update_description = $con->query($sql_update_description);
-        
-            if (!$result_update_description) {
-                echo "Error updating description: " . $con->error;
-            }
-        }
+// Check if the form is submitted
+if (isset($_POST['addGallery'])) {
+    // Check connection
+    if (mysqli_connect_errno()) {
+        die("Connection failed: " . mysqli_connect_error());
     }
 
+    // Retrieve data from the form
+    $description = mysqli_real_escape_string($con, $_POST['Description']);
+
+    // Upload image
+    $uploadDirectory = "image/"; // Change this to your desired directory
+    $galleryImage = $_FILES['galleryImage']['name'];
+    $uploadedFilePath = $uploadDirectory . basename($galleryImage);
+    move_uploaded_file($_FILES['galleryImage']['tmp_name'], $uploadedFilePath);
+
+    // Prepare and bind the SQL statement
+    $sql = "INSERT INTO gallery (gallery_image, gallery_description) VALUES (?, ?)";
+    $stmt = mysqli_prepare($con, $sql);
+    mysqli_stmt_bind_param($stmt, "ss", $uploadedFilePath, $description);
+
+    // Execute the statement
+    if (mysqli_stmt_execute($stmt)) {
+        header('Location: gallery.php');
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+    }
+
+    // Close statement
+    mysqli_stmt_close($stmt);
+}
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -83,12 +58,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
   </head>
   <body>
-  
-
-
-
 <div class="wrapper">
-
 
 <div class="body-overlay"></div>
         <?php require 'sidebar.php'?>
@@ -164,8 +134,9 @@
                               
                                if ($result->num_rows > 0) {                           
                                 while ($row = $result->fetch_assoc()) {
+                                    $srno=$row['id'];
                                     $status = $row['status'];
-                                    echo "<tr class='text-center'><td width='300'><img src='" . $row['image_path'] . "' width='100' height='100'></td><td>" . $row['description'] . "</td>";
+                                    echo "<tr class='text-center'><td width='300'><img src='" . $row['gallery_image'] . "' width='100' height='100'></td><td>" . $row['gallery_description'] . "</td>";
                                     echo '
                                      <td>
                                                 <input type="checkbox" id="statusSwitch' . $row['id'] . '" data-toggle="toggle" ' . ($row['status'] == 1 ? 'checked' : '') . ' onchange="toggleStatus(' . $row['id'] . ', this.checked)">
@@ -179,12 +150,8 @@
                                             }
                                           </script>';
                                     
-                                          echo '<td>
-                                          <button class="btn btn-primary edit-testimonial-btn" data-toggle="modal" data-target="#editGalleryModal">
-                                              Edit
-                                          </button> 
-                                      </td>
-                                  </tr>';
+                                          echo "<td><a href='UpdateGallery.php?updateid=$srno' class='btn btn-primary text-light'>Update</a></td>
+                                  </tr>";
                                       }
                                 
                                } else {
@@ -199,39 +166,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="editGalleryModal" tabindex="-1" role="dialog" aria-labelledby="editGalleryModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="editGalleryModalLabel">Edit Gallery</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form action="gallery.php" method="post" enctype="multipart/form-data">
-                                                        <!-- Add hidden input for gallery ID or any unique identifier -->
-                                                        <input type="hidden" name="gallery_id" id="editGalleryId" value="">
-                                    
-                                                        <!-- Add input for image -->
-                                                        <div class="form-group">
-                                                            <label for="gallery_image">Gallery Image:</label>
-                                                            <input type="file" class="form-control" id="gallery_image" name="gallery_image">
-                                                        </div>
-                                    
-                                                        <!-- Add textarea for description -->
-                                                        <div class="form-group">
-                                                            <label for="gallery_description">Gallery Description:</label>
-                                                            <textarea class="form-control" id="gallery_description" name="gallery_description" rows="3"></textarea>
-                                                        </div>
-                                    
-                                                        <button type="submit" name="updategallery"class="btn btn-primary">Update gallery</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
+    
      <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
    <script src="js/jquery-3.3.1.slim.min.js"></script>

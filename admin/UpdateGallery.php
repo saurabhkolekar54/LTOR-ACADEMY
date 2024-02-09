@@ -8,51 +8,51 @@ if (!is_numeric($Id)) {
     // echo "Invalid ID";
     exit;
 }
-// Retrieve current About Us content from the database
-$sql = "SELECT * FROM about_us WHERE id ='$Id' "; // Assuming id 1 is used for About Us content
+// Retrieve current gallery content from the database
+$sql = "SELECT * FROM gallery WHERE id ='$Id' "; // Assuming id 1 is used for About Us content
 $result = mysqli_query($con, $sql);
 
 // Check if there is any data available
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
-    $aboutUsText = $row['about_us_text'];
-    $aboutUsImage = $row['about_us_image'];
+    $galleryText = $row['gallery_description'];
+    $galleryImage = $row['gallery_image'];
 } else {
-    $aboutUsText = '';
-    $aboutUsImage = '';
+    $galleryText = '';
+    $galleryImage = '';
 }
 
 // Check if form is submitted
 if(isset($_POST['update'])) {
 
-       // Assign form values to variables
-       $newAboutUsText = $_POST['aboutustext'] ?? '';
-       $newAboutUsImage = $_FILES['aboutusimage']['name'] ?? '';
-   
-       if(!empty($newAboutUsImage)) {
+    // Assign form values to variables
+    $newgalleryText = $_POST['gallery_description'] ?? '';
+    $newgalleryImage = $_FILES['galleryImage']['name'] ?? '';
+
+    if(!empty($newgalleryImage)) {
         $targetDir = "image/";
-        $targetFilePath = $targetDir . basename($newAboutUsImage);
+        $targetFilePath = $targetDir . basename($newgalleryImage);
         // Move the uploaded file to the target directory
-        if(move_uploaded_file($_FILES["aboutusimage"]["tmp_name"], $targetFilePath)) {
+        if(move_uploaded_file($_FILES["galleryImage"]["tmp_name"], $targetFilePath)) {
             // If file upload is successful, update the database with the complete path
-            $newAboutUsImage = $targetFilePath; // Update $newAboutUsImage with the complete path
+            $newgalleryImage = $targetFilePath; // Update $newgalleryImage with the complete path
         } else {
-            echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
+            // If file upload fails, you can handle the error here
+            // For example, you can display an error message or log the error
         }
-        
     }
     // Check if new data is provided
-    if(!empty($newAboutUsText) || !empty($newAboutUsImage)) {
+    if(!empty($newgalleryText) || !empty($newgalleryImage)) {
         // Update data with new values
-        $updateQuery = "UPDATE about_us SET ";
-        if(!empty($newAboutUsText)) {
-            $updateQuery .= "about_us_text = '$newAboutUsText'";
+        $updateQuery = "UPDATE gallery SET ";
+        if(!empty($newgalleryText)) {
+            $updateQuery .= "gallery_description = '$newgalleryText'";
         }
-        if(!empty($newAboutUsImage)) {
-            if(!empty($newAboutUsText)) {
+        if(!empty($newgalleryImage)) {
+            if(!empty($newgalleryText)) {
                 $updateQuery .= ", ";
             }
-            $updateQuery .= "about_us_image = '$newAboutUsImage'";
+            $updateQuery .= "gallery_image = '$newgalleryImage'";
         }
         $updateQuery .= " WHERE id = '$Id'";
         
@@ -61,10 +61,11 @@ if(isset($_POST['update'])) {
         
         
         // Redirect to the same page or any other page after successful update
-         header("Location: aboutus.php");
-        // exit();
+        header("Location: Gallery.php");
+        exit();
     } else {
-        echo "<script>alert('Error: " . mysqli_error($con) . "');</script>";
+        // No new data entered, so do nothing
+        // You can choose to display a message or handle it differently
     }
 }
 ?>
@@ -119,28 +120,33 @@ if(isset($_POST['update'])) {
             </div>
             <div class="main-content">
                 <div class="container">
-                    <h2 class="text-center">Update About Us</h2>
+                    <h2 class="text-center">Update Gallery</h2>
                     <div class="row justify-content-center">
                         <div class="col-md-10">
-                            <form id="updateAboutUsForm" method="post" enctype="multipart/form-data">
+                            <form method="post" enctype="multipart/form-data">
+                                <!-- Add hidden input for gallery ID -->
+                                <input type="hidden" name="gallery_id" value="<?php echo $Id; ?>">
+
+                                <!-- Add input for image -->
                                 <div class="form-group">
-                                    <label for="aboutustext">About Us Text:</label>
-                                    <textarea class="form-control" id="aboutustext" name="aboutustext" rows="6"
-                                        required><?php echo $aboutUsText; ?></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="aboutusimage">About Image:</label>
+                                    <label for="gallery_image">Gallery Image:</label>
                                     <div class="border p-1" style="border-radius: 5px;">
-                                        <img src="<?php echo $aboutUsImage; ?>" alt="About Us Image"
-                                            style="max-width: 100px; max-height: 100px;">
-                                        <input type="file" class="form-control-file mt-2" id="aboutusimage"
-                                            name="aboutusimage" accept="image/*">
+                                        <img src="<?php echo $galleryImage; ?>" alt="Gallery Image" style="max-width: 100px; max-height: 100px;">
+                                        <input type="file" class="form-control-file mt-2" id="galleryImage" name="galleryImage" accept="image/*">
                                     </div>
                                 </div>
+
+                                <!-- Add textarea for description -->
+                                <div class="form-group">
+                                    <label for="gallery_description">Gallery Description:</label>
+                                    <textarea class="form-control" id="gallery_description" name="gallery_description" rows="3"><?php echo $galleryText; ?></textarea>
+                                </div>
+
                                 <div class="form-group text-center">
                                     <input type="submit" class="btn btn-primary mt-3" name="update" value="Update">
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>

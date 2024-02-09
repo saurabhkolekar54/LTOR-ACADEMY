@@ -25,7 +25,7 @@
                   die("Connection failed: " . $con->connect_error);
               }
 
-              $sql = "SELECT * FROM franchise";
+              $sql = "SELECT * FROM franchise WHERE status=1";
               $result = $con->query($sql);
 
               if ($result->num_rows > 0) {

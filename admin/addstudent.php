@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
     $franchiseId = $_POST['franchiseId'];
 
     // Use prepared statement to avoid SQL injection
-    $sql = "INSERT INTO `StudentInfo` VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO `StudentInfo` VALUES (?, ?, ?, ?, ?, ?, ?, 1)";
 
     $stmt = mysqli_prepare($con, $sql);
 
@@ -55,6 +55,7 @@ if (isset($_POST['submit'])) {
 // Close the database connection
 mysqli_close($con);
 ?>
+
 
 
 <!doctype html>
