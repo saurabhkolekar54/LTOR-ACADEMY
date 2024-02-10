@@ -72,12 +72,6 @@
         </div>
     </section>
 
-    <!-- <div class="text-center">
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#inquiryModal">
-    Open Inquiry Form
-  </button>
-</div> -->
-
 <!-- Bootstrap Modal -->
 <div class="modal fade" id="inquiryModal" tabindex="-1" role="dialog" aria-labelledby="inquiryModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
