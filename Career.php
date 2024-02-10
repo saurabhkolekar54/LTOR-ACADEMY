@@ -30,15 +30,7 @@ if (isset($_POST['submit'])) {
             echo '<div class="alert alert-success" role="alert">
                     <b>Your Record Submitted Successfully!</b>
                   </div>';
-            echo '<script>
-                    setTimeout(function() {
-                        var alertDiv = document.querySelector(".alert");
-                        if (alertDiv) {
-                            alertDiv.style.display = "none";
-                        }
-                    }, 3000);
-                  </script>';
-            // header('location:addstudent.php');
+            header('location:Career.php');
         } else {
             echo '<div class="alert alert-danger" role="alert">
                     <b>Error: ' . mysqli_error($con) . '</b>

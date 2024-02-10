@@ -52,21 +52,27 @@ if ($result) {
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="image/index1.jpeg" class="d-block w-100" data-bs-interval="10000" alt="...">
+                    <img src="image/index1.jpeg" class="d-block w-100" style="height: 400px;" data-bs-interval="10000"
+                        alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="image/index2.jpeg" class="d-block w-100" data-bs-interval="10000" alt="...">
+                    <img src="image/index2.jpeg" class="d-block w-100" style="height: 400px;" data-bs-interval="10000"
+                        alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="image/index3.jpeg" class="d-block w-100" data-bs-interval="10000" alt="...">
+                    <img src="image/index3.jpeg" class="d-block w-100" style="height: 400px;" data-bs-interval="10000"
+                        alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="image/index4.jpeg" class="d-block w-100" data-bs-interval="10000" alt="...">
+                    <img src="image/index4.jpeg" class="d-block w-100" style="height: 400px;" data-bs-interval="10000"
+                        alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="image/index5.jpeg" class="d-block w-100" data-bs-interval="10000" alt="...">
+                    <img src="image/index5.jpeg" class="d-block w-100" style="height: 400px;" data-bs-interval="10000"
+                        alt="...">
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -272,7 +278,7 @@ if ($result) {
                 </div>
                 <div class="buttons d-flex justify-content-between">
                     <button class="btn btn-primary" id="prev">
-                        << /button>
+                        <</button>
                             <button class="btn btn-primary" id="next">></button>
                 </div>
                 <ul class="dots list-inline text-center">
@@ -465,66 +471,69 @@ if ($result) {
                                 </select>
                             </div>
                             <div class="col-md-6  mb-3">
-                                <select id="district" name="district" class="form-control p-2" onchange="loadSubDistricts()">
-                                <option value="">Select District</option>
-                            </select>
+                                <select id="district" name="district" class="form-control p-2"
+                                    onchange="loadSubDistricts()">
+                                    <option value="">Select District</option>
+                                </select>
                             </div>
                         </div>
 
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <div class="form-group">
-                            <select id="subdistrict" name="subdistrict" class="form-control p-2">
-                            <option value="">Select Sub District</option>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    <select id="subdistrict" name="subdistrict" class="form-control p-2">
+                                        <option value="">Select Sub District</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="">
+                                    <input type="text" class="form-control" id="zip" name="zip" placeholder="Pin Code"
+                                        required>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <div class="">
-                            <input type="text" class="form-control" id="zip" name="zip" placeholder="Pin Code" required>
-                        </div>
-                    </div>
-                </div>
-                <textarea class="form-control" placeholder="Message" name="message" rows="2" required></textarea>
+                        <textarea class="form-control" placeholder="Message" name="message" rows="2"
+                            required></textarea>
 
-                <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
 
-            </div>
-        </div>
-
-        <div class="additional-info">
-            <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
-
-                <div class="col">
-                    <div class="info-item">
-                        <div class="item-body">
-                            <h3><i class="fas fa-map-marker-alt"></i></h3>
-                            <p>2nd Floor, Madhav Heritage, Lokmanya Bal Gangadhar Tilak Rd,Sadashiv Peth, Pune,
-                                Maharashtra 411030</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="info-item">
-                        <div class="item-body">
-                            <h3><i class="fas fa-envelope"></i></h3>
-                            <p>ltorpune@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="info-item">
-                        <div class="item-body">
-                            <h3><i class="fas fa-phone"></i></h3>
-                            <p class="phone">+91 - 9403090958 <br>+91 - 9309907928<br>+91 - 9038546718</p>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
+
+            <div class="additional-info">
+                <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+
+                    <div class="col">
+                        <div class="info-item">
+                            <div class="item-body">
+                                <h3><i class="fas fa-map-marker-alt"></i></h3>
+                                <p>2nd Floor, Madhav Heritage, Lokmanya Bal Gangadhar Tilak Rd,Sadashiv Peth, Pune,
+                                    Maharashtra 411030</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="info-item">
+                            <div class="item-body">
+                                <h3><i class="fas fa-envelope"></i></h3>
+                                <p>ltorpune@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="info-item">
+                            <div class="item-body">
+                                <h3><i class="fas fa-phone"></i></h3>
+                                <p class="phone">+91 - 9403090958 <br>+91 - 9309907928<br>+91 - 9038546718</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </section>
 
     <!-- Footer -->

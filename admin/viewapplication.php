@@ -77,41 +77,46 @@
             <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">Contact</th>
-            <th scope="col">Email</th>
-            <th scope="col">State</th>
-            <th scope="col">District</th>
-            <th scope="col">Subdistrict</th>
-            <th scope="col">Pincode</th>
-            <th scope="col">Inquiry Subject</th>
-            <th scope="col">Submitted Time</th>
-            <th scope="col">Submitted Date</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Education</th>
+            <th scope="col">College</th>
+            <th scope="col">Experience</th>
+            <th scope="col">Skills</th>
+            <th scope="col">Qualification</th>
+            <th scope="col">Position</th>
+            <th scope="col">Resume</th>
+            <th scope="col">Application Datetime</th>
         </tr>
     </thead>
     <tbody>
         <?php
         require 'connection.php';
-        $sql = "SELECT * FROM leads";
+        $sql = "SELECT * FROM job_application";
         $result = mysqli_query($con, $sql);
         if ($result) {
             while ($row = mysqli_fetch_assoc($result)) {
+                $resumepdf=$row['resume'];
                 echo '<tr>
-                <td>' . $row['l_id'] . '</td>
-                <td>' . $row['l_name'] . '</td>
-                <td>' . $row['l_contact'] . '</td>
-                <td>' . $row['l_email'] . '</td>
-                <td>' . $row['l_state'] . '</td>
-                <td>' . $row['l_district'] . '</td>
-                <td>' . $row['l_subdistrict'] . '</td>
-                <td>' . $row['l_pincode'] . '</td>
-                <td>' . $row['l_inquiry_subject'] . '</td>
-                <td>' . $row['l_created_at'] . '</td>
-                <td>' . $row['l_date'] . '</td>
+                <td>' . $row['id'] . '</td>
+                <td>' . $row['name'] . '</td>
+                <td>' . $row['contact'] . '</td>
+                <td>' . $row['dob'] . '</td>
+                <td>' . $row['education'] . '</td>
+                <td>' . $row['college'] . '</td>
+                <td>' . $row['experience'] . '</td>
+                <td>' . $row['skills'] . '</td>
+                <td>' . $row['qualification'] . '</td>
+                <td>' . $row['position'] . '</td>
+                <td><a href="./admin/application/' . $resumepdf . '" target="_blank">View PDF</a></td>
+                <td>' . $row['application_datetime'] . '</td>
                 </tr>';
             }
         }
         ?>
     </tbody>
 </table>
+
+
 
 
       </div>
