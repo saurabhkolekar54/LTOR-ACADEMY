@@ -130,10 +130,10 @@ if(isset($_POST['update'])) {
                                 </div>
                                 <div class="form-group">
                                     <label for="aboutusimage">About Image:</label>
-                                    <div class="border p-1" style="border-radius: 5px;">
+                                    <div class="border p-2" style="border-radius: 5px;">
                                         <img src="<?php echo $aboutUsImage; ?>" alt="About Us Image"
                                             style="max-width: 100px; max-height: 100px;">
-                                        <input type="file" class="form-control-file mt-2" id="aboutusimage"
+                                        <input type="file" class="form-control-file p-1" id="aboutusimage"
                                             name="aboutusimage" accept="image/*">
                                     </div>
                                 </div>

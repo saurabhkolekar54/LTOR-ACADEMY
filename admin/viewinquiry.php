@@ -87,6 +87,7 @@
             <th scope="col">Taluka</th>
             <th scope="col">Pincode</th>
             <th scope="col">Inquiry Subject</th>
+            <th scope="col">Received At</th>
         </tr>
     </thead>
     <tbody>
@@ -110,6 +111,7 @@
             $t_taluka = $row['t_taluka'];
             $t_pincode = $row['t_pincode'];
             $t_inquirysubject = $row['t_inquirysubject'];
+            $timestamp=$row['timestamp_column'];
 
             echo '<tr>
             <td>'.$t_id.'</td>
@@ -123,6 +125,7 @@
             <td>'.$t_taluka.'</td>
             <td>'.$t_pincode.'</td>
             <td>'.$t_inquirysubject.'</td>
+            <td>'.$timestamp.'</td>
             </tr>'; 
            }
 

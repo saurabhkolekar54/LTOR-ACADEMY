@@ -1,6 +1,7 @@
 <?php
 // Assuming you have a database connection in connection.php
 require 'connection.php';
+include('includes/student_inquiry.php');
 
 // Perform SQL query to fetch data from the about_us table
 $sql = "SELECT about_us_text, about_us_image FROM about_us";
@@ -16,6 +17,7 @@ if ($result) {
         $aboutUsImage = $row['about_us_image'];
     } 
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -356,14 +358,12 @@ if ($result) {
                                         <div class="testi-item">
                                             <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
                                             <div class="testimonials-text">
-                                                <p>' . $row['testimonialText'] . '</p>
-                                                <a href="#" class="text-link"></a>
-                                                <div class="testimonials-avatar">
-                                                    <h3>' . $row['studentName'] . '</h3>
-                                                    <h4>' . $row['courseName'] . '</h4>
+                                                <p style="text-align: justify;">' . $row['testimonialText'] . '</p>
+                                                <img src="admin/' . $row['studentImage'] . '" alt="Student Image" class="student-image" width="50px" height="50px" style="border-radius: 50%;">                                                <div class="testimonials-avatar">
+                                                <h3>' . $row['studentName'] . '</h3>
+                                                <h4>' . $row['courseName'] . '</h4>
                                                 </div>
                                             </div>
-                                            <div class="testimonials-text-after"><i class="fa fa-quote-left"></i></div>
                                         </div>
                                     </div>';
                         }
@@ -402,90 +402,129 @@ if ($result) {
 
                 <!-- Contact form on the right side -->
                 <div class="contact-form col-md-6">
-                <form action="#" method="post">
-    <input type="text" class="form-control mb-2" placeholder="Name" name="name" required>
+                    <form action="Includes/student_inquiry.php" method="post">
+                        <input type="text" class="form-control mb-1" placeholder="Name" name="name" required>
 
-    <div class="row">
-        <div class="col-md-6 mb-2">
-            <!-- Email input -->
-            <div class="">
-                <input type="email" class="form-control" placeholder="Email" name="email" required>
-            </div>
-        </div>
-        <div class="col-md-6 mb-2">
-            <!-- Phone number input -->
-            <div class="">
-                <input type="tel" class="form-control" placeholder="Phone Number" name="phone" required>
-            </div>
-        </div>
-    </div>
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <!-- Email input -->
+                                <div class=" mb-3">
+                                    <input type="email" class="form-control" placeholder="Email" name="email" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <!-- Phone number input -->
+                                <div class=" mb-3">
+                                    <input type="tel" class="form-control " placeholder="Phone Number" name="phone"
+                                        required>
+                                </div>
+                            </div>
+                        </div>
 
-    <!-- New fields for state, district, subdistrict, and pincode -->
-    <div class="row">
-        <div class="col-md-6 mb-2">
-            <select class="form-select form-control" id="state" name="state" onchange="loadDistricts()" required>
-                <option value="">Select State</option>
-                <!-- Options for states -->
-            </select>
-        </div>
-        <div class="col-md-6 mb-2">
-            <div class="form-group">
-                <select id="district" name="district" class="form-control" onchange="loadSubDistricts()"></select>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 mb-2">
-            <div class="form-group">
-                <select id="subdistrict" name="subdistrict" class="form-control"></select>
-            </div>
-        </div>
-        <div class="col-md-6 mb-2">
-            <div class="">
-                <input type="text" class="form-control" id="zip" name="zip" placeholder="Pin Code" required>
-            </div>
-        </div>
-    </div>
-    <textarea class="form-control mb-2" placeholder="Message" name="message" rows="2" required></textarea>
+                        <!-- New fields for state, district, subdistrict, and pincode -->
+                        <div class="row">
+                            <div class="col-md-6   mb-3">
+                                <select class="form-select form-control p-2" id="state" name="state"
+                                    onchange="loadDistricts()" required>
+                                    <option value="">Select State</option>
+                                    <option value="AndraPradesh">Andhra Pradesh</option>
+                                    <option value="ArunachalPradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="HimachalPradesh">HimachalPradesh</option>
+                                    <option value="JammuKashmir">JammuKashmir</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="MadhyaPradesh">MadhyaPradesh</option>
+                                    <option value="Sehore">Sehore</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="TamilNadu">TamilNadu</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="UttarPradesh">UttarPradesh</option>
+                                    <option value="Uttarakhand">Uttarakhand</option>
+                                    <option value="WestBengal">WestBengal</option>
+                                    <option value="AndamanNicobar">AndamanNicobar</option>
+                                    <option value="DamanDiu">DamanDiu</option>
+                                    <option value="Lakshadweep">Lakshadweep</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Lakshadweep">Lakshadweep</option>
+                                    <option value="Puducherry">Puducherry</option>
 
-    <button type="submit" class="btn btn-primary">Send Message</button>
-</form>
+                                </select>
+                            </div>
+                            <div class="col-md-6  mb-3">
+                                <select id="district" name="district" class="form-control p-2" onchange="loadSubDistricts()">
+                                <option value="">Select District</option>
+                            </select>
+                            </div>
+                        </div>
 
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <select id="subdistrict" name="subdistrict" class="form-control p-2">
+                            <option value="">Select Sub District</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="">
+                            <input type="text" class="form-control" id="zip" name="zip" placeholder="Pin Code" required>
+                        </div>
+                    </div>
+                </div>
+                <textarea class="form-control" placeholder="Message" name="message" rows="2" required></textarea>
+
+                <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="additional-info">
+            <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+
+                <div class="col">
+                    <div class="info-item">
+                        <div class="item-body">
+                            <h3><i class="fas fa-map-marker-alt"></i></h3>
+                            <p>2nd Floor, Madhav Heritage, Lokmanya Bal Gangadhar Tilak Rd,Sadashiv Peth, Pune,
+                                Maharashtra 411030</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="info-item">
+                        <div class="item-body">
+                            <h3><i class="fas fa-envelope"></i></h3>
+                            <p>ltorpune@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="info-item">
+                        <div class="item-body">
+                            <h3><i class="fas fa-phone"></i></h3>
+                            <p class="phone">+91 - 9403090958 <br>+91 - 9309907928<br>+91 - 9038546718</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="additional-info">
-                <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
-
-                    <div class="col">
-                        <div class="info-item">
-                            <div class="item-body">
-                                <h3><i class="fas fa-map-marker-alt"></i></h3>
-                                <p>2nd Floor, Madhav Heritage, Lokmanya Bal Gangadhar Tilak Rd,Sadashiv Peth, Pune,
-                                    Maharashtra 411030</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="info-item">
-                            <div class="item-body">
-                                <h3><i class="fas fa-envelope"></i></h3>
-                                <p>ltorpune@gmail.com</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="info-item">
-                            <div class="item-body">
-                                <h3><i class="fas fa-phone"></i></h3>
-                                <p class="phone">+91 - 9403090958 <br>+91 - 9309907928<br>+91 - 9038546718</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </div>
     </section>
 
     <!-- Footer -->

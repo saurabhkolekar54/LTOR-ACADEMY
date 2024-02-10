@@ -11,46 +11,36 @@ if (isset($_POST['submit'])) {
     $courseName = $_POST['courseName'];
     $testimonialText = $_POST['testimonialText'];
 
-    $sql = "INSERT INTO testimonials (studentName, courseName, testimonialText) VALUES (?, ?, ?)";
-    $stmt = $con->prepare($sql);
-    $stmt->bind_param("sss", $studentName, $courseName, $testimonialText);
+    $targetDir = "image/";
+    $targetFile = $targetDir . basename($_FILES["studentImage"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
-    if ($stmt->execute()) {
-        // Use JavaScript to display success message
-        echo '<script>
-                alert("Testimonial added successfully!");
-              </script>';
-    } else {
-        echo '<script>
-                alert("Error adding testimonial. Please try again.");
-              </script>';
-    }
-}
-
-// Update data in the database
-if (isset($_POST['updatesubmit'])) {
-    $testimonialId = $_POST['editTestimonialId'];
-    $newStudentName = $_POST['editStudentName'];
-    $newCourseName = $_POST['editCourseName'];
-    $newTestimonialText = $_POST['editTestimonialText'];
-
-    $sql = "UPDATE testimonials 
-            SET studentName = ?, courseName = ?, testimonialText = ?
-            WHERE id = ?";
-    $stmt = $con->prepare($sql);
-    $stmt->bind_param("sssi", $newStudentName, $newCourseName, $newTestimonialText, $testimonialId);
-
-    if ($stmt->execute()) {
-        echo '<script>
-                alert("Testimonial updated successfully!");
-              </script>';
-    } else {
-        echo '<script>
-                alert("Error updating testimonial. Please try again.");
-              </script>';
+    if (isset($_FILES["studentImage"])) {
+        $check = getimagesize($_FILES["studentImage"]["tmp_name"]);
+        $uploadOk = $check !== false ? 1 : 0;
     }
 
-    $stmt->close();
+    if ($_FILES["studentImage"]["size"] > 500000 || !in_array($imageFileType, ["jpg", "jpeg", "png"])) {
+        $uploadOk = 0;
+    }
+
+    if ($uploadOk == 1 && move_uploaded_file($_FILES["studentImage"]["tmp_name"], $targetFile)) {
+        $sql = "INSERT INTO testimonials (StudentImage,studentName, courseName, testimonialText) VALUES (?, ?, ?, ?)";
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("ssss",$targetFile,$studentName, $courseName, $testimonialText);
+
+        if ($stmt->execute()) {
+            echo '<script>alert("Testimonial added successfully!");</script>';
+            header('location: testimonials.php');
+        } else {
+            echo '<script>alert("Error adding testimonial. Please try again.");</script>';
+            header('location: testimonials.php');
+        }
+    } else {
+        echo '<script>alert("Sorry, there was an error uploading your file.");</script>';
+        header('location: testimonials.php');
+    }
 }
 ?>
 <!doctype html>
@@ -104,19 +94,26 @@ if (isset($_POST['updatesubmit'])) {
             <div class="main-content">
                 <section class="add-team-member">
                     <div class="container">
-                        <h2 class="text-center mt-3">Add Testimonials</h2>
-                        <form id="addTestimonialForm" action="testimonials.php" method="post" class="mb-5">
+                        <h2 class="text-center">Add Testimonials</h2>
+                        <form id="addTestimonialForm" action="testimonials.php" method="post" class="mb-5"
+                            enctype="multipart/form-data">
                             <div class="form-row mt-3">
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-6">
                                     <label for="studentName">Name of Student:</label>
                                     <input type="text" class="form-control" id="studentName" name="studentName"
                                         required>
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-6">
                                     <label for="courseName">Course Name:</label>
                                     <input type="text" class="form-control" id="courseName" name="courseName" required>
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-6">
+                                    <label for="studentImage">Student Image:</label>
+                                    <div class="border" style="border-radius:5px;">
+                                        <input type="file" class="form-control-file" id="studentImage" name="studentImage" accept="image/*">
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
                                     <label for="testimonialText">Testimonial:</label>
                                     <textarea class="form-control" id="testimonialText" name="testimonialText" rows="1"
                                         required></textarea>
@@ -127,9 +124,11 @@ if (isset($_POST['updatesubmit'])) {
                                 </div>
                             </div>
                         </form>
+
                         <table class="table table-striped table-bordered mt-10" id="myTable">
                             <thead>
                                 <tr>
+                                <th>Student Image</th>
                                     <th>Name</th>
                                     <th>Course</th>
                                     <th>Testimonial</th>
@@ -145,8 +144,10 @@ if (isset($_POST['updatesubmit'])) {
                                if ($result->num_rows > 0) {                           
                                    while ($row = $result->fetch_assoc()) {
                                     $status = $row['status'];
+                                    $srno=$row['id'];
                                        echo '<tr>
-                                               <td>' . $row['studentName'] . '</td>
+                                                <td><img src="' . $row['studentImage'] . '" alt="Student Image" style="max-width: 100px; max-height: 100px;"></td>
+                                                <td>' . $row['studentName'] . '</td>
                                                <td>' . $row['courseName'] . '</td>
                                                <td>' . $row['testimonialText'] . '</td>
                                                <td>
@@ -161,15 +162,7 @@ if (isset($_POST['updatesubmit'])) {
                                                    }
                                              </script>                                              
                                              <td>
-                       <button class="btn btn-primary edit-testimonial-btn" 
-                            data-toggle="modal" 
-                            data-target="#editTestimonialModal" 
-                            data-testimonialid="' . $row['id'] . '"
-                            data-studentname="' . $row['studentName'] . '"
-                            data-coursename="' . $row['courseName'] . '"
-                            data-testimonialtext="' . $row['testimonialText'] . '">
-                        Edit
-                    </button> 
+                                             <a href="updatetestimonials.php? updateid=' . $srno . '" class="btn btn-primary text-light">Update</a>
                                          </td>
                                    </tr>';
                                    }
@@ -185,44 +178,6 @@ if (isset($_POST['updatesubmit'])) {
         </div>
     </div>
 
-    <div class="modal fade" id="editTestimonialModal" tabindex="-1" role="dialog"
-        aria-labelledby="editTestimonialModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editTestimonialModalLabel">Edit Testimonial</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="editTestimonialForm" action="testimonials.php" method="post">
-                        <input type="hidden" id="editTestimonialId" name="editTestimonialId">
-
-                        <div class="form-group">
-                            <label for="editStudentName">Student Name:</label>
-                            <input type="text" class="form-control" id="editStudentName" name="editStudentName"
-                                required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="editCourseName">Course Name:</label>
-                            <input type="text" class="form-control" id="editCourseName" name="editCourseName"
-                                required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="editTestimonialText">Testimonial:</label>
-                            <textarea class="form-control" id="editTestimonialText" name="editTestimonialText"
-                                rows="3" required></textarea>
-                        </div>
-
-                        <button type="submit" name="updatesubmit" class="btn btn-primary">Save Changes</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS, and finally DataTables JS -->
     <script src="js/jquery-3.3.1.slim.min.js"></script>
@@ -230,40 +185,25 @@ if (isset($_POST['updatesubmit'])) {
     <script src="js/bootstrap.min.js"></script>
     <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $('#editTestimonialModal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget);
-                var testimonialId = button.data('testimonialid');
-                var studentName = button.data('studentname');
-                var courseName = button.data('coursename');
-                var testimonialText = button.data('testimonialtext');
-
-                var modal = $(this);
-                modal.find('#editTestimonialId').val(testimonialId);
-                modal.find('#editStudentName').val(studentName);
-                modal.find('#editCourseName').val(courseName);
-                modal.find('#editTestimonialText').val(testimonialText);
-            });
-
-            // Initialize DataTables correctly
-            $("#myTable").DataTable();
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#sidebarCollapse').on('click', function() {
+            $('#sidebar').toggleClass('active');
+            $('#content').toggleClass('active');
         });
-    </script>
 
-<script type="text/javascript">
-  $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-				$('#content').toggleClass('active');
-            });
-			
-			 $('.more-button,.body-overlay').on('click', function () {
-                $('#sidebar,.body-overlay').toggleClass('show-nav');
-            });
-			
+        $('.more-button,.body-overlay').on('click', function() {
+            $('#sidebar,.body-overlay').toggleClass('show-nav');
         });
+
+    });
+    $(document).ready(function() {
+        $("#myTable").dataTable();
+    });
 </script>
+<script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js">
+    let table = new DataTable('#myTable');
+    </script>
 </body>
 
 </html>
