@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
 
     if ($validate_img_extension) {
         // Use prepared statement to avoid SQL injection
-        $query = "INSERT INTO course (course_id, course_name, course_duration, course_members, course_image, course_syllabus, course_mode, status) VALUES (?, ?, ?, ?, ?, ?, ?, 1)";
+        $query = "INSERT INTO course VALUES (?, ?, ?, ?, ?, ?, ?, 1)";
 
         $stmt = mysqli_prepare($con, $query);
 
@@ -139,11 +139,7 @@ mysqli_close($con);
 
             <div class="form-group col-md-6">
                 <label for="courseName">Course Name:</label>
-                <select class="form-control" id="courseName" name="courseName" required>
-                    <option value="Spoken English">Spoken English</option>
-                    <option value="Public Speaking">Public Speaking</option>
-                    <!-- Add other options as needed -->
-                </select>
+                <input type="text" class="form-control" id="courseName" name="courseName" required>
             </div>
         </div>
 
@@ -158,7 +154,10 @@ mysqli_close($con);
                 <select class="form-control" id="courseDuration" name="courseDuration" required>
                     <option value="1 Month">1 Month</option>
                     <option value="2 Month">2 Month</option>
-                    <!-- Add other options as needed -->
+                    <option value="1 Month">3 Month</option>
+                    <option value="2 Month">4 Month</option>
+                    <option value="1 Month">6 Month</option>
+                    <option value="2 Month">1 Year</option>
                 </select>
             </div>
         </div>

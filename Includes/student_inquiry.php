@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pincode = $_POST["zip"];
     $message = $_POST["message"];
 
-    $sql = "INSERT INTO student_inquiry (si_name, si_email, si_phone, si_state, si_district, si_subdistrict, si_pincode, si_message) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO leads (l_name, l_email, l_phone, l_state, l_district, l_subdistrict, l_pincode, l_message) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $con->prepare($sql);
 
     if ($stmt) {
