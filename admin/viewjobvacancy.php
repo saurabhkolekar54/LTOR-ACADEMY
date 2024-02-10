@@ -93,6 +93,7 @@ $result = mysqli_query($con, $sql);
 
 if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
+        $srno=$row['id'];
         echo '<tr>
             <td>' . $row['id'] . '</td>
             <td>' . $row['job_title'] . '</td>
@@ -108,7 +109,7 @@ if ($result) {
                     window.location.href = "VacancyStatus.php?id=" + memberId + "&status=" + status;
                 }
               </script>
-              <td><a href="UpdateVacancy.php?updateid=$srno" class="btn btn-primary text-light">Update</a></td>
+              <td><a href="UpdateVacancy.php?updateid=' . $srno . '" class="btn btn-primary text-light">Update</a></td>
         </tr>';
     }
 }
