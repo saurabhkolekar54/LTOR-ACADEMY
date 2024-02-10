@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <span class="location-icon">📍</span> Location: City 1, Country 1
                     </div>
                     <div class="description">Course Description goes here. Provide a brief overview of the course.</div>
-                    <div class="price">$99.99</div>
+                    <div class="price"> ₹1,500</div>
                     <a href="#" class="inquiry-btn" class="btn btn-primary" data-bs-toggle="modal"
                         data-bs-target="#inquiryModal">Inquire Now</a>
                 </div>
@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <span class="location-icon">📍</span> Location: City 2, Country 2
                     </div>
                     <div class="description">Course Description goes here. Provide a brief overview of the course.</div>
-                    <div class="price">$129.99</div>
+                    <div class="price">&nbsp;</div>
                     <a href="#" class="inquiry-btn" class="btn btn-primary" data-bs-toggle="modal"
                         data-bs-target="#inquiryModal">Inquire Now</a>
                 </div>
@@ -79,10 +79,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="course-info">
                     <div class="course-title">Success Key</div>
                     <div class="location">
-                        <span class="location-icon">📍</span> Location: City 1, Country 1
+                        <span class="location-icon">📍</span> Location: City 3, Country 3
                     </div>
                     <div class="description">Course Description goes here. Provide a brief overview of the course.</div>
-                    <div class="price">$99.99</div>
+                    <div class="price">&nbsp;</div>
                     <a href="#" class="inquiry-btn" class="btn btn-primary" data-bs-toggle="modal"
                         data-bs-target="#inquiryModal">Inquire Now</a>
                 </div>
@@ -93,10 +93,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="course-info">
                     <div class="course-title">Success Key</div>
                     <div class="location">
-                        <span class="location-icon">📍</span> Location: City 2, Country 2
+                        <span class="location-icon">📍</span> Location: City 4, Country 4
                     </div>
                     <div class="description">Course Description goes here. Provide a brief overview of the course.</div>
-                    <div class="price">$129.99</div>
+                    <div class="price">&nbsp;</div>
                     <a href="#" class="inquiry-btn" class="btn btn-primary" data-bs-toggle="modal"
                         data-bs-target="#inquiryModal">Inquire Now</a>
                 </div>

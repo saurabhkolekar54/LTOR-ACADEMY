@@ -55,7 +55,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="coursesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Courses</a>
                             <div class="dropdown-menu" aria-labelledby="coursesDropdown">
                                 <a class="dropdown-item" href="SpokenEnglish.php">Spoken English</a>
-                                <a class="dropdown-item" href="ConfidenceBuilding">Confidence Building</a>
+                                <a class="dropdown-item" href="ConfidenceBuilding.php">Confidence Building</a>
                                 <a class="dropdown-item" href="PublicSpeaking.php">Public Speaking</a>
                                 <a class="dropdown-item" href="SuccessKey.php">Success Key</a>
                                 <a class="dropdown-item" href="LeadershipQuality.php">Leadership Quality</a>

@@ -1,5 +1,5 @@
 <?php
-$host = "localhost:3307";
+$host = "localhost:3308";
 $username = "root";
 $password = "";
 $database = "LTOR_ACADEMY";
