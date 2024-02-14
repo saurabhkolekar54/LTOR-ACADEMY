@@ -126,7 +126,7 @@ if (isset($_POST['submit'])) {
         </nav>
     </div>
     <div class="main-content">
-    <div class="container">
+    <div class="container card shadow p-3 bg-white rounded">
                 <h2 class="text-center">Update Batch</h2>
                 <form class="mt-4" method="POST" enctype="multipart/form-data">
                     <div class="row">

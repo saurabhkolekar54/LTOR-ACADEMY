@@ -14,70 +14,33 @@
 
 <div class="container-fluid event">
     <h1 class="slider-heading"><span class="letter">E</span>vents</h1>
-        <div class="row">
+    <div class="row">
             <div class="slider">
                 <div class="list d-flex">
                     <div class="item">
-                        <img src="image/1.jpg" alt="">
+                        <img src="image/index1.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="image/1.jpg" alt="">
+                        <img src="image/index2.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="image/1.jpg" alt="">
+                        <img src="image/index1.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="image/1.jpg" alt="">
+                        <img src="image/index2.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="image/1.jpg" alt="">
+                        <img src="image/index5.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="image/1.jpg" alt="">
+                        <img src="image/index1.jpeg" alt="">
                     </div>
                     <!-- Add more items as needed -->
                 </div>
                 <div class="buttons d-flex justify-content-between">
-                    <button class="btn btn-primary" id="prev"><</button>
-                    <button class="btn btn-primary" id="next">></button>
-                </div>
-                <ul class="dots list-inline text-center">
-                    <li class="list-inline-item active"></li>
-                    <!-- Add more dots as needed -->
-                </ul>
-                <div class="event-info text-center">
-                    <p>Seminar on Business Development</p>
-                    <p>Location: Tilak Road <br>Date: 6-01-2024</p>
-                </div>
-            </div>
-    
-      
-       
-            <div class="slider">
-                <div class="list d-flex">
-                    <div class="item">
-                        <img src="image/1.jpg" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="image/1.jpg" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="image/1.jpg" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="image/1.jpg" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="image/1.jpg" alt="">
-                    </div>
-                    <div class="item">
-                        <img src="image/1.jpg" alt="">
-                    </div>
-                    <!-- Add more items as needed -->
-                </div>
-                <div class="buttons d-flex justify-content-between">
-                    <button class="btn btn-primary" id="prev"><</button>
-                    <button class="btn btn-primary" id="next">></button>
+                    <button class="btn btn-primary" id="prev">
+                        < </button>
+                            <button class="btn btn-primary" id="next">></button>
                 </div>
                 <ul class="dots list-inline text-center">
                     <li class="list-inline-item active"></li>
@@ -89,33 +52,73 @@
                 </div>
             </div>
 
-        
-      
+
+
             <div class="slider">
                 <div class="list d-flex">
                     <div class="item">
-                        <img src="image/1.jpg" alt="">
+                        <img src="image/g1.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="image/1.jpg" alt="">
+                        <img src="image/g2.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="image/1.jpg" alt="">
+                        <img src="image/g3.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="image/1.jpg" alt="">
+                        <img src="image/g4.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="image/1.jpg" alt="">
+                        <img src="image/g5.jpeg" alt="">
                     </div>
                     <div class="item">
-                        <img src="image/1.jpg" alt="">
+                        <img src="image/g6.jpeg" alt="">
                     </div>
                     <!-- Add more items as needed -->
                 </div>
                 <div class="buttons d-flex justify-content-between">
-                    <button class="btn btn-primary" id="prev"><</button>
-                    <button class="btn btn-primary" id="next">></button>
+                    <button class="btn btn-primary" id="prev">
+                        <</button>
+                            <button class="btn btn-primary" id="next">></button>
+                </div>
+                <ul class="dots list-inline text-center">
+                    <li class="list-inline-item active"></li>
+                    <!-- Add more dots as needed -->
+                </ul>
+                <div class="event-info text-center">
+                    <p>Seminar on Business Development</p>
+                    <p>Location: Tilak Road <br>Date: 6-01-2024</p>
+                </div>
+            </div>
+
+
+
+            <div class="slider">
+                <div class="list d-flex">
+                    <div class="item">
+                        <img src="image/index5.jpeg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="image/g3.jpeg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="image/g1.jpeg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="image/index2.jpeg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="image/g1.jpeg" alt="">
+                    </div>
+                    <div class="item">
+                        <img src="image/index1.jpeg" alt="">
+                    </div>
+                    <!-- Add more items as needed -->
+                </div>
+                <div class="buttons d-flex justify-content-between">
+                    <button class="btn btn-primary" id="prev">
+                        < </button>
+                            <button class="btn btn-primary" id="next">></button>
                 </div>
                 <ul class="dots list-inline text-center">
                     <li class="list-inline-item active"></li>

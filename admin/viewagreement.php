@@ -83,7 +83,7 @@
                                 <th scope="col">Party B Contact</th>
                                 <th scope="col">Party B Email</th>
                                 <th scope="col">Party B Photo</th>
-                                <th scope="col">Franchiseid</th>
+                                <th scope="col">Franchise Id</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Operation</th>
 

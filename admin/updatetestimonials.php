@@ -123,7 +123,7 @@ if (isset($_POST['update'])) {
                 </nav>
             </div>
             <div class="main-content">
-                <div class="container">
+            <div class="container card shadow p-3 bg-white rounded">
                     <h2 class="text-center">Update Testimonials</h2>
                     <div class="row justify-content-center">
                         <div class="col-md-10">

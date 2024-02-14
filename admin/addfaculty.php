@@ -123,7 +123,7 @@ mysqli_close($con);
 
 
             <div class="main-content">
-                <div class="container">
+            <div class="container card shadow p-3 bg-white rounded">
                     <h2 class="text-center">Add Faculty</h2>
                     <form class="mt-4" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
@@ -232,6 +232,7 @@ mysqli_close($con);
                                     <option value="B.Ed.">B.Ed.</option>
                                     <option value="B.Sc.-B.Ed.">B.Sc.-B.Ed.</option>
                                     <option value="M.A.">M.A.</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
 
@@ -244,6 +245,7 @@ mysqli_close($con);
                                     <option value="B.Ed. (Bachelor of Education)">B.Ed. (Bachelor of Education)</option>
                                     <option value="B.Sc.-B.Ed. Integrated Course">B.Sc.-B.Ed. Integrated Course</option>
                                     <option value="M.A. in English*">M.A. in English*</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
                         </div>

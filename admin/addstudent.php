@@ -14,15 +14,15 @@ if (isset($_POST['submit'])) {
     $courseId = $_POST['courseId'];
     $batchNo = $_POST['batchNo'];
     $franchiseId = $_POST['franchiseId'];
-
+    
     // Use prepared statement to avoid SQL injection
-    $sql = "INSERT INTO `StudentInfo` VALUES (?, ?, ?, ?, ?, ?, ?, 1)";
-
+    $sql = "INSERT INTO `StudentInfo` VALUES (?, ?, ?, ?, ?, ?, ?,?, 1)";
+    
     $stmt = mysqli_prepare($con, $sql);
-
+    
     if ($stmt) {
-        mysqli_stmt_bind_param($stmt, "sssssssi", $studentId, $name, $email, $contact, $gender, $courseId, $batchNo, $franchiseId);
-
+        mysqli_stmt_bind_param($stmt, "issssiii", $studentId, $name, $email, $contact, $gender, $courseId, $batchNo, $franchiseId);
+    
         $result = mysqli_stmt_execute($stmt);
 
         if ($result) {
@@ -130,8 +130,8 @@ mysqli_close($con);
 
 
             <div class="main-content">
-                <div class="container">
-                    <h2 class="text-center">Add Student</h2>
+            <div class="container card shadow p-3 bg-white rounded">
+                         <h2>Add Student</h2>
                     <form class="mt-4" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
                             <!-- Student ID -->

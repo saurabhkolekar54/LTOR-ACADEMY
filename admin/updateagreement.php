@@ -152,7 +152,7 @@ $stmt = mysqli_prepare($con, $sql);
         </nav>
     </div>
     <div class="main-content">
-     <div class="container">
+    <div class="container card shadow p-3 bg-white rounded">
                 <h2 class="text-center">Update Agreement</h2>
                 <form action="#" method="post" enctype="multipart/form-data">
             <!-- Agreement ID -->

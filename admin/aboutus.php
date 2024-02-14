@@ -107,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="main-content">
                 <div class="container">
                     <!-- About Us Section -->
-                    <h2 class="text-center">About Us</h2>
+                    <h2>About Us</h2>
                     <div class="about-us-section">
                         <form id="updateAboutUsForm" action="" method="post" enctype="multipart/form-data"
                             class="form-horizontal">

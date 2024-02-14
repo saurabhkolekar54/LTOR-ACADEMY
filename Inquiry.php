@@ -22,18 +22,21 @@ if(isset($_POST['sub'])) {
     $subject=$_POST['subject'];
 
     // SQL query to insert data into the database
-    $sql = "INSERT INTO inquiry VALUES ('','$name','$countryCode', '$contact','$email', '$country', '$state', '$district', '$subdistrict', '$village', '$zip','$subject')";
+    $stmt = $con->prepare("INSERT INTO inquiry (t_name, t_countrycode, t_contact, t_email, t_country, t_state, t_district, t_subdistrict, t_taluka, t_pincode, t_inquirysubject) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-    // Execute query
-    if ($con->query($sql) === TRUE) {
-        header("Location: inquiry.php");
-        exit();
-
-    } else {
-        echo "Error: " . $sql . "<br>" . $con->error;
+    if ($stmt) {
+        // Bind parameters
+        $stmt->bind_param("sssssssssss", $name, $countryCode, $contact, $email, $country, $state, $district, $subdistrict, $village, $zip, $subject);
+    
+        // Execute statement
+        if ($stmt->execute()) {
+            header("Location: inquiry.php");
+            exit();
+        } else {
+            echo "Error: " . $stmt->error;
+        }
     }
 }
-
 // Close the database connection
 $con->close();
 ?>

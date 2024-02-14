@@ -22,7 +22,7 @@
         <h2 style="font-size:24px">About Internship</h2>
         <div class="row">
             <div class="col-md-4">
-                <img src="image/index1.jpeg" alt="Internship Image" class="img-fluid mb-3" style="width:100%">
+                <img src="image/index1.jpeg" alt="Internship Image" class="img-fluid mb-3" style="width:100%;height:100%;" >
             </div>
             <div class="col-md-8">
                 <p>

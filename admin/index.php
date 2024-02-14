@@ -1,243 +1,116 @@
 <?php
- require 'connection.php';
+require 'connection.php';
 
-if ($con->connect_error) {
-    die("Connection failed: " . $con->connect_error);
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+   
+    // Check the connection
+    if ($con->connect_error) {
+        die("Connection failed: " . $con->connect_error);
+    }
+
+    // Get user input from the form
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    // Validate and sanitize user input (you should use more robust validation and sanitization in a production environment)
+    $email = mysqli_real_escape_string($con, $email);
+    $password = mysqli_real_escape_string($con, $password);
+
+    // Check if the entered email and password match the predefined credentials
+    $adminEmail = "admin@gmail.com";
+    $adminPassword = "admin12";
+
+    if ($email === $adminEmail && $password === $adminPassword) {
+        // Credentials match, redirect to index.php
+        header('location:main.php');
+        exit(); // Stop further execution to prevent displaying the login form
+    } 
+    elseif($email === "franchise@gmail.com" && $password === "franchise123")
+    {
+        header('location:../Franchise/index.php');
+        exit(); // Stop further execution to prevent displaying the login form
+    }
+    elseif($email === "faculty@gmail.com" && $password === "faculty123")
+    {
+        header('location:../Faculty/index.php');
+        exit(); // Stop further execution to prevent displaying the login form
+    }
+    else {
+        // Credentials do not match, display alert and redirect to index.php
+        echo "<script>alert('Please Check Your Email and Password !')</script>";
+        echo "<script>window.location.href='index.php';</script>";
+        exit(); // Stop further execution to prevent displaying the login form
+    }
+    
+    // Close the database connection
+    $con->close();
 }
-
-// Query to retrieve the count of students
-$sql = "SELECT COUNT(*) as student_count FROM studentinfo";
-$result = $con->query($sql);
-
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $studentCount = $row['student_count'];
-} 
-else {
-    echo "No students found";
-}
-
-$sql1 = "SELECT COUNT(*) as faculty_count FROM facultyinfo";
-$result = $con->query($sql1);
-
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $facultyCount = $row['faculty_count'];
-} 
-else {
-    echo "No faculty found";
-}
-
-$sql = "SELECT COUNT(*) as franchise_count FROM franchise";
-$result = $con->query($sql);
-
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $franchiseCount = $row['franchise_count'];
-} 
-else {
-    echo "No franchise found";
-}
-
-$sql = "SELECT COUNT(*) as course_count FROM course";
-$result = $con->query($sql);
-
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $courseCount = $row['course_count'];
-} 
-else {
-    echo "No course found";
-}
-
-$sql = "SELECT COUNT(*) as batch_count FROM batch";
-$result = $con->query($sql);
-
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $batchCount = $row['batch_count'];
-} 
-else {
-    echo "No batch found";
-}
-
-// Close the database connection
-$con->close();
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>cms dashboard
-    </title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!----css3---->
-    <link rel="stylesheet" href="css/custom.css">
-    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
-
-
-
-    <!--google material icon-->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <!-- Bootstrap CSS via CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 
-<body>
+<body class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
 
-
-
-
-    <div class="wrapper">
-
-
-        <div class="body-overlay"></div>
-        <?php require 'sidebar.php'?>
-        <!-- Page Content  -->
-        <div id="content" style="background-color:white;">
-
-            <div class="top-navbar">
-                <nav class="navbar navbar-expand-lg">
-                    <div class="container-fluid">
-                        <button type="button" id="sidebarCollapse" class="d-xl-block d-lg-block d-md-mone d-none">
-                            <span class="material-icons">arrow_back_ios</span>
-                        </button>
-                        <a class="navbar-brand" href="#"> Dashboard </a>
-                        <button class="d-inline-block d-lg-none ml-auto more-button" type="button"
-                            data-toggle="collapse" data-target="#navbarSupportedContent"
-                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="material-icons">more_vert</span>
-                        </button>
-                        <div class="collapse navbar-collapse d-lg-block d-xl-block d-sm-none d-md-none d-none"
-                            id="navbarSupportedContent">
-                            <ul class="nav navbar-nav ml-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                        <span class="material-icons">person</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+    <div class="login-container container">
+        <form class="p-2" method="post" onsubmit="return validateForm()">
+            <div class="form-group p-2">
+                <label for="email" class="p-1">Email</label>
+                <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" required>
+                <small id="emailError" class="text-danger"></small>
             </div>
-
-
-
-            <div class="main-content">
-
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-header">
-                                <div class="icon icon-warning">
-                                    <span class="material-icons">people</span>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <p class="category"><strong>Students</strong></p>
-                                <h3 class="card-title"><?php echo"$studentCount"?></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-header">
-                                <div class="icon icon-rose">
-                                    <span class="material-icons">school</span>
-
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <p class="category"><strong>Faculty</strong></p>
-                                <h3 class="card-title"><?php echo"$facultyCount"?></h3>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-header">
-                                <div class="icon icon-success">
-                                    <span class="material-icons">store
-                                    </span>
-
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <p class="category"><strong>Franchise</strong></p>
-                                <h3 class="card-title"><?php echo"$franchiseCount"?></h3>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-header">
-                                <div class="icon icon-info">
-                                    <span class="material-icons">
-                                        assignment
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <p class="category"><strong>Batch</strong></p>
-                                <h3 class="card-title"><?php echo"$batchCount"?></h3>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="card card-stats">
-                            <div class="card-header">
-                                <div class="icon icon-info">
-                                    <span class="material-icons">
-                                        book
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="card-content">
-                                <p class="category"><strong>Courses</strong></p>
-                                <h3 class="card-title"><?php echo"$courseCount"?></h3>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+            <div class="form-group p-2">
+                <label for="password" class="p-1">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Enter your password" required>
+                <small id="passwordError" class="text-danger"></small>
             </div>
-        </div>
+            <button type="submit" class="btn btn-primary mb-3" name="submit">Login</button>
+            <h6 class="text-center mt-3">Don't have an Account? <a href="register.php">Create Account</a></h6>
+        </form>
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
 
+    <!-- Bootstrap JS via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $('#sidebarCollapse').on('click', function() {
-            $('#sidebar').toggleClass('active');
-            $('#content').toggleClass('active');
-        });
+    <script>
+        function validateForm() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var emailError = document.getElementById("emailError");
+            var passwordError = document.getElementById("passwordError");
 
-        $('.more-button,.body-overlay').on('click', function() {
-            $('#sidebar,.body-overlay').toggleClass('show-nav');
-        });
+            // Reset previous errors
+            emailError.textContent = "";
+            
+            // Email validation
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                emailError.textContent = "Invalid email format";
+                return false;
+            }
 
-    });
+            if (password.length < 6) {
+                passwordError.textContent = "Password must be at least 6 characters";
+                return false;
+            }
+            return true; // Form is valid, continue with submission
+        }
     </script>
 
+    <!-- Bootstrap JS via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

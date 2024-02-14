@@ -74,7 +74,7 @@
               <th scope="col">Name</th>
               <th scope="col">Gender</th>
               <th scope="col">Contact</th>
-              <th scope="col">DateofBirth</th>
+              <th scope="col">Date of Birth</th>
               <th scope="col">Experience</th>
               <th scope="col">Skill1</th>
               <th scope="col">Skill2</th>
@@ -85,7 +85,7 @@
               <th scope="col">Maximum Students</th>
               <th scope="col">Education</th>
               <th scope="col">Qualification</th>
-              <th scope="col">FranchiseId</th>
+              <th scope="col">Franchise Id</th>
               <th scope="col">Status</th>
               <th scope="col">Operation</th>
 

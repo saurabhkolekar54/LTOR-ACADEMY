@@ -106,7 +106,7 @@ if (isset($_POST['addvacancy'])) {
 
 
             <div class="main-content">
-                <div class="container">
+            <div class="container card shadow p-3 bg-white rounded">
                     <h1 class="text-center mt-4">Add Job Vacancy</h1>
                     <form action="" method="POST" class="mt-4">
                         <div class="row">

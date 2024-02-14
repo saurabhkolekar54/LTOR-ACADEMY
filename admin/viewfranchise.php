@@ -73,8 +73,8 @@
               <th scope="col">Firm Name</th>
               <th scope="col">State</th>
               <th scope="col">District</th>
-              <th scope="col">Taluka</th>
-              <th scope="col">Location</th>
+              <th scope="col">Sub District</th>
+              <th scope="col">Village</th>
               <th scope="col">Pincode</th>
               <th scope="col">Status</th>
               <th scope="col">Operation</th>

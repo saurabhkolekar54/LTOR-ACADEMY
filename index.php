@@ -125,7 +125,7 @@ if ($result) {
             <div class="row">
                 <div class="col-md-7">
                     <div class="text">
-                        <p><?php echo $aboutUsText; ?></p>
+                        <p style="text-align: justify;"><?php echo $aboutUsText; ?></p>
                     </div>
                 </div>
                 <div class="col-md-5">
@@ -192,10 +192,10 @@ if ($result) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<div class="col-lg-3 col-md-6 mb-4">';
                     echo '<div class="card">';
-                    echo '<img src="admin/' . $row['t_image'] . '" class="card-img-top" alt="Course Image" style="height: 180px;">';
+                    echo '<img src="admin/image/' . $row['t_image'] . '" class="card-img-top" alt="Course Image" style="height: 180px;">';
                     echo '<div class="card-body text-center">';
                     echo '<h5 class="card-title">' . $row['t_name'] . '</h5>';
-                    echo '<a href="" class="btn btn-primary btn-learn-more">Learn More</a>';
+                    // echo '<a href="" class="btn btn-primary btn-learn-more">Learn More</a>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
@@ -364,7 +364,7 @@ if ($result) {
                                         <div class="testi-item">
                                             <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
                                             <div class="testimonials-text">
-                                                <p style="text-align: justify;">' . $row['testimonialText'] . '</p>
+                                                <p style="text-align: justify;font-size:13px;">' . $row['testimonialText'] . '</p>
                                                 <img src="admin/' . $row['studentImage'] . '" alt="Student Image" class="student-image" width="50px" height="50px" style="border-radius: 50%;">                                                <div class="testimonials-avatar">
                                                 <h3>' . $row['studentName'] . '</h3>
                                                 <h4>' . $row['courseName'] . '</h4>
